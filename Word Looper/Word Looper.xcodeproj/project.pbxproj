@@ -13,8 +13,6 @@
 		141658CE1EAEF822006EE1B4 /* CachedWordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */; };
 		143E39CB1EB20B510028A508 /* DriveUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E39CA1EB20B510028A508 /* DriveUtils.m */; };
 		144B88331EB31162007F3340 /* copy_mac.sh in Resources */ = {isa = PBXBuildFile; fileRef = 144B88321EB31162007F3340 /* copy_mac.sh */; };
-		144B88361EB3131D007F3340 /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CB61EB06E7900ACCBF8 /* GTLR.framework */; };
-		144B88371EB3131D007F3340 /* GTLR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CB61EB06E7900ACCBF8 /* GTLR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		144C5CA01EB06D2300ACCBF8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		144C5CA21EB06D2A00ACCBF8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA11EB06D2A00ACCBF8 /* Security.framework */; };
 		144C5CA41EB06D3300ACCBF8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA31EB06D3300ACCBF8 /* SystemConfiguration.framework */; };
@@ -31,68 +29,54 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		144B88381EB3131D007F3340 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
-			remoteInfo = GTLROSXCore;
-		};
-		144C5CB51EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+		14E63A021EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
 			remoteInfo = GTLROSXCore;
 		};
-		144C5CB71EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+		14E63A041EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F4469DB41C40229D00BCFAA1;
 			remoteInfo = GTLRiOSCore;
 		};
-		144C5CB91EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+		14E63A061EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F4A8723C1DAD1AA400D69E09;
 			remoteInfo = GTLRtvOSCore;
 		};
-		144C5CBB1EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+		14E63A081EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
 			remoteInfo = GTLROSXUnitTests;
 		};
-		144C5CBD1EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+		14E63A0A1EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F4368F721B8233BF00E17643;
 			remoteInfo = GTLRiOSUnitTests;
 		};
-		144C5CBF1EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+		14E63A0C1EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F4A8727D1DAD1FA000D69E09;
 			remoteInfo = GTLRtvOSUnitTests;
 		};
-		144C5CC11EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+		14E63A0E1EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
 			remoteInfo = OSXDevTool;
-		};
-		144C5D491EB071F900ACCBF8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
-			remoteInfo = GTLROSXCore;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -103,7 +87,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				144B88371EB3131D007F3340 /* GTLR.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,7 +105,7 @@
 		144C5CA11EB06D2A00ACCBF8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		144C5CA31EB06D3300ACCBF8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		144C5CA51EB06D3B00ACCBF8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLRCore.xcodeproj; path = "../google-api-objectivec-client-for-rest/Source/GTLRCore.xcodeproj"; sourceTree = "<group>"; };
+		144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLRCore.xcodeproj; path = "../../google-api-objectivec-client-for-rest/Source/GTLRCore.xcodeproj"; sourceTree = "<group>"; };
 		144C5CC61EB06ECD00ACCBF8 /* Macro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		144C5D4B1EB0744700ACCBF8 /* Word Looper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Word Looper-Bridging-Header.h"; path = "Word Looper/Word Looper-Bridging-Header.h"; sourceTree = "<group>"; };
 		144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTLR.framework; path = "Word Looper/LIbs/GoogleAPIs/GTLR.framework"; sourceTree = "<group>"; };
@@ -151,7 +134,6 @@
 				144C5CA21EB06D2A00ACCBF8 /* Security.framework in Frameworks */,
 				144C5CA01EB06D2300ACCBF8 /* WebKit.framework in Frameworks */,
 				144C5D4D1EB0750E00ACCBF8 /* GTLR.framework in Frameworks */,
-				144B88361EB3131D007F3340 /* GTLR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,20 +160,6 @@
 				144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		144C5CAB1EB06E7900ACCBF8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				144C5CB61EB06E7900ACCBF8 /* GTLR.framework */,
-				144C5CB81EB06E7900ACCBF8 /* GTLR.framework */,
-				144C5CBA1EB06E7900ACCBF8 /* GTLR.framework */,
-				144C5CBC1EB06E7900ACCBF8 /* GTLROSXUnitTests.xctest */,
-				144C5CBE1EB06E7900ACCBF8 /* GTLRiOSUnitTests.xctest */,
-				144C5CC01EB06E7900ACCBF8 /* GTLRtvOSUnitTests.xctest */,
-				144C5CC21EB06E7900ACCBF8 /* OSXDevTool */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		144C5D5B1EB0773900ACCBF8 /* Drive */ = {
@@ -247,6 +215,20 @@
 			path = "Word Looper";
 			sourceTree = "<group>";
 		};
+		14E639F91EB83A4100F1EDF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14E63A031EB83A4100F1EDF8 /* GTLR.framework */,
+				14E63A051EB83A4100F1EDF8 /* GTLR.framework */,
+				14E63A071EB83A4100F1EDF8 /* GTLR.framework */,
+				14E63A091EB83A4100F1EDF8 /* GTLROSXUnitTests.xctest */,
+				14E63A0B1EB83A4100F1EDF8 /* GTLRiOSUnitTests.xctest */,
+				14E63A0D1EB83A4100F1EDF8 /* GTLRtvOSUnitTests.xctest */,
+				14E63A0F1EB83A4100F1EDF8 /* OSXDevTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,8 +245,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				144C5D4A1EB071F900ACCBF8 /* PBXTargetDependency */,
-				144B88391EB3131D007F3340 /* PBXTargetDependency */,
 			);
 			name = WordLooper;
 			productName = "Word Looper";
@@ -302,7 +282,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 144C5CAB1EB06E7900ACCBF8 /* Products */;
+					ProductGroup = 14E639F91EB83A4100F1EDF8 /* Products */;
 					ProjectRef = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
 				},
 			);
@@ -314,53 +294,53 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		144C5CB61EB06E7900ACCBF8 /* GTLR.framework */ = {
+		14E63A031EB83A4100F1EDF8 /* GTLR.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GTLR.framework;
-			remoteRef = 144C5CB51EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			remoteRef = 14E63A021EB83A4100F1EDF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		144C5CB81EB06E7900ACCBF8 /* GTLR.framework */ = {
+		14E63A051EB83A4100F1EDF8 /* GTLR.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GTLR.framework;
-			remoteRef = 144C5CB71EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			remoteRef = 14E63A041EB83A4100F1EDF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		144C5CBA1EB06E7900ACCBF8 /* GTLR.framework */ = {
+		14E63A071EB83A4100F1EDF8 /* GTLR.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GTLR.framework;
-			remoteRef = 144C5CB91EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			remoteRef = 14E63A061EB83A4100F1EDF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		144C5CBC1EB06E7900ACCBF8 /* GTLROSXUnitTests.xctest */ = {
+		14E63A091EB83A4100F1EDF8 /* GTLROSXUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GTLROSXUnitTests.xctest;
-			remoteRef = 144C5CBB1EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			remoteRef = 14E63A081EB83A4100F1EDF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		144C5CBE1EB06E7900ACCBF8 /* GTLRiOSUnitTests.xctest */ = {
+		14E63A0B1EB83A4100F1EDF8 /* GTLRiOSUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GTLRiOSUnitTests.xctest;
-			remoteRef = 144C5CBD1EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			remoteRef = 14E63A0A1EB83A4100F1EDF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		144C5CC01EB06E7900ACCBF8 /* GTLRtvOSUnitTests.xctest */ = {
+		14E63A0D1EB83A4100F1EDF8 /* GTLRtvOSUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GTLRtvOSUnitTests.xctest;
-			remoteRef = 144C5CBF1EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			remoteRef = 14E63A0C1EB83A4100F1EDF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		144C5CC21EB06E7900ACCBF8 /* OSXDevTool */ = {
+		14E63A0F1EB83A4100F1EDF8 /* OSXDevTool */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = OSXDevTool;
-			remoteRef = 144C5CC11EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			remoteRef = 14E63A0E1EB83A4100F1EDF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -414,19 +394,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		144B88391EB3131D007F3340 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GTLROSXCore;
-			targetProxy = 144B88381EB3131D007F3340 /* PBXContainerItemProxy */;
-		};
-		144C5D4A1EB071F900ACCBF8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GTLROSXCore;
-			targetProxy = 144C5D491EB071F900ACCBF8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		14A7F4471EADAD6A006B6A1D /* Main.storyboard */ = {
