@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		141658C01EAEF431006EE1B4 /* CachedWordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658BF1EAEF431006EE1B4 /* CachedWordView.xib */; };
+		141658C21EAEF44D006EE1B4 /* CachedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658C11EAEF44D006EE1B4 /* CachedWordView.swift */; };
+		141658CC1EAEF7F4006EE1B4 /* CachedWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */; };
+		141658CE1EAEF822006EE1B4 /* CachedWordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */; };
+		143E39CB1EB20B510028A508 /* DriveUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E39CA1EB20B510028A508 /* DriveUtils.m */; };
+		144B88331EB31162007F3340 /* copy_mac.sh in Resources */ = {isa = PBXBuildFile; fileRef = 144B88321EB31162007F3340 /* copy_mac.sh */; };
+		144B88361EB3131D007F3340 /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CB61EB06E7900ACCBF8 /* GTLR.framework */; };
+		144B88371EB3131D007F3340 /* GTLR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CB61EB06E7900ACCBF8 /* GTLR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		144C5CA01EB06D2300ACCBF8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		144C5CA21EB06D2A00ACCBF8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA11EB06D2A00ACCBF8 /* Security.framework */; };
+		144C5CA41EB06D3300ACCBF8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA31EB06D3300ACCBF8 /* SystemConfiguration.framework */; };
+		144C5CA61EB06D3B00ACCBF8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA51EB06D3B00ACCBF8 /* Cocoa.framework */; };
+		144C5CC71EB06ECD00ACCBF8 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144C5CC61EB06ECD00ACCBF8 /* Macro.swift */; };
+		144C5D4D1EB0750E00ACCBF8 /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */; };
+		144C5D6D1EB0774C00ACCBF8 /* GTLRDriveObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D681EB0774C00ACCBF8 /* GTLRDriveObjects.m */; };
+		144C5D6E1EB0774C00ACCBF8 /* GTLRDriveQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6A1EB0774C00ACCBF8 /* GTLRDriveQuery.m */; };
+		144C5D6F1EB0774C00ACCBF8 /* GTLRDriveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */; };
+		14A7F4421EADAD6A006B6A1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */; };
+		14A7F4441EADAD6A006B6A1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* ViewController.swift */; };
+		14A7F4461EADAD6A006B6A1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4451EADAD6A006B6A1D /* Assets.xcassets */; };
+		14A7F4491EADAD6A006B6A1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4471EADAD6A006B6A1D /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		144B88381EB3131D007F3340 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
+			remoteInfo = GTLROSXCore;
+		};
+		144C5CB51EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
+			remoteInfo = GTLROSXCore;
+		};
+		144C5CB71EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4469DB41C40229D00BCFAA1;
+			remoteInfo = GTLRiOSCore;
+		};
+		144C5CB91EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4A8723C1DAD1AA400D69E09;
+			remoteInfo = GTLRtvOSCore;
+		};
+		144C5CBB1EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
+			remoteInfo = GTLROSXUnitTests;
+		};
+		144C5CBD1EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4368F721B8233BF00E17643;
+			remoteInfo = GTLRiOSUnitTests;
+		};
+		144C5CBF1EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4A8727D1DAD1FA000D69E09;
+			remoteInfo = GTLRtvOSUnitTests;
+		};
+		144C5CC11EB06E7900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
+			remoteInfo = OSXDevTool;
+		};
+		144C5D491EB071F900ACCBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
+			remoteInfo = GTLROSXCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		144B883A1EB3131D007F3340 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				144B88371EB3131D007F3340 /* GTLR.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		141658BF1EAEF431006EE1B4 /* CachedWordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CachedWordView.xib; sourceTree = "<group>"; };
+		141658C11EAEF44D006EE1B4 /* CachedWordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedWordView.swift; sourceTree = "<group>"; };
+		141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedWordViewCell.swift; sourceTree = "<group>"; };
+		141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CachedWordViewCell.xib; sourceTree = "<group>"; };
+		143E39C91EB20B510028A508 /* DriveUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriveUtils.h; path = "Word Looper/DriveUtils.h"; sourceTree = "<group>"; };
+		143E39CA1EB20B510028A508 /* DriveUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriveUtils.m; path = "Word Looper/DriveUtils.m"; sourceTree = "<group>"; };
+		144B88321EB31162007F3340 /* copy_mac.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_mac.sh; sourceTree = "<group>"; };
+		144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		144C5CA11EB06D2A00ACCBF8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		144C5CA31EB06D3300ACCBF8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		144C5CA51EB06D3B00ACCBF8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLRCore.xcodeproj; path = "../google-api-objectivec-client-for-rest/Source/GTLRCore.xcodeproj"; sourceTree = "<group>"; };
+		144C5CC61EB06ECD00ACCBF8 /* Macro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
+		144C5D4B1EB0744700ACCBF8 /* Word Looper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Word Looper-Bridging-Header.h"; path = "Word Looper/Word Looper-Bridging-Header.h"; sourceTree = "<group>"; };
+		144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTLR.framework; path = "Word Looper/LIbs/GoogleAPIs/GTLR.framework"; sourceTree = "<group>"; };
+		144C5D661EB0774C00ACCBF8 /* GTLRDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLRDrive.h; sourceTree = "<group>"; };
+		144C5D671EB0774C00ACCBF8 /* GTLRDriveObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLRDriveObjects.h; sourceTree = "<group>"; };
+		144C5D681EB0774C00ACCBF8 /* GTLRDriveObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLRDriveObjects.m; sourceTree = "<group>"; };
+		144C5D691EB0774C00ACCBF8 /* GTLRDriveQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLRDriveQuery.h; sourceTree = "<group>"; };
+		144C5D6A1EB0774C00ACCBF8 /* GTLRDriveQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLRDriveQuery.m; sourceTree = "<group>"; };
+		144C5D6B1EB0774C00ACCBF8 /* GTLRDriveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLRDriveService.h; sourceTree = "<group>"; };
+		144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLRDriveService.m; sourceTree = "<group>"; };
+		14A7F43E1EADAD6A006B6A1D /* WordLooper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordLooper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		14A7F4431EADAD6A006B6A1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		14A7F4451EADAD6A006B6A1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14A7F4481EADAD6A006B6A1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		14A7F44A1EADAD6A006B6A1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14A7F43B1EADAD6A006B6A1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144C5CA61EB06D3B00ACCBF8 /* Cocoa.framework in Frameworks */,
+				144C5CA41EB06D3300ACCBF8 /* SystemConfiguration.framework in Frameworks */,
+				144C5CA21EB06D2A00ACCBF8 /* Security.framework in Frameworks */,
+				144C5CA01EB06D2300ACCBF8 /* WebKit.framework in Frameworks */,
+				144C5D4D1EB0750E00ACCBF8 /* GTLR.framework in Frameworks */,
+				144B88361EB3131D007F3340 /* GTLR.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		141658BE1EAEF415006EE1B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				141658BF1EAEF431006EE1B4 /* CachedWordView.xib */,
+				141658C11EAEF44D006EE1B4 /* CachedWordView.swift */,
+				141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */,
+				141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		144C5C9E1EB06D2200ACCBF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				144C5CA51EB06D3B00ACCBF8 /* Cocoa.framework */,
+				144C5CA31EB06D3300ACCBF8 /* SystemConfiguration.framework */,
+				144C5CA11EB06D2A00ACCBF8 /* Security.framework */,
+				144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		144C5CAB1EB06E7900ACCBF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				144C5CB61EB06E7900ACCBF8 /* GTLR.framework */,
+				144C5CB81EB06E7900ACCBF8 /* GTLR.framework */,
+				144C5CBA1EB06E7900ACCBF8 /* GTLR.framework */,
+				144C5CBC1EB06E7900ACCBF8 /* GTLROSXUnitTests.xctest */,
+				144C5CBE1EB06E7900ACCBF8 /* GTLRiOSUnitTests.xctest */,
+				144C5CC01EB06E7900ACCBF8 /* GTLRtvOSUnitTests.xctest */,
+				144C5CC21EB06E7900ACCBF8 /* OSXDevTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		144C5D5B1EB0773900ACCBF8 /* Drive */ = {
+			isa = PBXGroup;
+			children = (
+				144C5D661EB0774C00ACCBF8 /* GTLRDrive.h */,
+				144C5D671EB0774C00ACCBF8 /* GTLRDriveObjects.h */,
+				144C5D681EB0774C00ACCBF8 /* GTLRDriveObjects.m */,
+				144C5D691EB0774C00ACCBF8 /* GTLRDriveQuery.h */,
+				144C5D6A1EB0774C00ACCBF8 /* GTLRDriveQuery.m */,
+				144C5D6B1EB0774C00ACCBF8 /* GTLRDriveService.h */,
+				144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */,
+			);
+			name = Drive;
+			path = "Word Looper/LIbs/GoogleAPIs/Drive";
+			sourceTree = "<group>";
+		};
+		14A7F4351EADAD6A006B6A1D = {
+			isa = PBXGroup;
+			children = (
+				144B88321EB31162007F3340 /* copy_mac.sh */,
+				143E39C91EB20B510028A508 /* DriveUtils.h */,
+				143E39CA1EB20B510028A508 /* DriveUtils.m */,
+				144C5D5B1EB0773900ACCBF8 /* Drive */,
+				144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */,
+				144C5D4B1EB0744700ACCBF8 /* Word Looper-Bridging-Header.h */,
+				144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */,
+				14A7F4401EADAD6A006B6A1D /* Word Looper */,
+				14A7F43F1EADAD6A006B6A1D /* Products */,
+				144C5C9E1EB06D2200ACCBF8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		14A7F43F1EADAD6A006B6A1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14A7F43E1EADAD6A006B6A1D /* WordLooper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14A7F4401EADAD6A006B6A1D /* Word Looper */ = {
+			isa = PBXGroup;
+			children = (
+				14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */,
+				14A7F4431EADAD6A006B6A1D /* ViewController.swift */,
+				144C5CC61EB06ECD00ACCBF8 /* Macro.swift */,
+				141658BE1EAEF415006EE1B4 /* View */,
+				14A7F4451EADAD6A006B6A1D /* Assets.xcassets */,
+				14A7F4471EADAD6A006B6A1D /* Main.storyboard */,
+				14A7F44A1EADAD6A006B6A1D /* Info.plist */,
+			);
+			path = "Word Looper";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14A7F43D1EADAD6A006B6A1D /* WordLooper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14A7F44D1EADAD6A006B6A1D /* Build configuration list for PBXNativeTarget "WordLooper" */;
+			buildPhases = (
+				14A7F43A1EADAD6A006B6A1D /* Sources */,
+				14A7F43B1EADAD6A006B6A1D /* Frameworks */,
+				14A7F43C1EADAD6A006B6A1D /* Resources */,
+				144B88351EB31170007F3340 /* ShellScript */,
+				144B883A1EB3131D007F3340 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				144C5D4A1EB071F900ACCBF8 /* PBXTargetDependency */,
+				144B88391EB3131D007F3340 /* PBXTargetDependency */,
+			);
+			name = WordLooper;
+			productName = "Word Looper";
+			productReference = 14A7F43E1EADAD6A006B6A1D /* WordLooper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14A7F4361EADAD6A006B6A1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = GKXIM;
+				TargetAttributes = {
+					14A7F43D1EADAD6A006B6A1D = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 5CE32BFHCM;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 14A7F4391EADAD6A006B6A1D /* Build configuration list for PBXProject "Word Looper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14A7F4351EADAD6A006B6A1D;
+			productRefGroup = 14A7F43F1EADAD6A006B6A1D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 144C5CAB1EB06E7900ACCBF8 /* Products */;
+					ProjectRef = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				14A7F43D1EADAD6A006B6A1D /* WordLooper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		144C5CB61EB06E7900ACCBF8 /* GTLR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTLR.framework;
+			remoteRef = 144C5CB51EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		144C5CB81EB06E7900ACCBF8 /* GTLR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTLR.framework;
+			remoteRef = 144C5CB71EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		144C5CBA1EB06E7900ACCBF8 /* GTLR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTLR.framework;
+			remoteRef = 144C5CB91EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		144C5CBC1EB06E7900ACCBF8 /* GTLROSXUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLROSXUnitTests.xctest;
+			remoteRef = 144C5CBB1EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		144C5CBE1EB06E7900ACCBF8 /* GTLRiOSUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLRiOSUnitTests.xctest;
+			remoteRef = 144C5CBD1EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		144C5CC01EB06E7900ACCBF8 /* GTLRtvOSUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLRtvOSUnitTests.xctest;
+			remoteRef = 144C5CBF1EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		144C5CC21EB06E7900ACCBF8 /* OSXDevTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = OSXDevTool;
+			remoteRef = 144C5CC11EB06E7900ACCBF8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14A7F43C1EADAD6A006B6A1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14A7F4461EADAD6A006B6A1D /* Assets.xcassets in Resources */,
+				144B88331EB31162007F3340 /* copy_mac.sh in Resources */,
+				141658C01EAEF431006EE1B4 /* CachedWordView.xib in Resources */,
+				141658CE1EAEF822006EE1B4 /* CachedWordViewCell.xib in Resources */,
+				14A7F4491EADAD6A006B6A1D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		144B88351EB31170007F3340 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/copy_mac.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14A7F43A1EADAD6A006B6A1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144C5D6E1EB0774C00ACCBF8 /* GTLRDriveQuery.m in Sources */,
+				144C5D6F1EB0774C00ACCBF8 /* GTLRDriveService.m in Sources */,
+				144C5D6D1EB0774C00ACCBF8 /* GTLRDriveObjects.m in Sources */,
+				141658C21EAEF44D006EE1B4 /* CachedWordView.swift in Sources */,
+				14A7F4441EADAD6A006B6A1D /* ViewController.swift in Sources */,
+				141658CC1EAEF7F4006EE1B4 /* CachedWordViewCell.swift in Sources */,
+				14A7F4421EADAD6A006B6A1D /* AppDelegate.swift in Sources */,
+				144C5CC71EB06ECD00ACCBF8 /* Macro.swift in Sources */,
+				143E39CB1EB20B510028A508 /* DriveUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		144B88391EB3131D007F3340 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTLROSXCore;
+			targetProxy = 144B88381EB3131D007F3340 /* PBXContainerItemProxy */;
+		};
+		144C5D4A1EB071F900ACCBF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTLROSXCore;
+			targetProxy = 144C5D491EB071F900ACCBF8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		14A7F4471EADAD6A006B6A1D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14A7F4481EADAD6A006B6A1D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14A7F44B1EADAD6A006B6A1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		14A7F44C1EADAD6A006B6A1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		14A7F44E1EADAD6A006B6A1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5CE32BFHCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Word\\ Looper/google_headers/**";
+				INFOPLIST_FILE = "Word Looper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Word Looper/Word Looper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		14A7F44F1EADAD6A006B6A1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5CE32BFHCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Word\\ Looper/google_headers/**";
+				INFOPLIST_FILE = "Word Looper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Word Looper/Word Looper-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14A7F4391EADAD6A006B6A1D /* Build configuration list for PBXProject "Word Looper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A7F44B1EADAD6A006B6A1D /* Debug */,
+				14A7F44C1EADAD6A006B6A1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14A7F44D1EADAD6A006B6A1D /* Build configuration list for PBXNativeTarget "WordLooper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A7F44E1EADAD6A006B6A1D /* Debug */,
+				14A7F44F1EADAD6A006B6A1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14A7F4361EADAD6A006B6A1D /* Project object */;
+}
