@@ -1,7 +1,7 @@
 
 
-#import "RCTViewManager.h"
+#import <React/RCTViewManager.h>
 
-@interface UtilViewManager : RCTViewManager
+@interface UtilsViewManager : RCTViewManager
 
 @end

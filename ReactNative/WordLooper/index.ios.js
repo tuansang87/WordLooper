@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+var ReactNative = require('react-native');
 import {
   AppRegistry,
   StyleSheet,
@@ -18,6 +19,9 @@ import {
   WebView
 
 } from 'react-native';
+
+
+var UtilsView = require('./NativeModule/UtilView/index.ios.js');
 
 const kWordPlayholder = 'input your word';
 const WEBVIEW_REF = 'webview';
@@ -60,85 +64,17 @@ export default class WordLooper extends Component {
     // }
     return encoding ? body.toString(encoding) : body;
   }
-
-  fecthAudioFileForWord = (word) => {
-
-    if (word == null || word.length == 0) {
-      return;
-    }
-    lastPlayWord = word;
-
-    var self = this;
-    // fetch('http://www.dictionary.com/browse/word', {
-    //   method: 'GET'
-    // }).then((resp) => {
-    //   alert(JSON.stringify(resp));
-    //   return resp;
-    // })
-
-
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = (e) => {
-      if (request.readyState !== 4) {
-        return;
-      }
-
-      if (request.status === 200) {
-        var orgText = request.responseText;
-        var length = orgText.length;
-        var n = orgText.search('mwe_player_0');
-        if (n > 0) {
-          length -= n;
-          var range = Math.min(n, 50000);
-          orgText = orgText.substring(n, length);
-
-          var text = '' + orgText.substring(0, range);
-
-          // console.log('success', text);
-          var beginTemplate = "<source src=\"//";
-          var beginLinkRange = text.search(beginTemplate);
-          beginLinkRange += beginTemplate.length;
-          length = length - beginLinkRange;
-          if (length > 0) {
-            // alert('check ' + beginLinkRange);
-            range = Math.min(length, 1000);
-            text = '' + orgText.substring(beginLinkRange, range);
-            // alert(text);
-
-            var endLinkRange = text.search("\" type=");
-            alert(endLinkRange);
-
-            var link = text.substring(0, endLinkRange);
-            if (link.length > 0) {
-              link = 'https://' + link;
-
-              alert(link);
-            }
-          }
-        }
-
-      } else {
-        console.warn('error');
-      }
-    };
-    var newLink = 'https://en.m.wiktionary.org/wiki/' + word.toLowerCase();
-
-    request.open('GET', newLink);
-    request.send();
-
-
-    var options = {
-      host: 'www.dictionary.com',
-      path: '/browse/word?s=t'
-    };
-
-  };
+ 
 
   playCurentWord = () => {
 
     var word = this.state.word;
+    UtilsView.fecthAudioLinkForWord(word , true);
+  };
 
-    this.fecthAudioFileForWord(word);
+  onNewWordEndEditing = () => {
+ 
+    UtilsView.fecthAudioLinkForWord(this.state.word , true);
   };
 
   onWordSearchingChanged = (word) => {
@@ -192,19 +128,21 @@ export default class WordLooper extends Component {
   onUpload = () => {
   };
 
-  onReceiveMessage = (event) => {
-    alert(' ', JSON.stringify(event.nativeEvent));
-  };
+  onAudioLinkDetectedCallback = (event) => {
+    let link = event.nativeEvent.link;
+
+    console.log(link);
+    UtilsView.playSound(link);
+  }
+
+  render = () => {
 
 
-  render() {
-  
-
-    var jsCode = "\
-      setTimeout(() => {\
-       window.postMessage(check : document.documentElement.outerHTML.toString());\
-    } , 1000) \
-    ";
+    // var jsCode = "\
+    //   setTimeout(() => {\
+    //    window.postMessage(check : document.documentElement.outerHTML.toString());\
+    // } , 3000) \
+    // ";
     // jsCode = "";
 
     return (
@@ -215,6 +153,8 @@ export default class WordLooper extends Component {
           </Text>
           <TextInput
             ref={WORD_INPUT_REF}
+            autoCapitalize='none'
+            onEndEditing={() => this.onNewWordEndEditing()}
             style={styles.lookup_txt}
             onChangeText={(text) => this.onWordSearchingChanged(text)}
             placeholder={this.state.word}
@@ -277,16 +217,17 @@ export default class WordLooper extends Component {
             ref={WEBVIEW_REF}
             source={{ uri: this.state.word_uri }}
             style={styles.webview}
-            injectedJavaScript={jsCode}
-            javaScriptEnabledAndroid={true}
-            onMessage= {this.onReceiveMessage}
           />
         </View>
-
+        <UtilsView
+          ref={'UtilsView'}
+          onAudioLinkDetectedCallback={(event) => this.onAudioLinkDetectedCallback(event)}
+        />
       </View>
     );
-  }
-}
+  };
+};
+
 
 const styles = StyleSheet.create({
   container: {

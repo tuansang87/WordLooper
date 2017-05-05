@@ -1,18 +1,18 @@
 'use strict';
 
 var React = require('react');
-var ReactNative = require('react-native');
+import ReactNative from 'react-native';
 
 var {
   requireNativeComponent,
   NativeModules: {
-    UtilsViewwManager
+    UtilsViewManager
   }
 } = ReactNative;
 
 var { PropTypes } = React;
 
-
+var _viewHandle = 0; 
 var RCTUtilsView = requireNativeComponent('UtilsView', UtilsView);
 
 
@@ -22,12 +22,14 @@ var RCTUtilsView = requireNativeComponent('UtilsView', UtilsView);
 var UtilsView = React.createClass({
 
   statics: {
-    fecthAudioLinkForWord(word) {
-      UtilsViewwManager.fecthAudioLinkForWord(word , this._viewHandle);
+    fecthAudioLinkForWord(word,forcePlay) {
+      if(word != null && typeof(word) != 'undefined' ) {
+        
+        UtilsViewManager.fecthAudioLinkForWord(word , forcePlay, _viewHandle);
+      }
     },
-    test(word) {
-      alert(word);
-      UtilsViewwManager.test(word);
+    playSound(soundUrl) {
+      UtilsViewManager.playSound(soundUrl, _viewHandle);
     }
   },
   propTypes: {
@@ -43,15 +45,16 @@ var UtilsView = React.createClass({
       <RCTUtilsView
         ref={'RCTUtilsView'}
         // back and submit action
-        onSubmit={this.props.onAudioLinkDetectedCallback}
+        onAudioLinkDetectedCallback={this.props.onAudioLinkDetectedCallback}
       />
     );
 
   },
 
-  _viewHandle: null,
-  componentDidMount() {
-    this._viewHandle = ReactNative.findNodeHandle(this.refs['RCTUtilsView']);
+ 
+  componentDidMount() { 
+    _viewHandle = ReactNative.findNodeHandle(this.refs['RCTUtilsView']);
+     
   },
 
 });

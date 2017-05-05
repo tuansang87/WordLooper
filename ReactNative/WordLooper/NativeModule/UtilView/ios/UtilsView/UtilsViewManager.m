@@ -6,35 +6,49 @@
 //  Copyright © 2016 Groupsurfing inc. All rights reserved.
 //
 
-#import "UtilViewManager.h"
-#import "RCTBridge.h"
-#import "RCTUIManager.h"
-#import "UtilView.h"
+#import "UtilsViewManager.h"
+#import <React/RCTBridge.h>
+#import <React/RCTUIManager.h>
+#import "UtilsView.h"
 
-@interface UtilViewManager()
+@interface UtilsViewManager()
 
 @end
 
-@implementation UtilViewManager
+@implementation UtilsViewManager
 RCT_EXPORT_MODULE()
-RCT_EXPORT_VIEW_PROPERTY(onSignInBtnClick, RCTDirectEventBlock)
 - (RCTView *)view
 {
-    LoginView *mLoginView = [LoginView new]; 
-    return mLoginView;
+    UtilsView *mUtilsView = [UtilsView new];
+    return mUtilsView;
 }
+
+
+RCT_EXPORT_VIEW_PROPERTY(onAudioLinkDetectedCallback, RCTDirectEventBlock)
 
  
 
-RCT_EXPORT_METHOD(showErrorMessage:(nonnull NSNumber *)reactTag
-                  value:(NSString*)messageKey)
+RCT_EXPORT_METHOD(fecthAudioLinkForWord:(nonnull NSString*) word fourcePlay:(BOOL) shouldForce withReactTag:(nonnull NSNumber *)reactTag)
 {
-    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, LoginView*> *viewRegistry) {
-        LoginView * view = viewRegistry[reactTag];
-        if (![view isKindOfClass:[LoginView class]]) {
-            RCTLogError(@"Invalid view returned from registry, expecting LoginView, got: %@", view);
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UtilsView*> *viewRegistry) {
+        UtilsView * view = viewRegistry[reactTag];
+        if (![view isKindOfClass:[UtilsView class]]) {
+            RCTLogError(@"Invalid view returned from registry, expecting UtilsView, got: %@", view);
         } else {
-            [view showErrorMessage:messageKey];
+            [view fecthAudioLinkForWord:word fourcePlay:(BOOL) shouldForce withCallback:nil];
+        }
+    }];
+}
+
+
+RCT_EXPORT_METHOD(playSound:(nonnull NSString*) soundUrl withReactTag:(nonnull NSNumber *)reactTag)
+{
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UtilsView*> *viewRegistry) {
+        UtilsView * view = viewRegistry[reactTag];
+        if (![view isKindOfClass:[UtilsView class]]) {
+            RCTLogError(@"Invalid view returned from registry, expecting UtilsView, got: %@", view);
+        } else {
+            [view playSound:soundUrl];
         }
     }];
 }
