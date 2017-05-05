@@ -1,0 +1,1 @@
+pod 'RNAudioStreaming', :path => '../node_modules/react-native-audio-streaming'

@@ -727,7 +727,10 @@ extension AudioFinding {
         self.lastPlayWord = word
         
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        let dataTask = session.dataTask(with: URL(string: "http://www.dictionary.com/browse/\(word)?s=t")!) { (data, resp, err) in
+        var text  = word
+        text = text.replacingOccurrences(of: " ", with: "+")
+        
+        let dataTask = session.dataTask(with: URL(string: "http://www.dictionary.com/browse/\(text)?s=t")!) { (data, resp, err) in
             guard let data = data  else {
                 return
             }
