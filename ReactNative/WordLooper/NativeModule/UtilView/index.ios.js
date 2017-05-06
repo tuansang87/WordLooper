@@ -23,6 +23,7 @@ var UtilsView = React.createClass({
 
   statics: {
     fecthAudioLinkForWord(word,forcePlay) {
+      console.log(forcePlay);
       if(word != null && typeof(word) != 'undefined' ) {
         
         UtilsViewManager.fecthAudioLinkForWord(word , forcePlay, _viewHandle);

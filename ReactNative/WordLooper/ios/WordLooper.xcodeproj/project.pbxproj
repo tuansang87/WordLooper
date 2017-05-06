@@ -22,8 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		14919F421EBC3DED00D20D2F /* libUtilsView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14919F1E1EBC2A2E00D20D2F /* libUtilsView.a */; };
-		247E9D91BD724B37BD4ED1B7 /* libRNOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B95D58F92C4F5190B3CA48 /* libRNOS.a */; };
+		148A94C41EBD86E700AFFB7D /* libUtilsView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 148A94C31EBD86DA00AFFB7D /* libUtilsView.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -104,61 +103,19 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
-		14919F1D1EBC2A2E00D20D2F /* PBXContainerItemProxy */ = {
+		148A94C21EBD86DA00AFFB7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 14919F191EBC2A2E00D20D2F /* UtilsView.xcodeproj */;
+			containerPortal = 148A94A51EBD86DA00AFFB7D /* UtilsView.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 14919F0D1EBC29B900D20D2F;
 			remoteInfo = UtilsView;
 		};
-		14919F401EBC3DE500D20D2F /* PBXContainerItemProxy */ = {
+		148A94C51EBD86F300AFFB7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 14919F191EBC2A2E00D20D2F /* UtilsView.xcodeproj */;
+			containerPortal = 148A94A51EBD86DA00AFFB7D /* UtilsView.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 14919F0C1EBC29B900D20D2F;
 			remoteInfo = UtilsView;
-		};
-		14E89B8A1EBB878E00D313DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C50CC9CFCCDE4D968758EB43 /* ReactNativeAudioStreaming.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = ReactNativeAudioStreaming;
-		};
-		14E89BF01EBB896C00D313DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C7936E6725BF47E2A1E33A83 /* RNOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNOS;
-		};
-		14E89BF31EBB896C00D313DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA54A4CDC0DA4EEDB25E7278 /* RNRandomBytes.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 73EEC9391BFE4B1D00D468EB;
-			remoteInfo = RNRandomBytes;
-		};
-		14E89BF61EBB896C00D313DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FEDD9C98B480483D82A4DDB5 /* RNReactNativeMusicplayercontroller.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNReactNativeMusicplayercontroller;
-		};
-		14E89BF91EBB896C00D313DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F9634B6541074DFCA6280085 /* TcpSockets.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = TcpSockets;
-		};
-		14E89BFC1EBB896C00D313DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF28A61FA18046B3BF42BB76 /* UdpSockets.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = UdpSockets;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -308,19 +265,12 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WordLooper/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WordLooper/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		14919F191EBC2A2E00D20D2F /* UtilsView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UtilsView.xcodeproj; path = ../NativeModule/UtilView/ios/UtilsView.xcodeproj; sourceTree = "<group>"; };
+		148A94A51EBD86DA00AFFB7D /* UtilsView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UtilsView.xcodeproj; path = ../NativeModule/UtilView/ios/UtilsView.xcodeproj; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* WordLooper-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordLooper-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* WordLooper-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WordLooper-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		35B95D58F92C4F5190B3CA48 /* libRNOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOS.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		BF28A61FA18046B3BF42BB76 /* UdpSockets.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = UdpSockets.xcodeproj; path = "../node_modules/react-native-udp/ios/UdpSockets.xcodeproj"; sourceTree = "<group>"; };
-		C50CC9CFCCDE4D968758EB43 /* ReactNativeAudioStreaming.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeAudioStreaming.xcodeproj; path = "../node_modules/react-native-audio-streaming/ios/ReactNativeAudioStreaming.xcodeproj"; sourceTree = "<group>"; };
-		C7936E6725BF47E2A1E33A83 /* RNOS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOS.xcodeproj; path = "../node_modules/react-native-os/ios/RNOS.xcodeproj"; sourceTree = "<group>"; };
-		CA54A4CDC0DA4EEDB25E7278 /* RNRandomBytes.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNRandomBytes.xcodeproj; path = "../node_modules/react-native-randombytes/RNRandomBytes.xcodeproj"; sourceTree = "<group>"; };
-		F9634B6541074DFCA6280085 /* TcpSockets.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TcpSockets.xcodeproj; path = "../node_modules/react-native-tcp/ios/TcpSockets.xcodeproj"; sourceTree = "<group>"; };
-		FEDD9C98B480483D82A4DDB5 /* RNReactNativeMusicplayercontroller.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeMusicplayercontroller.xcodeproj; path = "../node_modules/react-native-musicplayercontroller/ios/RNReactNativeMusicplayercontroller.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,7 +286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14919F421EBC3DED00D20D2F /* libUtilsView.a in Frameworks */,
+				148A94C41EBD86E700AFFB7D /* libUtilsView.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -348,7 +298,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				247E9D91BD724B37BD4ED1B7 /* libRNOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,58 +432,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		14919F1A1EBC2A2E00D20D2F /* Products */ = {
+		148A94A61EBD86DA00AFFB7D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				14919F1E1EBC2A2E00D20D2F /* libUtilsView.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		14E89B6E1EBB878D00D313DF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14E89B8B1EBB878E00D313DF /* libReactNativeAudioStreaming.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		14E89BC91EBB896C00D313DF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14E89BF71EBB896C00D313DF /* libRNReactNativeMusicplayercontroller.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		14E89BCB1EBB896C00D313DF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14E89BF11EBB896C00D313DF /* libRNOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		14E89BCD1EBB896C00D313DF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14E89BF41EBB896C00D313DF /* libRNRandomBytes.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		14E89BCF1EBB896C00D313DF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14E89BFA1EBB896C00D313DF /* libTcpSockets.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		14E89BD11EBB896C00D313DF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14E89BFD1EBB896C00D313DF /* libUdpSockets.a */,
+				148A94C31EBD86DA00AFFB7D /* libUtilsView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -560,7 +461,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				14919F191EBC2A2E00D20D2F /* UtilsView.xcodeproj */,
+				148A94A51EBD86DA00AFFB7D /* UtilsView.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -572,12 +473,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				C50CC9CFCCDE4D968758EB43 /* ReactNativeAudioStreaming.xcodeproj */,
-				FEDD9C98B480483D82A4DDB5 /* RNReactNativeMusicplayercontroller.xcodeproj */,
-				C7936E6725BF47E2A1E33A83 /* RNOS.xcodeproj */,
-				CA54A4CDC0DA4EEDB25E7278 /* RNRandomBytes.xcodeproj */,
-				F9634B6541074DFCA6280085 /* TcpSockets.xcodeproj */,
-				BF28A61FA18046B3BF42BB76 /* UdpSockets.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -647,7 +542,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				14919F411EBC3DE500D20D2F /* PBXTargetDependency */,
+				148A94C61EBD86F300AFFB7D /* PBXTargetDependency */,
 			);
 			name = WordLooper;
 			productName = "Hello World";
@@ -696,7 +591,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 610;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -771,32 +666,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 14E89B6E1EBB878D00D313DF /* Products */;
-					ProjectRef = C50CC9CFCCDE4D968758EB43 /* ReactNativeAudioStreaming.xcodeproj */;
-				},
-				{
-					ProductGroup = 14E89BCB1EBB896C00D313DF /* Products */;
-					ProjectRef = C7936E6725BF47E2A1E33A83 /* RNOS.xcodeproj */;
-				},
-				{
-					ProductGroup = 14E89BCD1EBB896C00D313DF /* Products */;
-					ProjectRef = CA54A4CDC0DA4EEDB25E7278 /* RNRandomBytes.xcodeproj */;
-				},
-				{
-					ProductGroup = 14E89BC91EBB896C00D313DF /* Products */;
-					ProjectRef = FEDD9C98B480483D82A4DDB5 /* RNReactNativeMusicplayercontroller.xcodeproj */;
-				},
-				{
-					ProductGroup = 14E89BCF1EBB896C00D313DF /* Products */;
-					ProjectRef = F9634B6541074DFCA6280085 /* TcpSockets.xcodeproj */;
-				},
-				{
-					ProductGroup = 14E89BD11EBB896C00D313DF /* Products */;
-					ProjectRef = BF28A61FA18046B3BF42BB76 /* UdpSockets.xcodeproj */;
-				},
-				{
-					ProductGroup = 14919F1A1EBC2A2E00D20D2F /* Products */;
-					ProjectRef = 14919F191EBC2A2E00D20D2F /* UtilsView.xcodeproj */;
+					ProductGroup = 148A94A61EBD86DA00AFFB7D /* Products */;
+					ProjectRef = 148A94A51EBD86DA00AFFB7D /* UtilsView.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -866,53 +737,11 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		14919F1E1EBC2A2E00D20D2F /* libUtilsView.a */ = {
+		148A94C31EBD86DA00AFFB7D /* libUtilsView.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libUtilsView.a;
-			remoteRef = 14919F1D1EBC2A2E00D20D2F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		14E89B8B1EBB878E00D313DF /* libReactNativeAudioStreaming.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReactNativeAudioStreaming.a;
-			remoteRef = 14E89B8A1EBB878E00D313DF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		14E89BF11EBB896C00D313DF /* libRNOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNOS.a;
-			remoteRef = 14E89BF01EBB896C00D313DF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		14E89BF41EBB896C00D313DF /* libRNRandomBytes.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNRandomBytes.a;
-			remoteRef = 14E89BF31EBB896C00D313DF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		14E89BF71EBB896C00D313DF /* libRNReactNativeMusicplayercontroller.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNReactNativeMusicplayercontroller.a;
-			remoteRef = 14E89BF61EBB896C00D313DF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		14E89BFA1EBB896C00D313DF /* libTcpSockets.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTcpSockets.a;
-			remoteRef = 14E89BF91EBB896C00D313DF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		14E89BFD1EBB896C00D313DF /* libUdpSockets.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libUdpSockets.a;
-			remoteRef = 14E89BFC1EBB896C00D313DF /* PBXContainerItemProxy */;
+			remoteRef = 148A94C21EBD86DA00AFFB7D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -1144,10 +973,10 @@
 			target = 13B07F861A680F5B00A75B9A /* WordLooper */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
-		14919F411EBC3DE500D20D2F /* PBXTargetDependency */ = {
+		148A94C61EBD86F300AFFB7D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = UtilsView;
-			targetProxy = 14919F401EBC3DE500D20D2F /* PBXContainerItemProxy */;
+			targetProxy = 148A94C51EBD86F300AFFB7D /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1177,27 +1006,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-audio-streaming/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-musicplayercontroller/ios",
-					"$(SRCROOT)/../node_modules/react-native-os/ios",
-					"$(SRCROOT)/../node_modules/react-native-randombytes",
-					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-				);
 				INFOPLIST_FILE = WordLooperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1212,27 +1023,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-audio-streaming/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-musicplayercontroller/ios",
-					"$(SRCROOT)/../node_modules/react-native-os/ios",
-					"$(SRCROOT)/../node_modules/react-native-randombytes",
-					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-				);
 				INFOPLIST_FILE = WordLooperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1248,13 +1041,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-os/ios",
-					"$(SRCROOT)/../node_modules/react-native-randombytes",
-					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-				);
 				INFOPLIST_FILE = WordLooper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1272,13 +1058,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-os/ios",
-					"$(SRCROOT)/../node_modules/react-native-randombytes",
-					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-				);
 				INFOPLIST_FILE = WordLooper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1303,26 +1082,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-audio-streaming/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-musicplayercontroller/ios",
-					"$(SRCROOT)/../node_modules/react-native-os/ios",
-					"$(SRCROOT)/../node_modules/react-native-randombytes",
-					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-				);
 				INFOPLIST_FILE = "WordLooper-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1347,26 +1108,8 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-audio-streaming/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-musicplayercontroller/ios",
-					"$(SRCROOT)/../node_modules/react-native-os/ios",
-					"$(SRCROOT)/../node_modules/react-native-randombytes",
-					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-				);
 				INFOPLIST_FILE = "WordLooper-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1392,15 +1135,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "WordLooper-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.WordLooper-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1422,15 +1156,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "WordLooper-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.WordLooper-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;

@@ -30,6 +30,7 @@ RCT_EXPORT_VIEW_PROPERTY(onAudioLinkDetectedCallback, RCTDirectEventBlock)
 
 RCT_EXPORT_METHOD(fecthAudioLinkForWord:(nonnull NSString*) word fourcePlay:(BOOL) shouldForce withReactTag:(nonnull NSNumber *)reactTag)
 {
+    
     [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UtilsView*> *viewRegistry) {
         UtilsView * view = viewRegistry[reactTag];
         if (![view isKindOfClass:[UtilsView class]]) {

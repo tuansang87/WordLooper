@@ -67,7 +67,6 @@ export default class WordLooper extends Component {
  
 
   playCurentWord = () => {
-
     var word = this.state.word;
     UtilsView.fecthAudioLinkForWord(word , true);
   };
@@ -79,12 +78,13 @@ export default class WordLooper extends Component {
 
   onWordSearchingChanged = (word) => {
     this.setState({ word: word });
-    this.loadDefinition(word);
+    this.loadDefinition(word , this.state.loop_mode);
   };
 
-  loadDefinition = (word) => {
+  loadDefinition = (word, loop_mode) => {
     var url = '';
-    switch (this.state.loop_mode) {
+    
+    switch (loop_mode) {
       case LOOP_TYPE.all:
         url = 'https://www.bing.com/search?q=define+' + word + '&qs=n&FORM=HDRSC1';
         break;
@@ -95,7 +95,7 @@ export default class WordLooper extends Component {
         url = 'https://www.bing.com/news/search?q=define+' + word + '&qs=n&FORM=HDRSC4';
         break;
       default:
-        url = 'https://www.bing.com/search?q=define+' + word + '&qs=n&FORM=HDRSC1';
+        // url = 'https://www.bing.com/search?q=define+' + word + '&qs=n&FORM=HDRSC1';
         break;
     }
     this.setState({ word_uri: url });
@@ -117,12 +117,20 @@ export default class WordLooper extends Component {
 
   };
 
-  onPressLoopMode = (type) => {
-    this.setState({ loop_mode: type });
+  onPressLoopModeAll = () => {
+    this.setState({ loop_mode: LOOP_TYPE.all });
 
-    this.loadDefinition(this.state.word);
-
+    this.loadDefinition(this.state.word , LOOP_TYPE.all);
+     console.log('all');
   };
+
+   onPressLoopModeImage = () => {
+    this.setState({ loop_mode: LOOP_TYPE.image });
+
+    this.loadDefinition(this.state.word , LOOP_TYPE.image);
+     console.log('image');
+  };
+
   onDownload = () => {
   };
   onUpload = () => {
@@ -130,7 +138,6 @@ export default class WordLooper extends Component {
 
   onAudioLinkDetectedCallback = (event) => {
     let link = event.nativeEvent.link;
-
     console.log(link);
     UtilsView.playSound(link);
   }
@@ -162,7 +169,7 @@ export default class WordLooper extends Component {
 
           <TouchableOpacity
             onPress={() => this.playCurentWord()}
-            style={{ margin: 5, width: 30, height: 40, alignContent: 'center' }}
+            style={{ margin: 5, width: 30, height: 40, alignItems: 'center' }}
           >
             <Image style={styles.upload_img} source={require('./img/audio.png')} />
           </TouchableOpacity>
@@ -172,7 +179,7 @@ export default class WordLooper extends Component {
           <View style={styles.loopContainer}>
             <Button
               ref={LOOP_MODE_ALL_REF}
-              onPress={() => this.onPressLoopMode(LOOP_TYPE.all)}
+              onPress={() => this.onPressLoopModeAll()}
               style={styles.loop_mode_btn}
               color={this.state.loop_mode == LOOP_TYPE.all ? "blue" : "black"}
               title='All'
@@ -181,7 +188,7 @@ export default class WordLooper extends Component {
 
             <Button
               ref={LOOP_MODE_IMAGE_REF}
-              onPress={() => this.onPressLoopMode(LOOP_TYPE.image)}
+              onPress={() => this.onPressLoopModeImage()}
               style={styles.loop_mode_btn}
               title='Image'
               color={this.state.loop_mode == LOOP_TYPE.image ? "blue" : "black"}
@@ -277,7 +284,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     height: 40,
     top: 10,
-    alignContent: 'center'
+    alignItems: 'center'
   },
   definitions: {
     fontSize: 14,
@@ -297,7 +304,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     height: 40,
     top: 10,
-    alignContent: 'center'
+    alignItems: 'center'
   },
   loopContainer: {
     position: 'absolute',
@@ -307,10 +314,10 @@ const styles = StyleSheet.create({
     // height: 40,
     left: 0,
     right: 20,
-    alignContent: 'center'
+    alignItems: 'center'
   },
-  upload_btn: { position: 'absolute', right: 50, margin: 5, width: 30, height: 40, alignContent: 'center' },
-  download_btn: { position: 'absolute', right: 10, margin: 5, width: 30, height: 40, alignContent: 'center' },
+  upload_btn: { position: 'absolute', right: 50, margin: 5, width: 30, height: 40, alignItems: 'center' },
+  download_btn: { position: 'absolute', right: 10, margin: 5, width: 30, height: 40, alignItems: 'center' },
   loop_mode_btn: { width: 50, height: 30, backgroundColor: 'blue', alignItems: 'center' }
 
 

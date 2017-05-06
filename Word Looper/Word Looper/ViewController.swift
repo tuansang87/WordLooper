@@ -450,15 +450,14 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
         
         self.cachedView?.setUpView(data: appDelegate.words! as! [Dictionary<String, String>], loadWordCallback: {[weak self] (resp) in
             if let strongSelf = self {
-                strongSelf.loadDefinition(word: resp as! Dictionary<String, String>)
-                //                let word = resp["word"]
-                //                DispatchQueue.main.async(execute: {
-                //                    if let strongSelf = weakSelf {
-                //                        strongSelf.txtWord.stringValue = word as! String
-                //                       strongSelf.loadDefinition(word: word as! String)
-                //                    }
-                //
-                //                })
+                if let currentLoopIdx = resp["row_index"] as? Int {
+                    appDelegate.currentLoopIdx = currentLoopIdx
+                }
+                
+                if let word = resp["word"] as? Dictionary<String , String> {
+                    strongSelf.loadDefinition(word:word)
+                }
+       
             }
             }, dismissCallback: {[weak self] (resp) in
                 if let strongSelf = self {
@@ -675,8 +674,7 @@ extension AudioFinding {
     func playSound(soundUrl :String) {
         
         self.performSelector(inBackground: #selector(downloadAndPlay(soundUrl:)), with: soundUrl)
-        
-        String(da)
+     
         
     }
     

@@ -94,7 +94,9 @@ class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
                                 if let row_index = resp["tag"] as? Int {
                                     if let data = strongSelf.arrWords?[row_index] {
                                         if let loadWordCallback = strongSelf.loadWordCallback {
-                                            loadWordCallback(data)
+                                            let dict = ["word" : data , "row_index" : row_index] as [String : Any]
+                                            
+                                            loadWordCallback(dict)
                                             strongSelf.didClickOnCancelBtn(sender: nil)
                                         }
                                     }

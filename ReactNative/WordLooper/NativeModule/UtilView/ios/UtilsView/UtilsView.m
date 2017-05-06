@@ -117,6 +117,7 @@
 
 -(void) fecthAudioLinkForWord:(nonnull NSString*) word fourcePlay:(BOOL) shouldForce withCallback:(RCTDirectEventBlock) callback{
     // handle here
+    
     if(shouldForce) {
         self.lastPlayWord = nil;
     }
@@ -150,5 +151,26 @@
     [dataTask resume];
  
 }
+
+-(void) downloadFileWithCallback:(RCTDirectEventBlock) callback{
+    // handle here
+    
+    NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+ 
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"https://drive.google.com/file/d/0B6OTgkf6NJ0jTm5EWWlKOGRrRGM/view?usp=sharing"]
+                                            completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                if(!error && data) {
+                                                    NSString *returnData = nil;
+                                                    if ((returnData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding])) {
+                                                        
+                                                    }
+                                                }
+                                            }];
+    
+    [dataTask resume];
+    
+}
+
+
 
 @end
