@@ -89,8 +89,7 @@
       id obj = [NSJSONSerialization JSONObjectWithData:data options:(0) error:nil];
       if(obj) {
         self.utils.onLoadCachedWordsCallback(@{@"data" : obj});
-        NSString *jsonString = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
-        NSLog(@"drive %@" , jsonString);
+        NSLog(@"drive %@" , obj);
       }
     }
   }];
