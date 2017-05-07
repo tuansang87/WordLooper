@@ -1,0 +1,3 @@
+
+#define appDelegate ((AppDelegate*)[UIApplication sharedApplication].delegate)
+//#define NSLog (...)

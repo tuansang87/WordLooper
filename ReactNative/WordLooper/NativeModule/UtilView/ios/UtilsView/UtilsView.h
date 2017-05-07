@@ -13,6 +13,8 @@
 
 @interface UtilsView : RCTView
 @property(nonatomic , copy) RCTDirectEventBlock _Nonnull onAudioLinkDetectedCallback;
+@property(nonatomic , copy) RCTDirectEventBlock _Nonnull onLoadCachedWordsCallback;
+
 -(void) fecthAudioLinkForWord:(nonnull NSString*) word fourcePlay:(BOOL) shouldForce withCallback:(RCTDirectEventBlock _Nullable ) callback;
 -(void) playSound:(nonnull NSString*) soundUrl;
 @end

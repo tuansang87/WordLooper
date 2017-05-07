@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>665124887696-7rsi9dd3nuje7eboqc867rs5i6161cao.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.665124887696-7rsi9dd3nuje7eboqc867rs5i6161cao</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAVH_L7dCX3AQxbyoVzs_oHyVTStdvftH8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>665124887696</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sanghuynh.wordlooper</string>
+	<key>PROJECT_ID</key>
+	<string>word-looper-project</string>
+	<key>STORAGE_BUCKET</key>
+	<string>word-looper-project.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:665124887696:ios:01b4dc6429d54b86</string>
+	<key>DATABASE_URL</key>
+	<string>https://word-looper-project.firebaseio.com</string>
+</dict>
+</plist>

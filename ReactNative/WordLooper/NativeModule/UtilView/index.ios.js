@@ -35,7 +35,9 @@ var UtilsView = React.createClass({
   },
   propTypes: {
     // back and submit action
-    onAudioLinkDetectedCallback: PropTypes.func
+    onAudioLinkDetectedCallback: PropTypes.func,
+    onLoadCachedWordsCallback : PropTypes.func
+    
 
   },
 
@@ -47,6 +49,7 @@ var UtilsView = React.createClass({
         ref={'RCTUtilsView'}
         // back and submit action
         onAudioLinkDetectedCallback={this.props.onAudioLinkDetectedCallback}
+        onLoadCachedWordsCallback={this.props.onLoadCachedWordsCallback}
       />
     );
 

@@ -25,8 +25,9 @@ RCT_EXPORT_MODULE()
 
 
 RCT_EXPORT_VIEW_PROPERTY(onAudioLinkDetectedCallback, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onLoadCachedWordsCallback, RCTDirectEventBlock)
 
- 
+
 
 RCT_EXPORT_METHOD(fecthAudioLinkForWord:(nonnull NSString*) word fourcePlay:(BOOL) shouldForce withReactTag:(nonnull NSNumber *)reactTag)
 {

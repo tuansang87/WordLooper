@@ -20,6 +20,7 @@
 
 -(void) dealloc {
     self.onAudioLinkDetectedCallback = nil;
+    self.onLoadCachedWordsCallback = nil;
 }
 - (instancetype)init
 {
@@ -34,6 +35,7 @@
 {
     if ((self = [super initWithFrame:frame])) {
       self.hidden = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"kUtilsObject" object:self];
     }
     return self;
 }
