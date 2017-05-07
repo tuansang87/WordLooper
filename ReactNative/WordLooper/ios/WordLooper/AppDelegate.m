@@ -90,7 +90,7 @@
       if(obj) {
         self.utils.onLoadCachedWordsCallback(@{@"data" : obj});
         NSString *jsonString = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
-        NSLog(@"%@" , jsonString);
+        NSLog(@"drive %@" , jsonString);
       }
     }
   }];
