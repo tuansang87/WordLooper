@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 var ReactNative = require('react-native');
+
 // var Drive = require('./google-drive.js');
 // import GoogleSignIn from 'react-native-google-sign-in';
 import {
@@ -22,6 +23,8 @@ import {
 } from 'react-native';
 
 var UtilsView = require('./NativeModule/UtilView/index.ios.js');
+import CheckBox from 'react-native-checkbox';
+
 const kWordPlayholder = 'input your word';
 const WEBVIEW_REF = 'webview';
 const LOOP_MODE_ALL_REF = 'all';
@@ -29,6 +32,7 @@ const LOOP_MODE_IMAGE_REF = 'image';
 const WORD_INPUT_REF = 'word_input';
 
 const LOOP_TYPE = { 'all': 1, 'image': 2, 'new': 3 };
+const LOOP_INTERVAL_TIME = 5000;
 
 var lastPlayWord = null;
 export default class MainView extends Component {
@@ -38,6 +42,10 @@ export default class MainView extends Component {
       word: ''
       , word_uri: 'https://www.bing.com/search?q=define+hello'
       , loop_mode: LOOP_TYPE.all
+      , cached_words: []
+      , current_play_index: 0
+      , direction: 1 // 0 : back , 1 : forward
+      , should_loop_cached_words: true
     };
   }
 
@@ -101,7 +109,7 @@ export default class MainView extends Component {
         break;
     }
     this.setState({ word_uri: url });
-    this.reload();
+
   };
 
   goBack = () => {
@@ -112,12 +120,6 @@ export default class MainView extends Component {
     this.refs[WEBVIEW_REF].goForward();
   };
 
-  reload = () => {
-    if (this.refs[WEBVIEW_REF] != null && typeof (this.refs[WEBVIEW_REF]) != 'undefined') {
-      this.refs[WEBVIEW_REF].reload();
-    }
-
-  };
 
   onPressLoopModeAll = () => {
     this.setState({ loop_mode: LOOP_TYPE.all });
@@ -135,44 +137,24 @@ export default class MainView extends Component {
 
 
   onSignInPress = () => {
-    // await GoogleSignIn.configure({
-    //   // iOS
-    //   clientID: '665124887696-7rsi9dd3nuje7eboqc867rs5i6161cao.apps.googleusercontent.com',
 
-    //   // iOS, Android
-    //   // https://developers.google.com/identity/protocols/googlescopes
-    //   scopes: ['https://www.googleapis.com/auth/drive',
-    //     'https://www.googleapis.com/auth/drive.appdata',
-    //     'https://www.googleapis.com/auth/drive.file'],
-    //   // iOS, Android
-    //   // https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#ae214ed831bb93a06d8d9c3692d5b35f9
-    //   serverClientID: 'com.googleusercontent.apps.665124887696-7rsi9dd3nuje7eboqc867rs5i6161cao',
-    // });
-
-    // const user = GoogleSignIn.signInPromise()
-    // .then((user => console.warn(JSON.stringify(user))));
-
-    // console.warn(JSON.stringify(user));
-
-    //  await Drive.configureGoogleSignIn().then(()=> GoogleSignIn.signInPromise()).then
-    //  (userProfile => this.props.dispatchGoogleDrive(userProfile.accessToken))
-    //  .catch(err => console.warn('configureGoogleSignIn' , err));
-
-    // await configureGoogleSignIn()
-    //   .then(() => GoogleSignIn.signInPromise()
-    //     // dispatch a redux-thunk with the accessToken once signed in
-    //     .then(userProfile => this.props.dispatchGoogleDrive(userProfile.accessToken))
-    //     .catch(err => console.log('configureGoogleSignIn', err))
   };
 
   onDownload = () => {
-    // this.props.navigation.navigate('CachedView', {'words' : [
-    //             'Sang', 'Check', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
-    //         ]});
+
 
     this.onSignInPress();
   };
+
+
+  onLoadCachedWords = () => {
+    this.props.navigation.navigate('CachedView', { 'words': this.state.cached_words ,
+     callback : this.playCachedWord});
+     
+  };
+
   onUpload = () => {
+    // handle here  
   };
 
 
@@ -182,19 +164,81 @@ export default class MainView extends Component {
     UtilsView.playSound(link);
   }
   onLoadCachedWordsCallback = (event) => {
-    let data = event.nativeEvent.data;
+    let data = event.nativeEvent;
     let words = data.words;
     console.log(JSON.stringify(words));
-    be continue
-    if (words.length > 0) {
-      let firstWord = words[0];
-      var word = firstWord.word;
-      this.state.word = word;
-      this.loadDefinition(word, this.state.loop_mode);
-
-      UtilsView.fecthAudioLinkForWord(word, true);
+    // be continue
+    this.setState({ cached_words: words });
+    if (words.length) {
+      this.doLoopForCacedWords();
     }
+
   }
+
+  doLoopForCacedWords = () => {
+    setTimeout(() => {
+      if (this.state.should_loop_cached_words == true) {
+        var index = this.state.current_play_index;
+        let cachedCnt = this.state.cached_words.length;
+        if (cachedCnt > 0) {
+          if (index < 0) {
+            index = cachedCnt - 1;
+          } else if (index >= cachedCnt) {
+            index = 0;
+          }
+          //updated next played index 
+          if (this.state.direction == 0) {
+            this.state.current_play_index = index - 1;
+          } else {
+            this.state.current_play_index = index + 1;
+          }
+
+          this.playCachedWordAtIndex(index);
+          this.doLoopForCacedWords();
+        } else {
+          this.state.current_play_index = 0;
+        }
+
+      }
+
+    }, LOOP_INTERVAL_TIME);
+
+  };
+
+  playCachedWordAtIndex = (index) => {
+    let data = this.state.cached_words[index];
+    this.playCachedWord(data);
+
+  };
+ 
+ 
+  playCachedWord = (data) => {
+    var word = data.word;
+    this.state.word = word;
+
+    this.loadDefinition(word, this.state.loop_mode);
+
+    UtilsView.fecthAudioLinkForWord(word, true);
+  }
+
+  loopBack = () => {
+    this.state.direction = 0;
+  };
+
+  loopForward = () => {
+    this.state.direction = 1;
+  };
+
+  onCheckLoop = (checked) => {
+    let updated = !checked;
+
+    this.setState({ should_loop_cached_words: updated });
+  };
+
+  onResetBtn = () => {
+    this.setState({ current_play_index: 0 })
+  };
+
   render = () => {
 
 
@@ -238,6 +282,8 @@ export default class MainView extends Component {
               style={styles.loop_mode_btn}
               color={this.state.loop_mode == LOOP_TYPE.all ? "blue" : "black"}
               title='All'
+              raised={true}
+              backgroundColor='#F00'
             >
             </Button>
 
@@ -247,6 +293,8 @@ export default class MainView extends Component {
               style={styles.loop_mode_btn}
               title='Image'
               color={this.state.loop_mode == LOOP_TYPE.image ? "blue" : "black"}
+              raised={true}
+              backgroundColor='#F00'
             >
             </Button>
           </View>
@@ -281,11 +329,64 @@ export default class MainView extends Component {
             style={styles.webview}
           />
         </View>
+        <View style={styles.bottomToolbarContainer}>
+          <Button style={{
+            backgroundColor: 'red', marginLeft: 0, width: 30, height
+            : 30
+          }} title='<'
+            color="black"
+
+            onPress={this.loopBack}
+          />
+          <Button style={{
+            backgroundColor: 'red', marginLeft: 0, width: 30, height
+            : 30
+          }} title='>'
+            color="black"
+
+            onPress={this.loopForward}
+          />
+          <TouchableOpacity
+            onPress={this.onResetBtn}
+            style={{
+              position: 'absolute', right: 10, padding: 0,
+              width: 50, height: 40, alignItems: 'center'
+            }}>
+            <Text style={{ paddingTop: 10 }} >Reset</Text>
+          </TouchableOpacity>
+
+
+          <View
+            style={{
+              position: 'absolute', right: 60, padding: 0,
+              width: 70, height: 40, alignContent: 'center'
+            }}>
+            <CheckBox
+              label='Loop'
+              checked={this.state.should_loop_cached_words}
+              containerStyle={{ height: 30, top: 3 }}
+              labelStyle={{ color: 'black', marginLeft: -5 }}
+              onChange={this.onCheckLoop}
+            />
+          </View>
+
+
+          <TouchableOpacity
+            onPress={this.onLoadCachedWords}
+            style={{
+              position: 'absolute', right: 140, padding: 0,
+              width: 50, height: 40, alignContent: 'center'
+            }}>
+            <Text style={{ paddingTop: 10 }} >Cached</Text>
+          </TouchableOpacity>
+
+        </View>
         <UtilsView
           ref={'UtilsView'}
           onAudioLinkDetectedCallback={(event) => this.onAudioLinkDetectedCallback(event)}
           onLoadCachedWordsCallback={this.onLoadCachedWordsCallback}
         />
+
       </View>
     );
   };
@@ -324,11 +425,13 @@ const styles = StyleSheet.create({
   },
   webviewContainer: {
     flex: 1,
-    margin: 0,
+    margin: 10,
+    marginBottom: 40,
     backgroundColor: '#F5FCFF',
     overflow: 'hidden'
 
   },
+
   webview: {
     flex: 1,
     marginTop: -94,
@@ -353,6 +456,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 8,
     borderWidth: 1,
+    marginRight: 10,
     top: 0
   },
   topControlContainer: {
@@ -374,9 +478,16 @@ const styles = StyleSheet.create({
   },
   upload_btn: { position: 'absolute', right: 50, margin: 5, width: 30, height: 40, alignItems: 'center' },
   download_btn: { position: 'absolute', right: 10, margin: 5, width: 30, height: 40, alignItems: 'center' },
-  loop_mode_btn: { width: 50, height: 30, backgroundColor: 'blue', alignItems: 'center' }
+  loop_mode_btn: { width: 50, height: 30, backgroundColor: 'blue', alignItems: 'center' },
 
+  bottomToolbarContainer: {
+    height: 40,
+    flexDirection: 'row',
+    margin: 0,
+    backgroundColor: '#F5FCFF',
+    overflow: 'hidden'
 
+  }
 });
 
 

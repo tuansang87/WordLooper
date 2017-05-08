@@ -39,13 +39,11 @@
   rctViewController.view = rootView;
   
   
-  UINavigationController *rootViewController = [[UINavigationController alloc]
-                                                initWithRootViewController:rctViewController];
+//  UINavigationController *rootViewController = [[UINavigationController alloc]
+//                                                initWithRootViewController:rctViewController];
   
-  self.window.rootViewController = rootViewController;
+  self.window.rootViewController = rctViewController;
   [self.window makeKeyAndVisible];
-  
-  
   
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUtilsView:) name:@"kUtilsObject" object:nil];
@@ -88,7 +86,7 @@
       [data writeToFile:kLocalGoogleDriveCachedFilePath atomically:YES];
       id obj = [NSJSONSerialization JSONObjectWithData:data options:(0) error:nil];
       if(obj) {
-        self.utils.onLoadCachedWordsCallback(@{@"data" : obj});
+        self.utils.onLoadCachedWordsCallback(obj);
         NSLog(@"drive %@" , obj);
       }
     }

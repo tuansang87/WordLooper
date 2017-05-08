@@ -7,7 +7,8 @@ import {
     ListView,
     View,
     Text,
-    Button
+    Button,
+    TouchableOpacity
 
 } from 'react-native';
 
@@ -28,14 +29,25 @@ export default class CachedView extends Component {
     deleteItem = () => {
         console.log('data');
     }
+
+    playWord= (word) => {
+       this.props.navigation.goBack();
+       var callback = this.props.navigation.state.params.callback;
+       if(callback != null && typeof(callback) != 'undefined') {
+           callback(word);
+       }
+    };
+
     rowForData = (rowData) => {
-        return <View style={{ flex: 1,
+        return <TouchableOpacity 
+        onPress={() => this.playWord(rowData)}
+         style={{ flex: 1,
         overflow :'hidden',
-         backgroundColor: '#F5FCFF', flexDirection: 'row', height: 30 }}>
+         backgroundColor: '#F5FCFF', flexDirection: 'row', height: 30 , paddingLeft : 10}}>
             <Text style={{
                 color: 'black', backgroundColor: '#F5FCFF', width: 100
-            }}>{rowData}</Text>
-            <View style={{ flex: 1, alignItems: 'flex-end', backgroundColor: '#F5FCFF' }}>
+            }}>{rowData.word}</Text>
+            <View style={{ opacity : 0, flex: 1, alignItems: 'flex-end', backgroundColor: '#F5FCFF' }}>
                 <Button
                     color='black'
                     onPress={() => this.deleteItem()}
@@ -45,7 +57,7 @@ export default class CachedView extends Component {
             <View style={{backgroundColor:'black', width : 500, height : 1, bottom : 0
             ,position:'absolute'}}/>
 
-        </View>
+        </TouchableOpacity>
     };
 
     render = () => {
@@ -57,6 +69,7 @@ export default class CachedView extends Component {
                     <ListView
                         dataSource={this.state.dataSource}
                         renderRow={this.rowForData}
+                        on
                     />
                 </View>
             </View>

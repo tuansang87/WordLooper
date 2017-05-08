@@ -21,6 +21,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		148A94C41EBD86E700AFFB7D /* libUtilsView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 148A94C31EBD86DA00AFFB7D /* libUtilsView.a */; };
+		14D512291EC0187D009D6289 /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF00C41EBF08EB00B48A5D /* GTLR.framework */; };
+		14D5122A1EC0187D009D6289 /* GTLR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF00C41EBF08EB00B48A5D /* GTLR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14EF00D11EBF08FD00B48A5D /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF00C41EBF08EB00B48A5D /* GTLR.framework */; };
 		14F2CC0D1EBF048C000D038C /* DriveUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F2CC031EBF048C000D038C /* DriveUtils.m */; };
 		14F2CC0E1EBF048C000D038C /* GTLRDriveObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F2CC081EBF048C000D038C /* GTLRDriveObjects.m */; };
@@ -112,6 +114,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 14919F0C1EBC29B900D20D2F;
 			remoteInfo = UtilsView;
+		};
+		14D5122B1EC0187D009D6289 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14EF00B61EBF08EB00B48A5D /* GTLRCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F4469D791C40229D00BCFAA1;
+			remoteInfo = GTLRiOSCore;
 		};
 		14EF00C11EBF08EB00B48A5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -290,6 +299,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		14D512461EC0187D009D6289 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14D5122A1EC0187D009D6289 /* GTLR.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
@@ -348,6 +371,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				14D512291EC0187D009D6289 /* GTLR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,12 +645,14 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				14D512461EC0187D009D6289 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				14EF00D01EBF08F500B48A5D /* PBXTargetDependency */,
 				148A94C61EBD86F300AFFB7D /* PBXTargetDependency */,
+				14D5122C1EC0187D009D6289 /* PBXTargetDependency */,
 			);
 			name = WordLooper;
 			productName = "Hello World";
@@ -1058,6 +1084,11 @@
 			isa = PBXTargetDependency;
 			name = UtilsView;
 			targetProxy = 148A94C51EBD86F300AFFB7D /* PBXContainerItemProxy */;
+		};
+		14D5122C1EC0187D009D6289 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTLRiOSCore;
+			targetProxy = 14D5122B1EC0187D009D6289 /* PBXContainerItemProxy */;
 		};
 		14EF00D01EBF08F500B48A5D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
