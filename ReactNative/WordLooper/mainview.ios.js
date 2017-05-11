@@ -7,8 +7,7 @@
 import React, { Component } from 'react';
 var ReactNative = require('react-native');
 var AsyncStorage = require('AsyncStorage');
-// var Drive = require('./google-drive.js');
-// import GoogleSignIn from 'react-native-google-sign-in';
+// var Drive = require('./google-drive.js'); 
 import {
   StyleSheet,
   Text,
