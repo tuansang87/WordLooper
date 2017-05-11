@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 var ReactNative = require('react-native');
-
+var AsyncStorage = require('AsyncStorage');
 // var Drive = require('./google-drive.js');
 // import GoogleSignIn from 'react-native-google-sign-in';
 import {
@@ -34,10 +34,38 @@ const WORD_INPUT_REF = 'word_input';
 const LOOP_TYPE = { 'all': 1, 'image': 2, 'new': 3 };
 const LOOP_INTERVAL_TIME = 5000;
 
+const STORAGE_LOOP_MODE = 'loop_mode'
+const STORAGE_CURRENT_PLAY_INDEX = 'current_play_index'
+const STORAGE_LOOP_DIRECTION = 'direction'
+
+
 var lastPlayWord = null;
 export default class MainView extends Component {
+  componentDidMount() {
+
+
+    AsyncStorage.getItem(STORAGE_LOOP_MODE, (err, result) => {
+      this.setState({ loop_mode: (result != null ? result : LOOP_TYPE.all) });
+    });
+
+    AsyncStorage.getItem(STORAGE_CURRENT_PLAY_INDEX, (err, result) => {
+      this.setState({ direction: (result != null ? result : 1) });
+    });
+
+    AsyncStorage.getItem(STORAGE_LOOP_DIRECTION, (err, result) => {
+      this.setState({ direction: (result != null ? result : 0) })
+
+    });
+
+
+
+
+
+  };
+
   constructor(props) {
     super(props);
+
     this.state = {
       word: ''
       , word_uri: 'https://www.bing.com/search?q=define+hello'
@@ -47,6 +75,7 @@ export default class MainView extends Component {
       , direction: 1 // 0 : back , 1 : forward
       , should_loop_cached_words: true
     };
+
   }
 
   static navigationOptions = {
@@ -81,14 +110,19 @@ export default class MainView extends Component {
     UtilsView.fecthAudioLinkForWord(word, true);
   };
 
-  onNewWordEndEditing = () => {
-
-    UtilsView.fecthAudioLinkForWord(this.state.word, true);
+  onNewWordEndEditing = () => { 
+    if(this.state.word.indexOf('https') == 0) {
+      this.setState({ word_uri: this.state.word });
+    } else {
+      UtilsView.fecthAudioLinkForWord(this.state.word, true);
+    }
+    
   };
 
   onWordSearchingChanged = (word) => {
-    this.setState({ word: word });
+    this.setState({ word: word , should_loop_cached_words : false });
     this.loadDefinition(word, this.state.loop_mode);
+
   };
 
   loadDefinition = (word, loop_mode) => {
@@ -123,7 +157,6 @@ export default class MainView extends Component {
 
   onPressLoopModeAll = () => {
     this.setState({ loop_mode: LOOP_TYPE.all });
-
     this.loadDefinition(this.state.word, LOOP_TYPE.all);
     console.log('all');
   };
@@ -148,9 +181,11 @@ export default class MainView extends Component {
 
 
   onLoadCachedWords = () => {
-    this.props.navigation.navigate('CachedView', { 'words': this.state.cached_words ,
-     callback : this.playCachedWord});
-     
+    this.props.navigation.navigate('CachedView', {
+      'words': this.state.cached_words,
+      callback: this.playCachedWord
+    });
+
   };
 
   onUpload = () => {
@@ -160,13 +195,12 @@ export default class MainView extends Component {
 
   onAudioLinkDetectedCallback = (event) => {
     let link = event.nativeEvent.link;
-    console.log(link);
     UtilsView.playSound(link);
   }
   onLoadCachedWordsCallback = (event) => {
     let data = event.nativeEvent;
     let words = data.words;
-    console.log(JSON.stringify(words));
+    // console.log(JSON.stringify(words));
     // be continue
     this.setState({ cached_words: words });
     if (words.length) {
@@ -181,11 +215,12 @@ export default class MainView extends Component {
         var index = this.state.current_play_index;
         let cachedCnt = this.state.cached_words.length;
         if (cachedCnt > 0) {
-          if (index < 0) {
+          if (index <= 0 && this.state.direction == 0) {
             index = cachedCnt - 1;
           } else if (index >= cachedCnt) {
             index = 0;
           }
+          console.log(index);
           //updated next played index 
           if (this.state.direction == 0) {
             this.state.current_play_index = index - 1;
@@ -198,7 +233,11 @@ export default class MainView extends Component {
         } else {
           this.state.current_play_index = 0;
         }
-
+        AsyncStorage.setItem(STORAGE_CURRENT_PLAY_INDEX, (this.state.current_play_index + '') , (err) => {
+          if (err) {
+            console.warn(JSON.stringify(err));
+          }
+        });
       }
 
     }, LOOP_INTERVAL_TIME);
@@ -210,8 +249,8 @@ export default class MainView extends Component {
     this.playCachedWord(data);
 
   };
- 
- 
+
+
   playCachedWord = (data) => {
     var word = data.word;
     this.state.word = word;
@@ -222,22 +261,37 @@ export default class MainView extends Component {
   }
 
   loopBack = () => {
-    this.state.direction = 0;
+    this.setState({ direction: 0 });
+    AsyncStorage.setItem(STORAGE_LOOP_DIRECTION, '0', (err) => {
+      if (err) {
+        console.warn(JSON.stringify(err));
+      }
+    });
   };
 
   loopForward = () => {
-    this.state.direction = 1;
+    this.setState({ direction: 1 });
+    AsyncStorage.setItem(STORAGE_LOOP_DIRECTION, '1', (err) => {
+      if (err) {
+        console.warn(JSON.stringify(err));
+      }
+    });
   };
 
   onCheckLoop = (checked) => {
     let updated = !checked;
-
     this.setState({ should_loop_cached_words: updated });
   };
 
   onResetBtn = () => {
-    this.setState({ current_play_index: 0 })
+    this.setState({ current_play_index: 0 });
+    AsyncStorage.setItem(STORAGE_CURRENT_PLAY_INDEX, '0', (err) => {
+      if (err) {
+        console.warn(JSON.stringify(err));
+      }
+    });
   };
+
 
   render = () => {
 
@@ -426,7 +480,7 @@ const styles = StyleSheet.create({
   webviewContainer: {
     flex: 1,
     margin: 10,
-    marginBottom: 40,
+    bottom: 0,
     backgroundColor: '#F5FCFF',
     overflow: 'hidden'
 
@@ -483,7 +537,9 @@ const styles = StyleSheet.create({
   bottomToolbarContainer: {
     height: 40,
     flexDirection: 'row',
-    margin: 0,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
     backgroundColor: '#F5FCFF',
     overflow: 'hidden'
 

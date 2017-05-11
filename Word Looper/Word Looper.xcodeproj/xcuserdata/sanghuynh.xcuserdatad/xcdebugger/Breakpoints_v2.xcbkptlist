@@ -138,7 +138,7 @@
                   moduleName = "WordLooper"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
-                  timestampString = "515666334.779296"
+                  timestampString = "516184268.812253"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "452"
@@ -153,7 +153,7 @@
                   moduleName = "WordLooper"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
-                  timestampString = "515666334.780793"
+                  timestampString = "516184268.814397"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "452"
@@ -193,6 +193,54 @@
             endingLineNumber = "454"
             landmarkName = "didClickOnCachedWords(sender:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Word Looper/ViewController.swift"
+            timestampString = "516184246.222069"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "controlTextDidEndEditing(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WordLooper.ViewController.controlTextDidEndEditing (Foundation.Notification) -&gt; ()"
+                  moduleName = "WordLooper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
+                  timestampString = "516184268.837534"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "508"
+                  endingLineNumber = "508"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WordLooper.ViewController.controlTextDidEndEditing (Foundation.Notification) -&gt; ()"
+                  moduleName = "WordLooper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
+                  timestampString = "516184268.839157"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "508"
+                  endingLineNumber = "508"
+                  offsetFromSymbolStart = "365">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
