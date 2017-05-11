@@ -507,12 +507,21 @@ extension TableViewDataSource  {
         
         if let txt = obj.object  as? NSTextField{
             if txt == self.txtWord {
-                
-                if self.txtWord.stringValue.characters.count > 0{
-                    self.fecthAudioFileForWord(word: self.txtWord.stringValue, callback: { (link) in
-                        self.playSound(soundUrl: link)
-                    })
+                if (txt.stringValue as NSString).scriptingBegins(with: "http") {
+                    if let url = URL(string: txt.stringValue) {
+                        let request = URLRequest(url:url)
+                        self.mWebSearch.load(request as URLRequest)
+                    }
+                   
+                    
+                } else {
+                    if self.txtWord.stringValue.characters.count > 0{
+                        self.fecthAudioFileForWord(word: self.txtWord.stringValue, callback: { (link) in
+                            self.playSound(soundUrl: link)
+                        })
+                    }
                 }
+                
             }
         }
     }
