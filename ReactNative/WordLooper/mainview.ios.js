@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 var ReactNative = require('react-native');
 var AsyncStorage = require('AsyncStorage');
+import RNAudioStreamer from 'react-native-audio-streamer';
 // var Drive = require('./google-drive.js'); 
 import {
   StyleSheet,
@@ -17,7 +18,8 @@ import {
   Image,
   TouchableOpacity,
   TouchableHighlight,
-  WebView
+  WebView,
+  Platform
 
 } from 'react-native';
 
@@ -30,15 +32,21 @@ const LOOP_MODE_ALL_REF = 'all';
 const LOOP_MODE_IMAGE_REF = 'image';
 const WORD_INPUT_REF = 'word_input';
 
+const HOST_INPUT_REF = 'host_input';
+const USER_INPUT_REF = 'user_name_input';
+
 const LOOP_TYPE = { 'all': 1, 'image': 2, 'new': 3 };
 const LOOP_INTERVAL_TIME = 5000;
 
 const STORAGE_LOOP_MODE = 'loop_mode'
 const STORAGE_CURRENT_PLAY_INDEX = 'current_play_index'
 const STORAGE_LOOP_DIRECTION = 'direction'
-
+const STORAGE_HOST = 'host'
+const STORAGE_USER = 'user'
 
 var lastPlayWord = null;
+var myTimer = null;
+
 export default class MainView extends Component {
   componentDidMount() {
 
@@ -53,7 +61,16 @@ export default class MainView extends Component {
 
     AsyncStorage.getItem(STORAGE_LOOP_DIRECTION, (err, result) => {
       this.setState({ direction: (result != null ? result : 0) })
+    });
 
+    AsyncStorage.getItem(STORAGE_HOST, (err, result) => {
+      this.setState({ host: (result != null ? result : '') });
+      this.updateFileUrlIfNeeded();
+    });
+
+    AsyncStorage.getItem(STORAGE_USER, (err, result) => {
+      this.setState({ username: (result != null ? result : '') });
+      this.updateFileUrlIfNeeded();
     });
 
 
@@ -73,9 +90,14 @@ export default class MainView extends Component {
       , current_play_index: 0
       , direction: 1 // 0 : back , 1 : forward
       , should_loop_cached_words: true
+      // for mobile only
+      , host: ''
+      , username: ''
+      , file_url: ''
     };
 
-  }
+  };
+
 
   static navigationOptions = {
     title: 'Word Looper'
@@ -109,17 +131,17 @@ export default class MainView extends Component {
     UtilsView.fecthAudioLinkForWord(word, true);
   };
 
-  onNewWordEndEditing = () => { 
-    if(this.state.word.indexOf('https') == 0) {
+  onNewWordEndEditing = () => {
+    if (this.state.word.indexOf('https') == 0) {
       this.setState({ word_uri: this.state.word });
     } else {
       UtilsView.fecthAudioLinkForWord(this.state.word, true);
     }
-    
+
   };
 
   onWordSearchingChanged = (word) => {
-    this.setState({ word: word , should_loop_cached_words : false });
+    this.setState({ word: word, should_loop_cached_words: false });
     this.loadDefinition(word, this.state.loop_mode);
 
   };
@@ -191,11 +213,19 @@ export default class MainView extends Component {
     // handle here  
   };
 
+  playSoundFromCachedWord = (word) => {
+    var link = word.audio; 
+    if (link && link != '') {
+      RNAudioStreamer.setUrl(link);
+      RNAudioStreamer.play();
+    }
+  };
 
   onAudioLinkDetectedCallback = (event) => {
     let link = event.nativeEvent.link;
     UtilsView.playSound(link);
-  }
+  };
+
   onLoadCachedWordsCallback = (event) => {
     let data = event.nativeEvent;
     let words = data.words;
@@ -205,11 +235,16 @@ export default class MainView extends Component {
     if (words.length) {
       this.doLoopForCacedWords();
     }
-
-  }
+  };
 
   doLoopForCacedWords = () => {
-    setTimeout(() => {
+    if (myTimer) {
+      clearTimeout(myTimer);
+
+    }
+    myTimer = null;
+
+    myTimer = setTimeout(() => {
       if (this.state.should_loop_cached_words == true) {
         var index = this.state.current_play_index;
         let cachedCnt = this.state.cached_words.length;
@@ -232,9 +267,9 @@ export default class MainView extends Component {
         } else {
           this.state.current_play_index = 0;
         }
-        AsyncStorage.setItem(STORAGE_CURRENT_PLAY_INDEX, (this.state.current_play_index + '') , (err) => {
+        AsyncStorage.setItem(STORAGE_CURRENT_PLAY_INDEX, (this.state.current_play_index + ''), (err) => {
           if (err) {
-            console.warn(JSON.stringify(err));
+            // console.warn(JSON.stringify(err));
           }
         });
       }
@@ -256,14 +291,21 @@ export default class MainView extends Component {
 
     this.loadDefinition(word, this.state.loop_mode);
 
-    UtilsView.fecthAudioLinkForWord(word, true);
+    // if (Platform.OS == 'ios') {
+    //   UtilsView.fecthAudioLinkForWord(word, true);
+    // } else {
+   
+    if (data.audio != null && data.audio.length != '') {
+      this.playSoundFromCachedWord(data);
+    }
+    // }
   }
 
   loopBack = () => {
     this.setState({ direction: 0 });
     AsyncStorage.setItem(STORAGE_LOOP_DIRECTION, '0', (err) => {
       if (err) {
-        console.warn(JSON.stringify(err));
+        // console.warn(JSON.stringify(err));
       }
     });
   };
@@ -272,7 +314,7 @@ export default class MainView extends Component {
     this.setState({ direction: 1 });
     AsyncStorage.setItem(STORAGE_LOOP_DIRECTION, '1', (err) => {
       if (err) {
-        console.warn(JSON.stringify(err));
+        // console.warn(JSON.stringify(err));
       }
     });
   };
@@ -286,9 +328,63 @@ export default class MainView extends Component {
     this.setState({ current_play_index: 0 });
     AsyncStorage.setItem(STORAGE_CURRENT_PLAY_INDEX, '0', (err) => {
       if (err) {
-        console.warn(JSON.stringify(err));
+        // console.warn(JSON.stringify(err));
       }
     });
+  };
+
+  downloadFileIfAvailable = (fileUrl) => {
+
+    if (fileUrl && fileUrl != '') {
+      fetch(fileUrl)
+        .then((response) => response.json())
+        .then((responseJson) => {
+          var words = responseJson.words;
+          this.setState({ cached_words: words });
+          if (words.length) {
+            this.doLoopForCacedWords();
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
+
+  updateFileUrlIfNeeded = () => {
+    var host = this.state.host;
+    var user = this.state.username;
+    if (host && user && host != '' && user != '') {
+
+      AsyncStorage.setItem(STORAGE_HOST, host, (err) => {
+        if (err) {
+          // console.warn(JSON.stringify(err));
+        }
+      });
+
+      AsyncStorage.setItem(STORAGE_USER, user, (err) => {
+        if (err) {
+          // console.warn(JSON.stringify(err));
+        }
+      });
+
+      var fileUrl = 'http://' + host + '/~' + user + '/wordlooper.json';
+      this.setState({ file_url: fileUrl });
+      this.downloadFileIfAvailable(fileUrl);
+    }
+  };
+
+  onHostOrUserEndEditing = () => {
+
+    this.updateFileUrlIfNeeded();
+  };
+
+  onHostChangedText = (text) => {
+    this.setState({ host: text });
+  };
+
+  onUserChangedText = (text) => {
+    this.setState({ username: text });
   };
 
 
@@ -305,6 +401,28 @@ export default class MainView extends Component {
     return (
 
       <View style={styles.container}>
+        <View style={styles.fileServerContainer}>
+          <Text style={styles.lookup}> Host: </Text>
+          <TextInput
+            ref={HOST_INPUT_REF}
+            autoCapitalize='none'
+            onEndEditing={this.onHostOrUserEndEditing}
+            style={styles.host_txt}
+            onChangeText={this.onHostChangedText}
+            placeholder='your host'
+            value={this.state.host}
+          />
+          <Text style={styles.lookup}> User: </Text>
+          <TextInput
+            ref={USER_INPUT_REF}
+            autoCapitalize='none'
+            onEndEditing={this.onHostOrUserEndEditing}
+            style={styles.user_txt}
+            onChangeText={this.onUserChangedText}
+            placeholder='username'
+            value={this.state.username}
+          />
+        </View>
         <View style={styles.lookupContainer}>
           <Text style={styles.lookup}>
             Lookup:
@@ -384,7 +502,7 @@ export default class MainView extends Component {
         </View>
         <View style={styles.bottomToolbarContainer}>
           <Button style={{
-            backgroundColor: 'red', marginLeft: 0, width: 30, height
+            backgroundColor: 'red', marginLeft: 4, width: 30, height
             : 30
           }} title='<'
             color="black"
@@ -454,11 +572,11 @@ const styles = StyleSheet.create({
   },
   lookupContainer: {
     // flex: 1,
-    height: 40,
+    height: 60,
     flexDirection: 'row',
     backgroundColor: '#F5FCFF',
     paddingTop: 20,
-    marginBottom: 20
+    marginBottom: 0
   },
   lookup: {
     fontSize: 14,
@@ -543,6 +661,28 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
 
   }
+  , fileServerContainer: {
+    height: (Platform.OS == 'ios') ? 0 : 40,
+    flexDirection: 'row',
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    backgroundColor: '#F5FCFF',
+    overflow: 'hidden',
+    opacity: (Platform.OS == 'ios') ? 0 : 1
+
+  }, user_txt: {
+    height: 40,
+    width: 100,
+    marginRight: 10,
+    padding: 8,
+    borderWidth: 1,
+  }, host_txt: {
+    height: 40,
+    flex: 1,
+    paddingLeft: 8,
+    borderWidth: 1,
+  },
 });
 
 

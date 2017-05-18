@@ -90,27 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Word Looper/AppDelegate.swift"
-            timestampString = "515388950.420362"
+            timestampString = "516793933.588199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "menuHasKeyEquivalent(_:for:target:action:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Word Looper/AppDelegate.swift"
-            timestampString = "515485123.489427"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "keyDown(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -121,61 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Word Looper/ViewController.swift"
-            timestampString = "515666241.296513"
+            filePath = "Word Looper/AppDelegate.swift"
+            timestampString = "516793929.779498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
-            landmarkName = "didClickOnCachedWords(sender:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WordLooper.ViewController.(didClickOnCachedWords (sender : __ObjC.NSButton) -&gt; ()).(closure #1)"
-                  moduleName = "WordLooper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
-                  timestampString = "516184268.812253"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "452"
-                  endingLineNumber = "452"
-                  offsetFromSymbolStart = "26">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WordLooper.ViewController.(didClickOnCachedWords (sender : __ObjC.NSButton) -&gt; ()).(closure #1)"
-                  moduleName = "WordLooper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
-                  timestampString = "516184268.814397"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "452"
-                  endingLineNumber = "452"
-                  offsetFromSymbolStart = "77">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Word Looper/ViewController.swift"
-            timestampString = "515666355.160508"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
-            landmarkName = "didClickOnCachedWords(sender:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "addWord(word:imagePath:own_definition:audio:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,62 +121,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Word Looper/ViewController.swift"
-            timestampString = "515666356.404344"
+            filePath = "Word Looper/AppDelegate.swift"
+            timestampString = "516793962.557275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
-            landmarkName = "didClickOnCachedWords(sender:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "addWord(word:imagePath:own_definition:audio:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Word Looper/ViewController.swift"
-            timestampString = "516184246.222069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "508"
-            endingLineNumber = "508"
-            landmarkName = "controlTextDidEndEditing(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WordLooper.ViewController.controlTextDidEndEditing (Foundation.Notification) -&gt; ()"
-                  moduleName = "WordLooper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
-                  timestampString = "516184268.837534"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "508"
-                  endingLineNumber = "508"
-                  offsetFromSymbolStart = "23">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WordLooper.ViewController.controlTextDidEndEditing (Foundation.Notification) -&gt; ()"
-                  moduleName = "WordLooper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word%20Looper/Word%20Looper/ViewController.swift"
-                  timestampString = "516184268.839157"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "508"
-                  endingLineNumber = "508"
-                  offsetFromSymbolStart = "365">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

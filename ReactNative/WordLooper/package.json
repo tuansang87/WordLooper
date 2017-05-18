@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",
-    "react-native": "0.44.0", 
+    "react-native": "0.44.0",
+    "react-native-audio-streamer": "0.0.9",
+    "react-native-audio-streaming": "^2.3.2",
     "react-navigation": "^1.0.0-beta.9"
   },
   "devDependencies": {

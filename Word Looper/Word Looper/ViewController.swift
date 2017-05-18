@@ -301,16 +301,28 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
             let word = words[idx]
             if let key = word["word"] as? String {
                 self.txtWord.stringValue = key
-            }
-            if let ownDefinition = word["own_definition"] as? String {
-                self.txtSelfDefinition.string = ownDefinition
-            } else {
-                self.loadDefinition(word:word as! Dictionary<String, String>)
-                self.fecthAudioFileForWord(word: word["word"] as! String) { (link) in
+                if let ownDefinition = word["own_definition"] as? String {
+                    self.txtSelfDefinition.string = ownDefinition
+                } else {
+                    self.loadDefinition(word:word as! Dictionary<String, String>)
+                    
+                }
+                
+                let image = word["image"] as? String;
+                let own_definition = word["own_definition"] as? String;
+              
+                self.fecthAudioFileForWord(word: word["word"] as! String) { (link , linkWord) in
                     print(link)
+                    if (linkWord == key) {
+                        appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link);
+                        
+                        
+                    }
                     self.playSound(soundUrl: link)
                 }
+                
             }
+            
             
             if let imgPath = word["image"] as? String {
                 // handle here
@@ -377,7 +389,7 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
     }
     
     @IBAction func didClickOnSaveWordBtn(_ sender: NSButton) {
-        appDelegate.addWord(word: self.txtWord.stringValue, imagePath: self.txtImagePath.stringValue, own_definition: self.txtSelfDefinition.string)
+        appDelegate.addWord(word: self.txtWord.stringValue, imagePath: self.txtImagePath.stringValue, own_definition: self.txtSelfDefinition.string , audio: nil);
     }
     
     
@@ -456,6 +468,22 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
                 
                 if let word = resp["word"] as? Dictionary<String , String> {
                     strongSelf.loadDefinition(word:word)
+                    if let key = word["word"] {
+                        let image = word["image"];
+                        let own_definition = word["own_definition"];
+                        strongSelf.lastPlayWord = nil
+                        strongSelf.fecthAudioFileForWord(word: key) { (link , linkWord) in
+                            print(link)
+                            if (linkWord == key) {
+                                appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link);
+                                
+                                
+                            }
+                            strongSelf.playSound(soundUrl: link)
+                        }
+
+                    }
+                   
                 }
        
             }
@@ -484,7 +512,8 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
     @IBAction func didClickOnAudioBtn(_ sender : NSButton?) {
         self.lastPlayWord = nil
         if self.txtWord.stringValue.characters.count > 0{
-            self.fecthAudioFileForWord(word: self.txtWord.stringValue, callback: { (link) in
+            self.fecthAudioFileForWord(word: self.txtWord.stringValue, callback: { (link , linkWord) in
+                
                 self.playSound(soundUrl: link)
             })
         }
@@ -516,7 +545,7 @@ extension TableViewDataSource  {
                     
                 } else {
                     if self.txtWord.stringValue.characters.count > 0{
-                        self.fecthAudioFileForWord(word: self.txtWord.stringValue, callback: { (link) in
+                        self.fecthAudioFileForWord(word: self.txtWord.stringValue, callback: { (link , linkWord) in
                             self.playSound(soundUrl: link)
                         })
                     }
@@ -725,7 +754,7 @@ extension AudioFinding {
         
         return EMPTY_STR
     }
-    func fecthAudioFileForWord(word : String , callback : @escaping (_ link : String) -> Void ) {
+    func fecthAudioFileForWord(word : String , callback : @escaping (_ link : String , _ word: String) -> Void ) {
         if let lastWord = self.lastPlayWord {
             if lastWord == word {
                 return
@@ -744,7 +773,7 @@ extension AudioFinding {
             
             if let returnData = String(data: data, encoding: .utf8) {
                 let link = self.getAutioFileFromSource(src: returnData as NSString)
-                callback(link)
+                callback(link , text)
             }
             
             

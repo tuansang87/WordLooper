@@ -62,12 +62,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return uniqueObjs
     }
     
-    func addWord(word : String , imagePath: String? , own_definition : String?){
+    func addWord(word : String , imagePath: String? , own_definition : String? , audio : String?){
         if words != nil {
             let wordDict = NSMutableDictionary();
             if word.characters.count > 0 {
                 wordDict["word"] = word.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).lowercased()
             }
+         
+            if let audio = audio {
+                if audio.characters.count > 0 {
+                    wordDict["audio"] = audio
+                }
+            }
+          
+            
             
             if let imagePath = imagePath {
                 if imagePath.characters.count > 0 {
@@ -81,27 +89,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
                 
             }
-             self.words?.append(wordDict)
-            
-            if let words = uniqueArray(arr: self.words! , attributeKey: kObjectAttributeIdKey , irgnoreKeyValue : [0]) as? [Dictionary<String,String>] {
-                self.words?.removeAll()
-                for word in words {
-                    self.words?.append(word as NSDictionary)
-                }
-                
-                let dict = [AppDelegate.kUserDictWords : self.words! , AppDelegate.kUserDictDate : NSDate().timeIntervalSince1970] as [String : Any]
-                
-                UserDefaults.standard.set(dict, forKey: AppDelegate.kUserDict)
-                UserDefaults.standard.synchronize()
-                do {
-                    let destinationURL = NSURL(fileURLWithPath: kLocalGoogleDriveCachedFilePath)
-                    let dataObject = try JSONSerialization.data(withJSONObject: dict, options: [])
-                    try dataObject.write(to: destinationURL as URL , options: Data.WritingOptions.atomic)
-                } catch let error as NSError {
-                    print(error.description)
+            var cnt = -1;
+            for tmp in self.words! {
+                cnt += 1;
+                if (tmp["word"] as! String) ==  (wordDict["word"] as! String) {
+                    break;
                 }
             }
+            if(cnt > 0) {
+                self.words?.remove(at: cnt);
+                self.words?.insert(wordDict, at: cnt)
+            }
             
+            
+            
+         
+            let dict = [AppDelegate.kUserDictWords : self.words! , AppDelegate.kUserDictDate : NSDate().timeIntervalSince1970] as [String : Any]
+            
+            UserDefaults.standard.set(dict, forKey: AppDelegate.kUserDict)
+            UserDefaults.standard.synchronize()
+            do {
+                let destinationURL = NSURL(fileURLWithPath: kLocalGoogleDriveCachedFilePath)
+                let dataObject = try JSONSerialization.data(withJSONObject: dict, options: [])
+                try dataObject.write(to: destinationURL as URL , options: Data.WritingOptions.atomic)
+            } catch let error as NSError {
+                print(error.description)
+            }
             
         }
        
