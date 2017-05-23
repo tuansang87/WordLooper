@@ -9,11 +9,13 @@ var ReactNative = require('react-native');
 var AsyncStorage = require('AsyncStorage');
 import RNAudioStreamer from 'react-native-audio-streamer';
 // var Drive = require('./google-drive.js'); 
+import Button from 'apsl-react-native-button'
+
 import {
   StyleSheet,
   Text,
   TextInput,
-  Button,
+  // Button,
   View,
   Image,
   TouchableOpacity,
@@ -37,6 +39,7 @@ const USER_INPUT_REF = 'user_name_input';
 
 const LOOP_TYPE = { 'all': 1, 'image': 2, 'new': 3 };
 const TRANSLATE_TYPE = { 'en': 1, 'vn': 2, 'other': 3 };
+const LOOP_DIRECTION_TYPE = { 'back': 0, 'forward': 1 };
 const LOOP_INTERVAL_TIME = 5000;
 
 const STORAGE_LOOP_MODE = 'loop_mode'
@@ -51,18 +54,18 @@ var myTimer = null;
 export default class MainView extends Component {
   componentDidMount() {
 
-    this.setState({ translate_mode: TRANSLATE_TYPE.en});
+    this.setState({ translate_mode: TRANSLATE_TYPE.en });
 
     AsyncStorage.getItem(STORAGE_LOOP_MODE, (err, result) => {
       this.setState({ loop_mode: (result != null ? result : LOOP_TYPE.all) });
     });
 
-    AsyncStorage.getItem(STORAGE_CURRENT_PLAY_INDEX, (err, result) => {
-      this.setState({ direction: (result != null ? result : 1) });
+    AsyncStorage.getItem(STORAGE_LOOP_DIRECTION, (err, result) => {
+      this.setState({ direction: (result != null ? result : LOOP_DIRECTION_TYPE.forward) });
     });
 
-    AsyncStorage.getItem(STORAGE_LOOP_DIRECTION, (err, result) => {
-      this.setState({ direction: (result != null ? result : 0) })
+    AsyncStorage.getItem(STORAGE_CURRENT_PLAY_INDEX, (err, result) => {
+      this.setState({ current_play_index: (result != null ? result : 0) })
     });
 
     AsyncStorage.getItem(STORAGE_HOST, (err, result) => {
@@ -214,19 +217,19 @@ export default class MainView extends Component {
 
   onPressTranslateModeEng = () => {
     this.setState({ translate_mode: TRANSLATE_TYPE.en });
-    this.loadDefinition(this.state.word, this.state.loop_mode , TRANSLATE_TYPE.en);
+    this.loadDefinition(this.state.word, this.state.loop_mode, TRANSLATE_TYPE.en);
     console.log('eng');
   };
 
   onPressTranslateModeVni = () => {
     this.setState({ translate_mode: TRANSLATE_TYPE.vn });
-    this.loadDefinition(this.state.word,this.state.loop_mode , TRANSLATE_TYPE.vn);
+    this.loadDefinition(this.state.word, this.state.loop_mode, TRANSLATE_TYPE.vn);
     console.log('vn');
   };
 
   onPressLoopModeAll = () => {
     this.setState({ loop_mode: LOOP_TYPE.all });
-    this.loadDefinition(this.state.word, LOOP_TYPE.all , this.state.translate_mode);
+    this.loadDefinition(this.state.word, LOOP_TYPE.all, this.state.translate_mode);
     console.log('all');
   };
 
@@ -292,14 +295,14 @@ export default class MainView extends Component {
         var index = this.state.current_play_index;
         let cachedCnt = this.state.cached_words.length;
         if (cachedCnt > 0) {
-          if (index <= 0 && this.state.direction == 0) {
+          if (index <= 0 && this.state.direction == LOOP_DIRECTION_TYPE.back) {
             index = cachedCnt - 1;
           } else if (index >= cachedCnt) {
             index = 0;
           }
           console.log(index);
           //updated next played index 
-          if (this.state.direction == 0) {
+          if (this.state.direction == LOOP_DIRECTION_TYPE.back) {
             this.state.current_play_index = index - 1;
           } else {
             this.state.current_play_index = index + 1;
@@ -413,7 +416,7 @@ export default class MainView extends Component {
         }
       });
       var fileUrl = 'http://' + host + '/~' + user + '/wordlooper.json';
-
+      // console.warn(fileUrl);
       this.setState({ file_url: fileUrl });
       this.downloadFileIfAvailable(fileUrl);
     }
@@ -491,76 +494,101 @@ export default class MainView extends Component {
 
         </View>
         <View style={styles.topControlContainer}>
-          <View style={styles.loopContainer, {width : 40}}>
+          <View style={{ width: 40 }}>
             <Button
-            ref={LOOP_MODE_ALL_REF}
-            onPress={() => this.onPressTranslateModeEng()}
-            style={styles.loop_mode_btn}
-            color={this.state.translate_mode == TRANSLATE_TYPE.en ? "blue" : "gray"}
-            title='EN'
-            raised={true}
-            backgroundColor='#F00'
-          >
-          </Button>
+              ref={LOOP_MODE_ALL_REF}
+              onPress={() => this.onPressTranslateModeEng()}
 
-        </View>
-        <View style={{ left: 0, width: 50 }}>
+              style={{
+                height: 30,
+                borderRadius: 0,
+                borderWidth: 0,
+                backgroundColor: this.state.translate_mode == TRANSLATE_TYPE.en ? "green" : "gray"
+              }}
+              color={this.state.translate_mode == TRANSLATE_TYPE.en ? "green" : "gray"}
+              title='En'
+              raised={true}
+              backgroundColor='#F00'
+            >
+              <Text style={{ color: 'white' }}>{'En'}</Text>
+            </Button>
+
+          </View>
+          <View style={{ left: 4, width: 50 }}>
+
+
+            <Button
+              ref={LOOP_MODE_IMAGE_REF}
+              onPress={() => this.onPressTranslateModeVni()}
+              style={{
+                height: 30,
+                borderRadius: 0,
+                borderWidth: 0,
+                backgroundColor: this.state.translate_mode == TRANSLATE_TYPE.vn ? "green" : "gray"
+              }}
+              title='Vi'
+              color={this.state.translate_mode == TRANSLATE_TYPE.vn ? "blue" : "gray"}
+              raised={true}
+              backgroundColor='#F00'
+            >
+              <Text style={{ color: 'white' }}>{'Vi'}</Text>
+            </Button>
+          </View >
+
+          <View style={styles.loopContainer ,{left: 8, width: 50
+  }
+}>
+  <Button
+            ref={LOOP_MODE_ALL_REF}
+            onPress={() => this.onPressLoopModeAll()}
+            style={{
+              height: 30,
+              borderRadius: 0,
+              borderWidth: 0,
+              backgroundColor: this.state.loop_mode == LOOP_TYPE.all ? "green" : "gray"
+            }}
+
+            color={this.state.loop_mode == LOOP_TYPE.all ? "blue" : "gray"}
+            title='All'
+            raised={true}
+            backgroundColor='#F00' >
+            <Text style={{ color: 'white' }}>{'All'}</Text>
+          </Button >
+
+        </View >
+        <View style={{ left: 12, width: 60 }}>
 
 
           <Button
             ref={LOOP_MODE_IMAGE_REF}
-            onPress={() => this.onPressTranslateModeVni()}
-            style={styles.loop_mode_btn}
-            title='VN'
-            color={this.state.translate_mode == TRANSLATE_TYPE.vn ? "blue" : "gray"}
+            onPress={() => this.onPressLoopModeImage()}
+            style={{
+              height: 30,
+              borderRadius: 0,
+              borderWidth: 0,
+              backgroundColor: this.state.loop_mode == LOOP_TYPE.image ? "green" : "gray"
+            }}
+
+            title='Image'
+            color={this.state.loop_mode == LOOP_TYPE.image ? "blue" : "gray"}
             raised={true}
-            backgroundColor='#F00'
-          >
-          </Button>
-        </View>
-
-        <View style={styles.loopContainer ,{left : 8}}>
-            <Button
-          ref={LOOP_MODE_ALL_REF}
-          onPress={() => this.onPressLoopModeAll()}
-          style={styles.loop_mode_btn}
-          color={this.state.loop_mode == LOOP_TYPE.all ? "blue" : "gray"}
-          title='All'
-          raised={true}
-          backgroundColor='#F00'
-        >
-        </Button>
-
-      </View>
-      <View style={{
-        left: 8
-      }}>
-
-
-        <Button
-          ref={LOOP_MODE_IMAGE_REF}
-          onPress={() => this.onPressLoopModeImage()}
-          style={styles.loop_mode_btn}
-          title='Image'
-          color={this.state.loop_mode == LOOP_TYPE.image ? "blue" : "gray"}
-          raised={true}
-          backgroundColor='#F00'
-        >
-        </Button>
-      </View>
-
-      <TouchableOpacity
-        onPress={this.onDownload}
-        style={styles.download_btn}>
-        <Image style={styles.upload_img} source={require('./img/cloud-download.png')} />
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={this.onUpload}
-        style={styles.upload_btn}>
-        <Image style={styles.upload_img} source={require('./img/cloud-upload.png')} />
-      </TouchableOpacity>
+            backgroundColor='#F00' >
+            <Text style={{ color: 'white' }}>{'Image'}</Text>
+          </Button >
         </View >
+
+        <TouchableOpacity
+          onPress={this.onDownload}
+          style={styles.download_btn}>
+          <Image style={styles.upload_img} source={require('./img/cloud-download.png')} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={this.onUpload}
+          style={styles.upload_btn}>
+          <Image style={styles.upload_img} source={require('./img/cloud-upload.png')} />
+        </TouchableOpacity>
+      </View >
 
       <View style={styles.definitionContainer}>
         <Text style={styles.definitions}>
@@ -587,10 +615,19 @@ export default class MainView extends Component {
           : 30
         }}>
           <Button title='<'
-            color={this.state.direction == 0 ? "blue" : "gray"}
+            style={{
+              height: 30,
+              borderRadius: 0,
+              borderWidth: 0,
+              backgroundColor: this.state.direction == LOOP_DIRECTION_TYPE.back ? "green" : "gray"
+
+            }}
+            color={this.state.direction == LOOP_DIRECTION_TYPE.back ? "blue" : "gray"}
             width
             onPress={this.loopBack}
-          />
+          >
+            <Text style={{ color: 'white' }}>{'<'}</Text>
+          </Button>
         </View>
 
         <View style={{
@@ -600,10 +637,19 @@ export default class MainView extends Component {
           : 30
         }}>
           <Button title='>'
-            color={this.state.direction == 1 ? "blue" : "gray"}
+            style={{
+              height: 30,
+              borderRadius: 0,
+              borderWidth: 0,
+              backgroundColor: this.state.direction == LOOP_DIRECTION_TYPE.forward ? "green" : "gray"
+            }}
+            color={this.state.direction == LOOP_DIRECTION_TYPE.forward ? "blue" : "gray"}
 
-            onPress={this.loopForward}
-          />
+            onPress={this.loopForward}>
+
+            <Text style={{ color: 'white' }}>{'>'}</Text>
+          </Button>
+
         </View>
 
 
