@@ -36,6 +36,7 @@ const HOST_INPUT_REF = 'host_input';
 const USER_INPUT_REF = 'user_name_input';
 
 const LOOP_TYPE = { 'all': 1, 'image': 2, 'new': 3 };
+const TRANSLATE_TYPE = { 'en': 1, 'vn': 2, 'other': 3 };
 const LOOP_INTERVAL_TIME = 5000;
 
 const STORAGE_LOOP_MODE = 'loop_mode'
@@ -50,6 +51,7 @@ var myTimer = null;
 export default class MainView extends Component {
   componentDidMount() {
 
+    this.setState({ translate_mode: TRANSLATE_TYPE.en});
 
     AsyncStorage.getItem(STORAGE_LOOP_MODE, (err, result) => {
       this.setState({ loop_mode: (result != null ? result : LOOP_TYPE.all) });
@@ -172,27 +174,31 @@ export default class MainView extends Component {
 
   onWordSearchingChanged = (word) => {
     this.setState({ word: word, should_loop_cached_words: false });
-    this.loadDefinition(word, this.state.loop_mode);
+    this.loadDefinition(word, this.state.loop_mode, this.state.translate_mode);
 
   };
 
-  loadDefinition = (word, loop_mode) => {
+  loadDefinition = (word, loop_mode, translate_mode) => {
     var url = '';
-
-    switch (loop_mode) {
-      case LOOP_TYPE.all:
-        url = 'https://www.bing.com/search?q=define+' + word + '&qs=n&FORM=HDRSC1';
-        break;
-      case LOOP_TYPE.image:
-        url = 'https://www.bing.com/images/search?q=define+' + word + '&qs=n&FORM=HDRSC2';
-        break;
-      case LOOP_TYPE.new:
-        url = 'https://www.bing.com/news/search?q=define+' + word + '&qs=n&FORM=HDRSC4';
-        break;
-      default:
-        // url = 'https://www.bing.com/search?q=define+' + word + '&qs=n&FORM=HDRSC1';
-        break;
+    if (translate_mode == TRANSLATE_TYPE.vn && loop_mode != LOOP_TYPE.image) {
+      url = "http://translate.google.com/?tl=vi#auto/vi/" + word;
+    } else {
+      switch (loop_mode) {
+        case LOOP_TYPE.all:
+          url = 'https://www.bing.com/search?q=define+' + word + '&qs=n&FORM=HDRSC1';
+          break;
+        case LOOP_TYPE.image:
+          url = 'https://www.bing.com/images/search?q=define+' + word + '&qs=n&FORM=HDRSC2';
+          break;
+        case LOOP_TYPE.new:
+          url = 'https://www.bing.com/news/search?q=define+' + word + '&qs=n&FORM=HDRSC4';
+          break;
+        default:
+          // url = 'https://www.bing.com/search?q=define+' + word + '&qs=n&FORM=HDRSC1';
+          break;
+      }
     }
+
     this.setState({ word_uri: url });
 
   };
@@ -206,19 +212,31 @@ export default class MainView extends Component {
   };
 
 
+  onPressTranslateModeEng = () => {
+    this.setState({ translate_mode: TRANSLATE_TYPE.en });
+    this.loadDefinition(this.state.word, this.state.loop_mode , TRANSLATE_TYPE.en);
+    console.log('eng');
+  };
+
+  onPressTranslateModeVni = () => {
+    this.setState({ translate_mode: TRANSLATE_TYPE.vn });
+    this.loadDefinition(this.state.word,this.state.loop_mode , TRANSLATE_TYPE.vn);
+    console.log('vn');
+  };
+
   onPressLoopModeAll = () => {
     this.setState({ loop_mode: LOOP_TYPE.all });
-    this.loadDefinition(this.state.word, LOOP_TYPE.all);
+    this.loadDefinition(this.state.word, LOOP_TYPE.all , this.state.translate_mode);
     console.log('all');
   };
 
   onPressLoopModeImage = () => {
     this.setState({ loop_mode: LOOP_TYPE.image });
 
-    this.loadDefinition(this.state.word, LOOP_TYPE.image);
+    this.loadDefinition(this.state.word, LOOP_TYPE.image, this.state.translate_mode);
     console.log('image');
   };
- 
+
 
   onDownload = () => {
     // handle here
@@ -314,7 +332,7 @@ export default class MainView extends Component {
     var word = data.word;
     this.state.word = word;
 
-    this.loadDefinition(word, this.state.loop_mode);
+    this.loadDefinition(word, this.state.loop_mode, this.state.translate_mode);
     if (data.audio != null && data.audio.length != '') {
       this.playSoundFromCachedWord(data);
     } else {
@@ -380,7 +398,7 @@ export default class MainView extends Component {
 
   updateFileUrlIfNeeded = () => {
     var host = this.state.host;
-    var user = this.state.username; 
+    var user = this.state.username;
     if (host && user && host != '' && user != '') {
 
       AsyncStorage.setItem(STORAGE_HOST, host, (err) => {
@@ -395,7 +413,7 @@ export default class MainView extends Component {
         }
       });
       var fileUrl = 'http://' + host + '/~' + user + '/wordlooper.json';
-     
+
       this.setState({ file_url: fileUrl });
       this.downloadFileIfAvailable(fileUrl);
     }
@@ -473,132 +491,161 @@ export default class MainView extends Component {
 
         </View>
         <View style={styles.topControlContainer}>
-          <View style={styles.loopContainer}>
+          <View style={styles.loopContainer, {width : 40}}>
             <Button
-              ref={LOOP_MODE_ALL_REF}
-              onPress={() => this.onPressLoopModeAll()}
-              style={styles.loop_mode_btn}
-              color={this.state.loop_mode == LOOP_TYPE.all ? "blue" : "black"}
-              title='All'
-              raised={true}
-              backgroundColor='#F00'
-            >
-            </Button>
- 
-          </View>
-            <View style={{left : 50
-              }}>
-         
+            ref={LOOP_MODE_ALL_REF}
+            onPress={() => this.onPressTranslateModeEng()}
+            style={styles.loop_mode_btn}
+            color={this.state.translate_mode == TRANSLATE_TYPE.en ? "blue" : "gray"}
+            title='EN'
+            raised={true}
+            backgroundColor='#F00'
+          >
+          </Button>
 
+        </View>
+        <View style={{ left: 0, width: 50 }}>
+
+
+          <Button
+            ref={LOOP_MODE_IMAGE_REF}
+            onPress={() => this.onPressTranslateModeVni()}
+            style={styles.loop_mode_btn}
+            title='VN'
+            color={this.state.translate_mode == TRANSLATE_TYPE.vn ? "blue" : "gray"}
+            raised={true}
+            backgroundColor='#F00'
+          >
+          </Button>
+        </View>
+
+        <View style={styles.loopContainer ,{left : 8}}>
             <Button
-              ref={LOOP_MODE_IMAGE_REF}
-              onPress={() => this.onPressLoopModeImage()}
-              style={styles.loop_mode_btn}
-              title='Image'
-              color={this.state.loop_mode == LOOP_TYPE.image ? "blue" : "black"}
-              raised={true}
-              backgroundColor='#F00'
-            >
-            </Button>
-          </View>
-
-          <TouchableOpacity
-            onPress={this.onDownload}
-            style={styles.download_btn}>
-            <Image style={styles.upload_img} source={require('./img/cloud-download.png')} />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={this.onUpload}
-            style={styles.upload_btn}>
-            <Image style={styles.upload_img} source={require('./img/cloud-upload.png')} />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.definitionContainer}>
-          <Text style={styles.definitions}>
-            Definitions:
-          </Text>
-          <TextInput
-            style={styles.definitions_txt}
-            onChangeText={(text) => this.onWordSearchingChanged(text)}
-            placeholder={this.state.word}
-          />
-        </View>
-        <View style={styles.webviewContainer}>
-          <WebView
-            ref={WEBVIEW_REF}
-            source={{ uri: this.state.word_uri }}
-            style={styles.webview}
-          />
-        </View>
-        <View style={styles.bottomToolbarContainer}>
-          <View style={{
-            marginLeft: 4,
-            width: 40,
-            height
-            : 30
-          }}>
-            <Button title='<'
-              color={this.state.direction == 0 ? "blue" : "gray"}
-              width
-              onPress={this.loopBack}
-            />
-          </View>
-
-          <View style={{
-            marginLeft: 4,
-            width: 40,
-            height
-            : 30
-          }}>
-            <Button title='>'
-              color={this.state.direction == 1 ? "blue" : "gray"}
-
-              onPress={this.loopForward}
-            />
-          </View>
-
-
-          <TouchableOpacity
-            onPress={this.onResetBtn}
-            style={{
-              position: 'absolute', right: 10, padding: 0,
-              width: 50, height: 40, alignItems: 'center'
-            }}>
-            <Text style={{ paddingTop: 10 }} >Reset</Text>
-          </TouchableOpacity>
-
-
-          <View
-            style={styles.checkBoxContainer}>
-            <CheckBox
-              label='Loop'
-              checked={this.state.should_loop_cached_words}
-              containerStyle={{ height: 30, top: 3 }}
-              labelStyle={{ color: 'black', marginLeft: -5 }}
-              onChange={this.onCheckLoop}
-            />
-          </View>
-
-
-          <TouchableOpacity
-            onPress={this.onLoadCachedWords}
-            style={{
-              position: 'absolute', right: 140, padding: 0,
-              width: 50, height: 40, alignContent: 'center'
-            }}>
-            <Text style={{ paddingTop: 10 }} >Cached</Text>
-          </TouchableOpacity>
-
-        </View>
-        <UtilsView
-          ref={'UtilsView'}
-          onAudioLinkDetectedCallback={(event) => this.onAudioLinkDetectedCallback(event)}
-          onLoadCachedWordsCallback={this.onLoadCachedWordsCallback}
-        />
+          ref={LOOP_MODE_ALL_REF}
+          onPress={() => this.onPressLoopModeAll()}
+          style={styles.loop_mode_btn}
+          color={this.state.loop_mode == LOOP_TYPE.all ? "blue" : "gray"}
+          title='All'
+          raised={true}
+          backgroundColor='#F00'
+        >
+        </Button>
 
       </View>
+      <View style={{
+        left: 8
+      }}>
+
+
+        <Button
+          ref={LOOP_MODE_IMAGE_REF}
+          onPress={() => this.onPressLoopModeImage()}
+          style={styles.loop_mode_btn}
+          title='Image'
+          color={this.state.loop_mode == LOOP_TYPE.image ? "blue" : "gray"}
+          raised={true}
+          backgroundColor='#F00'
+        >
+        </Button>
+      </View>
+
+      <TouchableOpacity
+        onPress={this.onDownload}
+        style={styles.download_btn}>
+        <Image style={styles.upload_img} source={require('./img/cloud-download.png')} />
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={this.onUpload}
+        style={styles.upload_btn}>
+        <Image style={styles.upload_img} source={require('./img/cloud-upload.png')} />
+      </TouchableOpacity>
+        </View >
+
+      <View style={styles.definitionContainer}>
+        <Text style={styles.definitions}>
+          Definitions:
+          </Text>
+        <TextInput
+          style={styles.definitions_txt}
+          onChangeText={(text) => this.onWordSearchingChanged(text)}
+          placeholder={this.state.word}
+        />
+      </View>
+      <View style={styles.webviewContainer}>
+        <WebView
+          ref={WEBVIEW_REF}
+          source={{ uri: this.state.word_uri }}
+          style={styles.webview}
+        />
+      </View>
+      <View style={styles.bottomToolbarContainer}>
+        <View style={{
+          marginLeft: 4,
+          width: 40,
+          height
+          : 30
+        }}>
+          <Button title='<'
+            color={this.state.direction == 0 ? "blue" : "gray"}
+            width
+            onPress={this.loopBack}
+          />
+        </View>
+
+        <View style={{
+          marginLeft: 4,
+          width: 40,
+          height
+          : 30
+        }}>
+          <Button title='>'
+            color={this.state.direction == 1 ? "blue" : "gray"}
+
+            onPress={this.loopForward}
+          />
+        </View>
+
+
+        <TouchableOpacity
+          onPress={this.onResetBtn}
+          style={{
+            position: 'absolute', right: 10, padding: 0,
+            width: 50, height: 40, alignItems: 'center'
+          }}>
+          <Text style={{ paddingTop: 10 }} >Reset</Text>
+        </TouchableOpacity>
+
+
+        <View
+          style={styles.checkBoxContainer}>
+          <CheckBox
+            label='Loop'
+            checked={this.state.should_loop_cached_words}
+            containerStyle={{ height: 30, top: 3 }}
+            labelStyle={{ color: 'black', marginLeft: -5 }}
+            onChange={this.onCheckLoop}
+          />
+        </View>
+
+
+        <TouchableOpacity
+          onPress={this.onLoadCachedWords}
+          style={{
+            position: 'absolute', right: 140, padding: 0,
+            width: 50, height: 40, alignContent: 'center'
+          }}>
+          <Text style={{ paddingTop: 10 }} >Cached</Text>
+        </TouchableOpacity>
+
+      </View>
+      <UtilsView
+        ref={'UtilsView'}
+        onAudioLinkDetectedCallback={(event) => this.onAudioLinkDetectedCallback(event)}
+        onLoadCachedWordsCallback={this.onLoadCachedWordsCallback}
+      />
+
+      </View >
     );
   };
 };
@@ -687,7 +734,7 @@ const styles = StyleSheet.create({
     // right: 20,
     alignItems: 'center'
   },
-  upload_btn: {opacity : 0.0 , position: 'absolute', right: 50, margin: 5, width: 30, height: 40, alignItems: 'center' },
+  upload_btn: { opacity: 0.0, position: 'absolute', right: 50, margin: 5, width: 30, height: 40, alignItems: 'center' },
   download_btn: { position: 'absolute', right: 10, margin: 5, width: 30, height: 40, alignItems: 'center' },
   loop_mode_btn: { width: 50, height: 30, backgroundColor: 'blue', alignItems: 'center' },
 
@@ -702,7 +749,7 @@ const styles = StyleSheet.create({
 
   }
   , fileServerContainer: {
-    height: 40 , //(Platform.OS == 'ios') ? 0 : 40,
+    height: 40, //(Platform.OS == 'ios') ? 0 : 40,
     flexDirection: 'row',
     marginBottom: 0,
     marginRight: 0,
