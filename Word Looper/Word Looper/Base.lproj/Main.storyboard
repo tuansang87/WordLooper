@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F67a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G8c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
@@ -701,7 +701,7 @@
                                 </connections>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-lJ-CRs">
-                                <rect key="frame" x="63" y="531" width="435" height="24"/>
+                                <rect key="frame" x="78" y="531" width="435" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="iRh-uq-HeG">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -710,7 +710,7 @@
                                     </segments>
                                 </segmentedCell>
                                 <connections>
-                                    <action selector="didClickOnSegMentControl:" target="XfG-lQ-9wD" id="Jw5-5H-VF5"/>
+                                    <action selector="didClickOnSearchModeSegMentControl:" target="XfG-lQ-9wD" id="ROY-TB-C5c"/>
                                 </connections>
                             </segmentedControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dze-c5-pp8">
@@ -741,14 +741,14 @@
                             <scrollView focusRingType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnk-jp-JNC">
                                 <rect key="frame" x="80" y="486" width="416" height="37"/>
                                 <clipView key="contentView" id="P8V-uo-Vgn">
-                                    <rect key="frame" x="1" y="1" width="414" height="35"/>
+                                    <rect key="frame" x="1" y="1" width="399" height="35"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="r5d-d4-ygx">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="399" height="35"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="414" height="35"/>
+                                            <size key="minSize" width="399" height="35"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -766,7 +766,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="CJc-8k-7TM">
-                                    <rect key="frame" x="399" y="1" width="16" height="35"/>
+                                    <rect key="frame" x="400" y="1" width="15" height="35"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -920,8 +920,26 @@
                                     <action selector="didClickUpLoadDriveBtn:" target="XfG-lQ-9wD" id="KRl-GX-h0a"/>
                                 </connections>
                             </button>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TeD-m9-okg">
+                                <rect key="frame" x="8" y="531" width="59" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="TGH-Th-cqm"/>
+                                    <constraint firstAttribute="height" constant="21" id="ULN-Cr-EFv"/>
+                                </constraints>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ToQ-by-ooF">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="EN" width="26" selected="YES"/>
+                                        <segment label="VN" width="26" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="didClickOnSearchLanguageSegMentControl:" target="XfG-lQ-9wD" id="0Yv-A8-cX6"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="TeD-m9-okg" firstAttribute="top" secondItem="vbp-a0-08T" secondAttribute="bottom" constant="15" id="0ob-Ds-75b"/>
                             <constraint firstItem="tnk-jp-JNC" firstAttribute="top" secondItem="dze-c5-pp8" secondAttribute="top" id="1Ox-J8-8Z7"/>
                             <constraint firstItem="zUV-29-uX5" firstAttribute="leading" secondItem="00q-FL-oPH" secondAttribute="trailing" constant="10" id="1mQ-oy-pcL"/>
                             <constraint firstItem="UJm-EV-ORK" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="2Is-Bk-qE0"/>
@@ -939,7 +957,8 @@
                             <constraint firstItem="wcu-w9-4EU" firstAttribute="leading" secondItem="00q-FL-oPH" secondAttribute="trailing" constant="10" id="ENN-uM-H6j"/>
                             <constraint firstItem="Wll-S6-yCc" firstAttribute="leading" secondItem="KwK-eo-5Yk" secondAttribute="trailing" constant="8" id="FLj-pF-wwz"/>
                             <constraint firstItem="bNe-Hf-tl3" firstAttribute="leading" secondItem="vbp-a0-08T" secondAttribute="trailing" constant="10" id="I6C-xk-VgG"/>
-                            <constraint firstItem="bNe-Hf-tl3" firstAttribute="leading" secondItem="Qd5-lJ-CRs" secondAttribute="leading" id="Ixi-vy-sNi"/>
+                            <constraint firstItem="TeD-m9-okg" firstAttribute="leading" secondItem="00q-FL-oPH" secondAttribute="trailing" constant="10" id="IJI-eq-eLI"/>
+                            <constraint firstItem="bNe-Hf-tl3" firstAttribute="leading" secondItem="Qd5-lJ-CRs" secondAttribute="leading" constant="-15" id="Ixi-vy-sNi"/>
                             <constraint firstAttribute="bottom" secondItem="HiL-ZH-VF7" secondAttribute="bottom" constant="10" id="MUK-vH-7yw"/>
                             <constraint firstAttribute="trailing" secondItem="wcu-w9-4EU" secondAttribute="trailing" constant="10" id="MjV-I6-Alo"/>
                             <constraint firstAttribute="bottom" secondItem="zUV-29-uX5" secondAttribute="bottom" constant="10" id="Ofd-yU-8ze"/>
@@ -949,7 +968,7 @@
                             <constraint firstItem="rX0-Jk-o70" firstAttribute="top" secondItem="S78-yl-d2h" secondAttribute="top" id="VpX-x3-dEC"/>
                             <constraint firstItem="Qd5-lJ-CRs" firstAttribute="top" secondItem="bNe-Hf-tl3" secondAttribute="bottom" constant="10" id="W3x-4k-AVP"/>
                             <constraint firstItem="tnk-jp-JNC" firstAttribute="leading" secondItem="dze-c5-pp8" secondAttribute="trailing" constant="10" id="WMM-UP-9xR"/>
-                            <constraint firstItem="tnk-jp-JNC" firstAttribute="trailing" secondItem="Qd5-lJ-CRs" secondAttribute="trailing" id="ZIH-nF-VcS"/>
+                            <constraint firstItem="tnk-jp-JNC" firstAttribute="trailing" secondItem="Qd5-lJ-CRs" secondAttribute="trailing" constant="-15" id="ZIH-nF-VcS"/>
                             <constraint firstItem="rX0-Jk-o70" firstAttribute="leading" secondItem="vbp-a0-08T" secondAttribute="leading" id="b9U-44-soi"/>
                             <constraint firstAttribute="bottom" secondItem="67G-Fx-yDL" secondAttribute="bottom" constant="13" id="eWZ-Cw-Bae"/>
                             <constraint firstAttribute="bottom" secondItem="00q-FL-oPH" secondAttribute="bottom" id="efK-Oy-Hud"/>
@@ -984,7 +1003,8 @@
                         <outlet property="btnUp" destination="KwK-eo-5Yk" id="BLQ-5Z-E2m"/>
                         <outlet property="mWebSearchContainer" destination="wcu-w9-4EU" id="74h-ww-wXo"/>
                         <outlet property="mWebSearchTopLayoutConstaint" destination="3Gv-nv-jSu" id="wsS-uO-J7f"/>
-                        <outlet property="segmentControl" destination="Qd5-lJ-CRs" id="Vpy-Yb-jaB"/>
+                        <outlet property="searchInModeSegmentControl" destination="Qd5-lJ-CRs" id="Kfj-67-Fa1"/>
+                        <outlet property="serchInLanguageControl" destination="TeD-m9-okg" id="T4S-ey-ksY"/>
                         <outlet property="txtImagePath" destination="S78-yl-d2h" id="9s9-OK-fJc"/>
                         <outlet property="txtSelfDefinition" destination="r5d-d4-ygx" id="eT1-Am-tGI"/>
                         <outlet property="txtWord" destination="bNe-Hf-tl3" id="8Y1-uM-jS1"/>
@@ -996,7 +1016,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="audio" width="18" height="18"/>
+        <image name="audio" width="64" height="64"/>
         <image name="cloud-download" width="512" height="512"/>
         <image name="cloud-upload" width="512" height="512"/>
     </resources>

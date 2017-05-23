@@ -23,7 +23,9 @@ let EMPTY_STR = ""
 class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate , NSTextDelegate {
     
     @IBOutlet weak var txtWord: NSTextField!
-    @IBOutlet weak var segmentControl: NSSegmentedControl!
+    @IBOutlet weak var searchInModeSegmentControl: NSSegmentedControl!
+    @IBOutlet weak var serchInLanguageControl: NSSegmentedControl!
+    
     @IBOutlet weak var txtSelfDefinition: NSTextView!
     @IBOutlet weak var txtImagePath: NSTextField!
     @IBOutlet weak var mWebSearchTopLayoutConstaint: NSLayoutConstraint!
@@ -137,8 +139,7 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
     func loadDefinition(word : Dictionary<String , String>) {
         if word.keys.count > 0 {
             self.showIndicator()
-            var text  = "define \(word["word"]!)"
-            text = text.replacingOccurrences(of: " ", with: "+")
+            
             // GOOGLE
             //            var queri = "https://www.google.com/search?q=\(text)&ie=utf-8&oe=utf-8&aq=t"
             //            if appDelegate.searchMode == "image" {
@@ -158,50 +159,66 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
             
             let vocab = word["word"]!
             self.txtWord.stringValue = vocab
-          
-            
-            if let imgPath = word["image"] {
-                self.btnImgPath.state = 1
-                mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state == 1 ? 50 : 30
-                self.txtImagePath.isHidden = self.btnImgPath.state == 0
+            let isEng2VN = self.serchInLanguageControl.selectedSegment == 1;
+            let searchByImage = appDelegate.searchMode == .image;
+            if isEng2VN && !searchByImage {
+                var text  = "\(vocab)"
+                text = text.replacingOccurrences(of: " ", with: "+")
                 
-                self.txtImagePath.stringValue = imgPath
-                let url = URL(string:imgPath)!
-                let request = URLRequest(url:url)
-                self.mWebSearch.load(request)
-            } else {
-                self.btnImgPath.state = 0
-                mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state == 1 ? 50 : 30
-                self.txtImagePath.isHidden = self.btnImgPath.state == 0
-                
-                self.txtImagePath.stringValue = EMPTY_STR
-                var queri = "https://www.bing.com/search?q=\(text)"
-                if appDelegate.searchMode == .image {
-                    queri = "https://www.bing.com/images/search?q=\(text)"
-                    queri =  "\(queri)&FORM=HDRSC2"
-                } else {
-                    queri =  "\(queri)&FORM=HDRSC1"
-                }
-                
-                var selectedIdx = 0;
-                if appDelegate.searchMode == .image {
-                    selectedIdx = 1;
-                } else if appDelegate.searchMode == .new {
-                    selectedIdx = 2;
-                }
-                self.segmentControl.selectSegment(withTag: selectedIdx)
-        
-                
+                let queri = "http://translate.google.com/?tl=vi#auto/vi/\(text)"
                 let url = URL(string:queri)!
                 let request = URLRequest(url:url)
                 self.mWebSearch.load(request)
-            }
-            
-            if let own_defi = word["own_definition"] {
-                self.txtSelfDefinition.string = own_defi
+                
             } else {
-                self.txtSelfDefinition.string = EMPTY_STR
+                var text  = "define \(word["word"]!)"
+                text = text.replacingOccurrences(of: " ", with: "+")
+                if let imgPath = word["image"] {
+                    self.btnImgPath.state = 1
+                    mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state == 1 ? 50 : 30
+                    self.txtImagePath.isHidden = self.btnImgPath.state == 0
+                    
+                    self.txtImagePath.stringValue = imgPath
+                    let url = URL(string:imgPath)!
+                    let request = URLRequest(url:url)
+                    self.mWebSearch.load(request)
+                } else {
+                    self.btnImgPath.state = 0
+                    mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state == 1 ? 50 : 30
+                    self.txtImagePath.isHidden = self.btnImgPath.state == 0
+                    
+                    self.txtImagePath.stringValue = EMPTY_STR
+                    var queri = "https://www.bing.com/search?q=\(text)"
+                    if appDelegate.searchMode == .image {
+                        queri = "https://www.bing.com/images/search?q=\(text)"
+                        queri =  "\(queri)&FORM=HDRSC2"
+                    } else {
+                        queri =  "\(queri)&FORM=HDRSC1"
+                    }
+                    
+                    var selectedIdx = 0;
+                    if appDelegate.searchMode == .image {
+                        selectedIdx = 1;
+                    } else if appDelegate.searchMode == .new {
+                        selectedIdx = 2;
+                    }
+                    self.searchInModeSegmentControl.selectSegment(withTag: selectedIdx)
+                    
+                    
+                    let url = URL(string:queri)!
+                    let request = URLRequest(url:url)
+                    self.mWebSearch.load(request)
+                }
+                
+                if let own_defi = word["own_definition"] {
+                    self.txtSelfDefinition.string = own_defi
+                } else {
+                    self.txtSelfDefinition.string = EMPTY_STR
+                }
+
             }
+
+            
         }
         
     }
@@ -312,8 +329,7 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
                 let own_definition = word["own_definition"] as? String;
               
                 self.fecthAudioFileForWord(word: word["word"] as! String) { (link , linkWord) in
-                    print(link)
-                    if (linkWord == key) {
+                   if (linkWord == key) {
                         appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link);
                         
                         
@@ -359,8 +375,12 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
         self.progressIndicator?.isHidden = true
     }
     
+    @IBAction func didClickOnSearchLanguageSegMentControl(_ sender: NSSegmentedControl) {
+        self.loadDefinition(word: ["word": self.txtWord.stringValue])
+    }
     
-    @IBAction func didClickOnSegMentControl(_ sender: NSSegmentedControl) {
+    
+    @IBAction func didClickOnSearchModeSegMentControl(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
         case 0:
             appDelegate.searchMode = .all
@@ -473,7 +493,7 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
                         let own_definition = word["own_definition"];
                         strongSelf.lastPlayWord = nil
                         strongSelf.fecthAudioFileForWord(word: key) { (link , linkWord) in
-                            print(link)
+                           
                             if (linkWord == key) {
                                 appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link);
                                 
@@ -738,7 +758,6 @@ extension AudioFinding {
                     let endDoubleQuoteRange = src.range(of: doubleQuoteStr, options: [], range: NSMakeRange(newPos, rangeLength))
                     if endDoubleQuoteRange.location != NSNotFound {
                         let link = src.substring(with: NSMakeRange(newPos, endDoubleQuoteRange.location - newPos))
-                        print("\(link)")
                         if link.contains("mp3") {
                             return link
                         }

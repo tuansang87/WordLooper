@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WordLooper Tuyen.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>14A7F43D1EADAD6A006B6A1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>14D0DAE21ED3E70B00F971AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

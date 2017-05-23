@@ -25,12 +25,45 @@
 		14A7F4441EADAD6A006B6A1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* ViewController.swift */; };
 		14A7F4461EADAD6A006B6A1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4451EADAD6A006B6A1D /* Assets.xcassets */; };
 		14A7F4491EADAD6A006B6A1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4471EADAD6A006B6A1D /* Main.storyboard */; };
-		14CC6F111EB83B0E005E9F63 /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */; };
-		14CC6F121EB83B0E005E9F63 /* GTLR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		14CC6F1B1EB83B34005E9F63 /* libAppAuth-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CC6F1A1EB83B34005E9F63 /* libAppAuth-macOS.a */; };
+		14D0DAE41ED3E70B00F971AA /* GTLRDriveQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6A1EB0774C00ACCBF8 /* GTLRDriveQuery.m */; };
+		14D0DAE51ED3E70B00F971AA /* GTLRDriveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */; };
+		14D0DAE61ED3E70B00F971AA /* GTLRDriveObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D681EB0774C00ACCBF8 /* GTLRDriveObjects.m */; };
+		14D0DAE71ED3E70B00F971AA /* CachedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658C11EAEF44D006EE1B4 /* CachedWordView.swift */; };
+		14D0DAE81ED3E70B00F971AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* ViewController.swift */; };
+		14D0DAE91ED3E70B00F971AA /* CachedWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */; };
+		14D0DAEA1ED3E70B00F971AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */; };
+		14D0DAEB1ED3E70B00F971AA /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144C5CC61EB06ECD00ACCBF8 /* Macro.swift */; };
+		14D0DAEC1ED3E70B00F971AA /* DriveUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E39CA1EB20B510028A508 /* DriveUtils.m */; };
+		14D0DAEF1ED3E70B00F971AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA51EB06D3B00ACCBF8 /* Cocoa.framework */; };
+		14D0DAF01ED3E70B00F971AA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA31EB06D3300ACCBF8 /* SystemConfiguration.framework */; };
+		14D0DAF11ED3E70B00F971AA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA11EB06D2A00ACCBF8 /* Security.framework */; };
+		14D0DAF21ED3E70B00F971AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		14D0DAF51ED3E70B00F971AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4451EADAD6A006B6A1D /* Assets.xcassets */; };
+		14D0DAF61ED3E70B00F971AA /* copy_mac.sh in Resources */ = {isa = PBXBuildFile; fileRef = 144B88321EB31162007F3340 /* copy_mac.sh */; };
+		14D0DAF71ED3E70B00F971AA /* CachedWordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658BF1EAEF431006EE1B4 /* CachedWordView.xib */; };
+		14D0DAF81ED3E70B00F971AA /* CachedWordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */; };
+		14D0DAF91ED3E70B00F971AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4471EADAD6A006B6A1D /* Main.storyboard */; };
+		14D0DB071ED3EC0800F971AA /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E63A031EB83A4100F1EDF8 /* GTLR.framework */; };
+		14D0DB081ED3EC0800F971AA /* GTLR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14E63A031EB83A4100F1EDF8 /* GTLR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		14D0DB111ED3EC7500F971AA /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E63A031EB83A4100F1EDF8 /* GTLR.framework */; };
+		14D0DB121ED3EC7500F971AA /* GTLR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14E63A031EB83A4100F1EDF8 /* GTLR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		14D0DB091ED3EC0800F971AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
+			remoteInfo = GTLROSXCore;
+		};
+		14D0DB131ED3EC7500F971AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
+			remoteInfo = GTLROSXCore;
+		};
 		14E63A021EB83A4100F1EDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
@@ -83,13 +116,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		144B883A1EB3131D007F3340 /* Embed Frameworks */ = {
+		14D0DB0B1ED3EC0800F971AA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				14CC6F121EB83B0E005E9F63 /* GTLR.framework in Embed Frameworks */,
+				14D0DB081ED3EC0800F971AA /* GTLR.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14D0DB151ED3EC7500F971AA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14D0DB121ED3EC7500F971AA /* GTLR.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,7 +155,6 @@
 		144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLRCore.xcodeproj; path = "../../google-api-objectivec-client-for-rest/Source/GTLRCore.xcodeproj"; sourceTree = "<group>"; };
 		144C5CC61EB06ECD00ACCBF8 /* Macro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		144C5D4B1EB0744700ACCBF8 /* Word Looper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Word Looper-Bridging-Header.h"; path = "Word Looper/Word Looper-Bridging-Header.h"; sourceTree = "<group>"; };
-		144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTLR.framework; path = "Word Looper/LIbs/GoogleAPIs/GTLR.framework"; sourceTree = "<group>"; };
 		144C5D661EB0774C00ACCBF8 /* GTLRDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLRDrive.h; sourceTree = "<group>"; };
 		144C5D671EB0774C00ACCBF8 /* GTLRDriveObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLRDriveObjects.h; sourceTree = "<group>"; };
 		144C5D681EB0774C00ACCBF8 /* GTLRDriveObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLRDriveObjects.m; sourceTree = "<group>"; };
@@ -126,6 +169,8 @@
 		14A7F4481EADAD6A006B6A1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14A7F44A1EADAD6A006B6A1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CC6F1A1EB83B34005E9F63 /* libAppAuth-macOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libAppAuth-macOS.a"; path = "../../../../../Library/Developer/Xcode/DerivedData/Word_Looper-bzkuqphiwbzztafvvjkomzopwkyb/Build/Products/Debug/libAppAuth-macOS.a"; sourceTree = "<group>"; };
+		14D0DB001ED3E70B00F971AA /* WordLooper Tuyen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordLooper Tuyen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14D0DB011ED3E70C00F971AA /* WordLooper copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WordLooper copy-Info.plist"; path = "/Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word Looper/WordLooper copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,12 +178,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14CC6F1B1EB83B34005E9F63 /* libAppAuth-macOS.a in Frameworks */,
 				144C5CA61EB06D3B00ACCBF8 /* Cocoa.framework in Frameworks */,
 				144C5CA41EB06D3300ACCBF8 /* SystemConfiguration.framework in Frameworks */,
 				144C5CA21EB06D2A00ACCBF8 /* Security.framework in Frameworks */,
 				144C5CA01EB06D2300ACCBF8 /* WebKit.framework in Frameworks */,
-				14CC6F111EB83B0E005E9F63 /* GTLR.framework in Frameworks */,
+				14D0DB071ED3EC0800F971AA /* GTLR.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14D0DAED1ED3E70B00F971AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14D0DAEF1ED3E70B00F971AA /* Cocoa.framework in Frameworks */,
+				14D0DAF01ED3E70B00F971AA /* SystemConfiguration.framework in Frameworks */,
+				14D0DAF11ED3E70B00F971AA /* Security.framework in Frameworks */,
+				14D0DAF21ED3E70B00F971AA /* WebKit.framework in Frameworks */,
+				14D0DB111ED3EC7500F971AA /* GTLR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,12 +246,12 @@
 				143E39C91EB20B510028A508 /* DriveUtils.h */,
 				143E39CA1EB20B510028A508 /* DriveUtils.m */,
 				144C5D5B1EB0773900ACCBF8 /* Drive */,
-				144C5D4C1EB0750E00ACCBF8 /* GTLR.framework */,
 				144C5D4B1EB0744700ACCBF8 /* Word Looper-Bridging-Header.h */,
 				144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */,
 				14A7F4401EADAD6A006B6A1D /* Word Looper */,
 				14A7F43F1EADAD6A006B6A1D /* Products */,
 				144C5C9E1EB06D2200ACCBF8 /* Frameworks */,
+				14D0DB011ED3E70C00F971AA /* WordLooper copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				14A7F43E1EADAD6A006B6A1D /* WordLooper.app */,
+				14D0DB001ED3E70B00F971AA /* WordLooper Tuyen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,15 +303,35 @@
 				14A7F43B1EADAD6A006B6A1D /* Frameworks */,
 				14A7F43C1EADAD6A006B6A1D /* Resources */,
 				144B88351EB31170007F3340 /* ShellScript */,
-				144B883A1EB3131D007F3340 /* Embed Frameworks */,
+				14D0DB0B1ED3EC0800F971AA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				14D0DB0A1ED3EC0800F971AA /* PBXTargetDependency */,
 			);
 			name = WordLooper;
 			productName = "Word Looper";
 			productReference = 14A7F43E1EADAD6A006B6A1D /* WordLooper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		14D0DAE21ED3E70B00F971AA /* WordLooper Tuyen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14D0DAFD1ED3E70B00F971AA /* Build configuration list for PBXNativeTarget "WordLooper Tuyen" */;
+			buildPhases = (
+				14D0DAE31ED3E70B00F971AA /* Sources */,
+				14D0DAED1ED3E70B00F971AA /* Frameworks */,
+				14D0DAF41ED3E70B00F971AA /* Resources */,
+				14D0DB151ED3EC7500F971AA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14D0DB141ED3EC7500F971AA /* PBXTargetDependency */,
+			);
+			name = "WordLooper Tuyen";
+			productName = "Word Looper";
+			productReference = 14D0DB001ED3E70B00F971AA /* WordLooper Tuyen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -271,6 +348,10 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5CE32BFHCM;
 						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					14D0DAE21ED3E70B00F971AA = {
+						DevelopmentTeam = 5CE32BFHCM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -295,6 +376,7 @@
 			projectRoot = "";
 			targets = (
 				14A7F43D1EADAD6A006B6A1D /* WordLooper */,
+				14D0DAE21ED3E70B00F971AA /* WordLooper Tuyen */,
 			);
 		};
 /* End PBXProject section */
@@ -364,6 +446,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14D0DAF41ED3E70B00F971AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14D0DAF51ED3E70B00F971AA /* Assets.xcassets in Resources */,
+				14D0DAF61ED3E70B00F971AA /* copy_mac.sh in Resources */,
+				14D0DAF71ED3E70B00F971AA /* CachedWordView.xib in Resources */,
+				14D0DAF81ED3E70B00F971AA /* CachedWordViewCell.xib in Resources */,
+				14D0DAF91ED3E70B00F971AA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -399,7 +493,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14D0DAE31ED3E70B00F971AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14D0DAE41ED3E70B00F971AA /* GTLRDriveQuery.m in Sources */,
+				14D0DAE51ED3E70B00F971AA /* GTLRDriveService.m in Sources */,
+				14D0DAE61ED3E70B00F971AA /* GTLRDriveObjects.m in Sources */,
+				14D0DAE71ED3E70B00F971AA /* CachedWordView.swift in Sources */,
+				14D0DAE81ED3E70B00F971AA /* ViewController.swift in Sources */,
+				14D0DAE91ED3E70B00F971AA /* CachedWordViewCell.swift in Sources */,
+				14D0DAEA1ED3E70B00F971AA /* AppDelegate.swift in Sources */,
+				14D0DAEB1ED3E70B00F971AA /* Macro.swift in Sources */,
+				14D0DAEC1ED3E70B00F971AA /* DriveUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14D0DB0A1ED3EC0800F971AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTLROSXCore;
+			targetProxy = 14D0DB091ED3EC0800F971AA /* PBXContainerItemProxy */;
+		};
+		14D0DB141ED3EC7500F971AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTLROSXCore;
+			targetProxy = 14D0DB131ED3EC7500F971AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		14A7F4471EADAD6A006B6A1D /* Main.storyboard */ = {
@@ -529,6 +652,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D SANG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -562,6 +686,74 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D SANG";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Word Looper/Word Looper-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		14D0DAFE1ED3E70B00F971AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5CE32BFHCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Word\\ Looper/google_headers/**";
+				INFOPLIST_FILE = "WordLooper copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D TUYEN";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Word Looper/Word Looper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		14D0DAFF1ED3E70B00F971AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5CE32BFHCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Word\\ Looper/google_headers/**";
+				INFOPLIST_FILE = "WordLooper copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D TUYEN";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -587,6 +779,15 @@
 			buildConfigurations = (
 				14A7F44E1EADAD6A006B6A1D /* Debug */,
 				14A7F44F1EADAD6A006B6A1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14D0DAFD1ED3E70B00F971AA /* Build configuration list for PBXNativeTarget "WordLooper Tuyen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14D0DAFE1ED3E70B00F971AA /* Debug */,
+				14D0DAFF1ED3E70B00F971AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

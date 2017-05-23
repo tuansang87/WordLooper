@@ -7,19 +7,20 @@
 //
 
 import Cocoa
-
-// For myself
-//let kClientId = "665124887696-ed9m78r2f786dpubqgsuoul728hac9v8.apps.googleusercontent.com"
-//let kClientSecret = "IXInCCghSLe63OMRar6PuSyU"
-//let kSuccessURLString = "wordlooper://"
-//let kWordLooperFileID = "0B6OTgkf6NJ0jTm5EWWlKOGRrRGM"
-//let kLocalGoogleDriveCachedFilePath = "\(NSHomeDirectory())/Sites/wordlooper.json"
-
-
-// For Tuyen
+let kSuccessURLString = "wordlooper://"
 let kClientId = "665124887696-ed9m78r2f786dpubqgsuoul728hac9v8.apps.googleusercontent.com"
 let kClientSecret = "IXInCCghSLe63OMRar6PuSyU"
-let kSuccessURLString = "wordlooper://"
+#if TUYEN
+// For Tuyen
 let kWordLooperFileID = "0B6OTgkf6NJ0jblcteGpEdmdvTzg"
 let kLocalGoogleDriveCachedFolder = "\(NSHomeDirectory())/Documents/WordLooper/Tuyen/"
 let kLocalGoogleDriveCachedFilePath =  kLocalGoogleDriveCachedFolder + "wordlooper.json"
+#else
+// For myself
+let kWordLooperFileID = "0B6OTgkf6NJ0jTm5EWWlKOGRrRGM"
+let kLocalGoogleDriveCachedFilePath = "\(NSHomeDirectory())/Sites/wordlooper.json"
+#endif
+
+
+
+

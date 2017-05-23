@@ -131,6 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         do {
+            #if TUYEN
             let boolPointer = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1);
             boolPointer.initialize(to: true);
             
@@ -143,7 +144,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     print(err);
                 }
             }
-  
+                #endif
             
             // Insert code here to initialize your application
             if let tmp = UserDefaults.standard.object(forKey: AppDelegate.kUserDict) as? NSDictionary {
