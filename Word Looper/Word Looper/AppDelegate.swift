@@ -90,15 +90,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
             }
             var cnt = -1;
+            var isExisted = false;
             for tmp in self.words! {
                 cnt += 1;
                 if (tmp["word"] as! String) ==  (wordDict["word"] as! String) {
+                    isExisted = true
                     break;
                 }
+                
             }
-            if(cnt > 0) {
+            if(isExisted) {
                 self.words?.remove(at: cnt);
                 self.words?.insert(wordDict, at: cnt)
+            } else {
+                self.words?.append(wordDict)
             }
             
             
@@ -126,6 +131,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         do {
+            let boolPointer = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1);
+            boolPointer.initialize(to: true);
+            
+            let fileManager = FileManager.default;
+            if !fileManager.fileExists(atPath: kLocalGoogleDriveCachedFolder, isDirectory:boolPointer) {
+                let url = URL(fileURLWithPath: kLocalGoogleDriveCachedFolder);
+                 do {
+                    try fileManager.createDirectory(at:url , withIntermediateDirectories: true, attributes: nil)
+                } catch let err as NSError {
+                    print(err);
+                }
+            }
+  
+            
             // Insert code here to initialize your application
             if let tmp = UserDefaults.standard.object(forKey: AppDelegate.kUserDict) as? NSDictionary {
                 if let words = tmp[AppDelegate.kUserDictWords] as? [NSDictionary] {

@@ -125,17 +125,47 @@ export default class MainView extends Component {
     return encoding ? body.toString(encoding) : body;
   }
 
+  cachedWord = (word) => {
+    var cached = null;
+    if (this.state.cached_words) {
+      for (var i = 0; i < this.state.cached_words.length; i++) {
+        var wordI = this.state.cached_words[i];
+        if (wordI["word"] == word) {
+          cached = wordI;
+          break;
+        }
+      }
+    }
+    return cached;
+  };
 
   playCurentWord = () => {
     var word = this.state.word;
-    UtilsView.fecthAudioLinkForWord(word, true);
+    if (Platform.OS == 'ios') {
+      UtilsView.fecthAudioLinkForWord(word, true);
+    } else {
+      // handle for android here
+      var cached = this.cachedWord(word);
+      if (cached != null) {
+        this.playSoundFromCachedWord(cached);
+      }
+    }
   };
 
   onNewWordEndEditing = () => {
     if (this.state.word.indexOf('https') == 0) {
       this.setState({ word_uri: this.state.word });
     } else {
-      UtilsView.fecthAudioLinkForWord(this.state.word, true);
+      if (Platform.OS == 'ios') {
+        UtilsView.fecthAudioLinkForWord(this.state.word, true);
+      } else {
+        // handle for android here
+        var cached = this.cachedWord(this.state.word);
+        if (cached != null) {
+          this.playSoundFromCachedWord(cached);
+        }
+      }
+
     }
 
   };
@@ -188,16 +218,11 @@ export default class MainView extends Component {
     this.loadDefinition(this.state.word, LOOP_TYPE.image);
     console.log('image');
   };
-
-
-  onSignInPress = () => {
-
-  };
+ 
 
   onDownload = () => {
-
-
-    this.onSignInPress();
+    // handle here
+    this.updateFileUrlIfNeeded();
   };
 
 
@@ -214,7 +239,7 @@ export default class MainView extends Component {
   };
 
   playSoundFromCachedWord = (word) => {
-    var link = word.audio; 
+    var link = word.audio;
     if (link && link != '') {
       RNAudioStreamer.setUrl(link);
       RNAudioStreamer.play();
@@ -290,15 +315,16 @@ export default class MainView extends Component {
     this.state.word = word;
 
     this.loadDefinition(word, this.state.loop_mode);
-
-    // if (Platform.OS == 'ios') {
-    //   UtilsView.fecthAudioLinkForWord(word, true);
-    // } else {
-   
     if (data.audio != null && data.audio.length != '') {
       this.playSoundFromCachedWord(data);
+    } else {
+      if (Platform.OS == 'ios') {
+        UtilsView.fecthAudioLinkForWord(word, true);
+      } else {
+        // handle for android here
+        // do nothing
+      }
     }
-    // }
   }
 
   loopBack = () => {
@@ -328,6 +354,7 @@ export default class MainView extends Component {
     this.setState({ current_play_index: 0 });
     AsyncStorage.setItem(STORAGE_CURRENT_PLAY_INDEX, '0', (err) => {
       if (err) {
+        alert('Opp! Cannot fetch the latest words from MAC server!')
         // console.warn(JSON.stringify(err));
       }
     });
@@ -346,14 +373,14 @@ export default class MainView extends Component {
           }
         })
         .catch((error) => {
-          console.error(error);
+          // console.warn(error);
         });
     }
   };
 
   updateFileUrlIfNeeded = () => {
     var host = this.state.host;
-    var user = this.state.username;
+    var user = this.state.username; 
     if (host && user && host != '' && user != '') {
 
       AsyncStorage.setItem(STORAGE_HOST, host, (err) => {
@@ -367,8 +394,8 @@ export default class MainView extends Component {
           // console.warn(JSON.stringify(err));
         }
       });
-
       var fileUrl = 'http://' + host + '/~' + user + '/wordlooper.json';
+     
       this.setState({ file_url: fileUrl });
       this.downloadFileIfAvailable(fileUrl);
     }
@@ -457,6 +484,11 @@ export default class MainView extends Component {
               backgroundColor='#F00'
             >
             </Button>
+ 
+          </View>
+            <View style={{left : 50
+              }}>
+         
 
             <Button
               ref={LOOP_MODE_IMAGE_REF}
@@ -501,22 +533,33 @@ export default class MainView extends Component {
           />
         </View>
         <View style={styles.bottomToolbarContainer}>
-          <Button style={{
-            backgroundColor: 'red', marginLeft: 4, width: 30, height
+          <View style={{
+            marginLeft: 4,
+            width: 40,
+            height
             : 30
-          }} title='<'
-            color="black"
+          }}>
+            <Button title='<'
+              color={this.state.direction == 0 ? "blue" : "gray"}
+              width
+              onPress={this.loopBack}
+            />
+          </View>
 
-            onPress={this.loopBack}
-          />
-          <Button style={{
-            backgroundColor: 'red', marginLeft: 0, width: 30, height
+          <View style={{
+            marginLeft: 4,
+            width: 40,
+            height
             : 30
-          }} title='>'
-            color="black"
+          }}>
+            <Button title='>'
+              color={this.state.direction == 1 ? "blue" : "gray"}
 
-            onPress={this.loopForward}
-          />
+              onPress={this.loopForward}
+            />
+          </View>
+
+
           <TouchableOpacity
             onPress={this.onResetBtn}
             style={{
@@ -528,10 +571,7 @@ export default class MainView extends Component {
 
 
           <View
-            style={{
-              position: 'absolute', right: 60, padding: 0,
-              width: 70, height: 40, alignContent: 'center'
-            }}>
+            style={styles.checkBoxContainer}>
             <CheckBox
               label='Loop'
               checked={this.state.should_loop_cached_words}
@@ -643,11 +683,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     width: 200,
     // height: 40,
-    left: 0,
-    right: 20,
+    left: 8,
+    // right: 20,
     alignItems: 'center'
   },
-  upload_btn: { position: 'absolute', right: 50, margin: 5, width: 30, height: 40, alignItems: 'center' },
+  upload_btn: {opacity : 0.0 , position: 'absolute', right: 50, margin: 5, width: 30, height: 40, alignItems: 'center' },
   download_btn: { position: 'absolute', right: 10, margin: 5, width: 30, height: 40, alignItems: 'center' },
   loop_mode_btn: { width: 50, height: 30, backgroundColor: 'blue', alignItems: 'center' },
 
@@ -662,14 +702,14 @@ const styles = StyleSheet.create({
 
   }
   , fileServerContainer: {
-    height: (Platform.OS == 'ios') ? 0 : 40,
+    height: 40 , //(Platform.OS == 'ios') ? 0 : 40,
     flexDirection: 'row',
     marginBottom: 0,
     marginRight: 0,
     marginLeft: 0,
     backgroundColor: '#F5FCFF',
     overflow: 'hidden',
-    opacity: (Platform.OS == 'ios') ? 0 : 1
+    opacity: 1  // (Platform.OS == 'ios') ? 0 : 1
 
   }, user_txt: {
     height: 40,
@@ -682,7 +722,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 8,
     borderWidth: 1,
-  },
+  }, checkBoxContainer: {
+    position: 'absolute', right: 60, padding: 0,
+    width: 70, height: 40, alignContent: 'center'
+  }
 });
 
 
