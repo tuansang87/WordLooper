@@ -12,22 +12,27 @@ typealias CallBackClosure = (Dictionary<String, Any>) -> Void
 class CachedWordViewCell: NSView {
 
     @IBOutlet weak var lblWord: NSTextField!
-   
+   @IBOutlet weak var btnIgnore: NSButton!
+    
     var mTag :Int = 0
-    var mWord : Dictionary<String , String>? = nil
+    var mWord : Dictionary<String , Any>? = nil
     var deleteWordCallback: CallBackClosure? = nil
     var loadWordCallback: CallBackClosure? = nil
+    var ignoreCallBack: CallBackClosure? = nil
     
-    func setUpView(data : Dictionary<String , String> ,
+    func setUpView(data : Dictionary<String , Any> ,
                    tag : Int,
                    loadWordCallback : @escaping CallBackClosure ,
-                   deleteWordCallback : @escaping CallBackClosure) {
+                   deleteWordCallback : @escaping CallBackClosure,
+                   ignoreCallBack : @escaping CallBackClosure
+                   ) {
         self.mTag = tag
         self.mWord = data
         self.deleteWordCallback = deleteWordCallback
         self.loadWordCallback = loadWordCallback
+        self.ignoreCallBack = ignoreCallBack
         
-        if let text = self.mWord?["word"] {
+        if let text = self.mWord?["word"] as? String{
             self.lblWord.stringValue = text
         }
         
@@ -35,6 +40,9 @@ class CachedWordViewCell: NSView {
             self.lblWord?.textColor = NSColor.blue
         } else {
             self.lblWord?.textColor = NSColor.black
+        }
+        if let currentState = self.mWord?["ignore"] as? Bool {
+            self.btnIgnore.state = currentState ? 1 : 0
         }
         
     }
@@ -49,6 +57,15 @@ class CachedWordViewCell: NSView {
     @IBAction func didClickOnWholeCellBtn(_ sender: Any) {
         if let callback = self.loadWordCallback {
             callback(["tag" :self.mTag , "word" : self.lblWord.stringValue ])
+        }
+    }
+    
+    @IBAction func didClickOnIgnoreBtn(_ sender: Any) {
+        let currentState = self.btnIgnore.state
+        
+        self.mWord?["ignore"] = currentState == 1;
+        if let callback = self.ignoreCallBack {
+            callback(["tag" :self.mTag , "ignore" : currentState == 1])
         }
     }
 }

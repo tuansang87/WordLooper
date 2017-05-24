@@ -11,7 +11,7 @@ import Cocoa
 class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
     @IBOutlet weak var tbvContent: NSOutlineView!
     var arrOutlineItems : [Dictionary<String , Int>] = []
-    var arrWords : [Dictionary<String , String>]? = nil
+    var arrWords : [Dictionary<String , Any>]? = nil
     var loadWordCallback : CallBackClosure? = nil
      var dismissCallback : CallBackClosure? = nil
     
@@ -30,7 +30,7 @@ class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
         }
     }
     
-    func setUpView(data : [Dictionary<String,String>] ,
+    func setUpView(data : [Dictionary<String,Any>] ,
                    loadWordCallback: @escaping CallBackClosure ,
                    dismissCallback: @escaping CallBackClosure) {
         self.arrWords = data
@@ -130,6 +130,16 @@ class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
                                             appDelegate.words?.append(word as NSDictionary)
                                         }
                                         strongSelf.reloadData()
+                                    }
+                                }
+                                
+                                
+                            }, ignoreCallBack: {[weak self] (resp) -> Void in
+                                if let strongSelf = self {
+                                    if let row_index = resp["tag"] as? Int , let ignore = resp["ignore"] as? Bool {
+                                        if var data = strongSelf.arrWords?[row_index] {
+                                            appDelegate.addWord(word: data["word"] as! String, imagePath: data["image"] as? String, own_definition: data["own_definition"] as? String, audio: data["audio"] as? String, ignore: ignore)
+                                        }
                                     }
                                 }
                                 

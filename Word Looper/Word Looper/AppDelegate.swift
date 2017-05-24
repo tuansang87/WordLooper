@@ -62,19 +62,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return uniqueObjs
     }
     
-    func addWord(word : String , imagePath: String? , own_definition : String? , audio : String?){
+    func addWord(word : String , imagePath: String? ,
+                 own_definition : String? ,
+                 audio : String?,
+                 ignore : Bool
+        ){
         if words != nil {
             let wordDict = NSMutableDictionary();
             if word.characters.count > 0 {
                 wordDict["word"] = word.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).lowercased()
             }
          
+            wordDict["ignore"] = ignore
+          
             if let audio = audio {
                 if audio.characters.count > 0 {
                     wordDict["audio"] = audio
                 }
             }
-          
             
             
             if let imagePath = imagePath {

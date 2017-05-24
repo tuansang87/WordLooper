@@ -136,7 +136,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     
     
     
-    func loadDefinition(word : Dictionary<String , String>) {
+    func loadDefinition(word : Dictionary<String , Any>) {
         if word.keys.count > 0 {
             self.showIndicator()
             
@@ -158,7 +158,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
             // BING
             
             let vocab = word["word"]!
-            self.txtWord.stringValue = vocab
+            self.txtWord.stringValue = vocab as! String
             let isEng2VN = self.serchInLanguageControl.selectedSegment == 1;
             let searchByImage = appDelegate.searchMode == .image;
             if isEng2VN && !searchByImage {
@@ -173,7 +173,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
             } else {
                 var text  = "define \(word["word"]!)"
                 text = text.replacingOccurrences(of: " ", with: "+")
-                if let imgPath = word["image"] {
+                if let imgPath = word["image"] as? String{
                     self.btnImgPath.state = 1
                     mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state == 1 ? 50 : 30
                     self.txtImagePath.isHidden = self.btnImgPath.state == 0
@@ -212,7 +212,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                    
                 }
                 
-                if let own_defi = word["own_definition"] {
+                if let own_defi = word["own_definition"] as? String {
                     self.txtSelfDefinition.string = own_defi
                 } else {
                     self.txtSelfDefinition.string = EMPTY_STR
@@ -318,21 +318,32 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
             // load here
             
             let word = words[idx]
+            if let shouldIgnore = word["ignore"] as? Bool {
+                if shouldIgnore == true {
+                    self.loadCachedWord();
+                    return;
+                }
+            }
             if let key = word["word"] as? String {
                 self.txtWord.stringValue = key
                 if let ownDefinition = word["own_definition"] as? String {
                     self.txtSelfDefinition.string = ownDefinition
                 } else {
-                    self.loadDefinition(word:word as! Dictionary<String, String>)
+                    self.loadDefinition(word:word as! Dictionary<String, Any>)
                     
                 }
                 
                 let image = word["image"] as? String;
                 let own_definition = word["own_definition"] as? String;
-              
+                var ignore = false
+                
+                if let tmp = word["ignore"] as? Bool {
+                    ignore = tmp
+                }
+                
                 self.fecthAudioFileForWord(word: word["word"] as! String) { (link , linkWord) in
                    if (linkWord == key) {
-                        appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link);
+                        appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link , ignore: ignore);
                         
                         
                     }
@@ -411,7 +422,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     }
     
     @IBAction func didClickOnSaveWordBtn(_ sender: NSButton) {
-        appDelegate.addWord(word: self.txtWord.stringValue, imagePath: self.txtImagePath.stringValue, own_definition: self.txtSelfDefinition.string , audio: nil);
+        appDelegate.addWord(word: self.txtWord.stringValue, imagePath: self.txtImagePath.stringValue, own_definition: self.txtSelfDefinition.string , audio: nil , ignore: false);
     }
     
     
@@ -482,22 +493,30 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
             }
         }
         
-        self.cachedView?.setUpView(data: appDelegate.words! as! [Dictionary<String, String>], loadWordCallback: {[weak self] (resp) in
+        self.cachedView?.setUpView(data: appDelegate.words! as! [Dictionary<String, Any>], loadWordCallback: {[weak self] (resp) in
             if let strongSelf = self {
                 if let currentLoopIdx = resp["row_index"] as? Int {
                     appDelegate.currentLoopIdx = currentLoopIdx
                 }
                 
-                if let word = resp["word"] as? Dictionary<String , String> {
+                if let word = resp["word"] as? Dictionary<String , Any> {
                     strongSelf.loadDefinition(word:word)
-                    if let key = word["word"] {
-                        let image = word["image"];
-                        let own_definition = word["own_definition"];
+                    if let key = word["word"] as? String {
+                        let image = word["image"] as? String ;
+                        let own_definition = word["own_definition"] as? String ;
+                        var ignore = false
+                        
+                        if let tmp = word["ignore"] as? Bool {
+                            ignore = tmp
+                        }
+                        
                         strongSelf.lastPlayWord = nil
                         strongSelf.fecthAudioFileForWord(word: key) { (link , linkWord) in
                            
                             if (linkWord == key) {
-                                appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link);
+                                
+                                
+                                appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link , ignore: ignore);
                                 
                                 
                             }
