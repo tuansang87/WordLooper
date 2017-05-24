@@ -103,7 +103,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.words?.remove(at: cnt);
                 self.words?.insert(wordDict, at: cnt)
             } else {
-                self.words?.append(wordDict)
+                self.words?.insert(wordDict, at: 0)
             }
             
             
