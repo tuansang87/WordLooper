@@ -106,11 +106,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             if(isExisted) {
                 self.words?.remove(at: cnt);
+            } else {
+                cnt = 0;
+            }
+            if(!ignore) {
                 self.words?.insert(wordDict, at: cnt)
             } else {
-                self.words?.insert(wordDict, at: 0)
+                self.words?.append(wordDict)
             }
-            
             
             
          
