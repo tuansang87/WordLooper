@@ -22,14 +22,14 @@
 		144C5D6E1EB0774C00ACCBF8 /* GTLRDriveQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6A1EB0774C00ACCBF8 /* GTLRDriveQuery.m */; };
 		144C5D6F1EB0774C00ACCBF8 /* GTLRDriveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */; };
 		14A7F4421EADAD6A006B6A1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */; };
-		14A7F4441EADAD6A006B6A1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* ViewController.swift */; };
+		14A7F4441EADAD6A006B6A1D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* HomeViewController.swift */; };
 		14A7F4461EADAD6A006B6A1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4451EADAD6A006B6A1D /* Assets.xcassets */; };
 		14A7F4491EADAD6A006B6A1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4471EADAD6A006B6A1D /* Main.storyboard */; };
 		14D0DAE41ED3E70B00F971AA /* GTLRDriveQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6A1EB0774C00ACCBF8 /* GTLRDriveQuery.m */; };
 		14D0DAE51ED3E70B00F971AA /* GTLRDriveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */; };
 		14D0DAE61ED3E70B00F971AA /* GTLRDriveObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D681EB0774C00ACCBF8 /* GTLRDriveObjects.m */; };
 		14D0DAE71ED3E70B00F971AA /* CachedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658C11EAEF44D006EE1B4 /* CachedWordView.swift */; };
-		14D0DAE81ED3E70B00F971AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* ViewController.swift */; };
+		14D0DAE81ED3E70B00F971AA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* HomeViewController.swift */; };
 		14D0DAE91ED3E70B00F971AA /* CachedWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */; };
 		14D0DAEA1ED3E70B00F971AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */; };
 		14D0DAEB1ED3E70B00F971AA /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144C5CC61EB06ECD00ACCBF8 /* Macro.swift */; };
@@ -164,7 +164,7 @@
 		144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLRDriveService.m; sourceTree = "<group>"; };
 		14A7F43E1EADAD6A006B6A1D /* WordLooper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordLooper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		14A7F4431EADAD6A006B6A1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		14A7F4431EADAD6A006B6A1D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		14A7F4451EADAD6A006B6A1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14A7F4481EADAD6A006B6A1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14A7F44A1EADAD6A006B6A1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */,
-				14A7F4431EADAD6A006B6A1D /* ViewController.swift */,
+				14A7F4431EADAD6A006B6A1D /* HomeViewController.swift */,
 				144C5CC61EB06ECD00ACCBF8 /* Macro.swift */,
 				141658BE1EAEF415006EE1B4 /* View */,
 				14A7F4451EADAD6A006B6A1D /* Assets.xcassets */,
@@ -485,7 +485,7 @@
 				144C5D6F1EB0774C00ACCBF8 /* GTLRDriveService.m in Sources */,
 				144C5D6D1EB0774C00ACCBF8 /* GTLRDriveObjects.m in Sources */,
 				141658C21EAEF44D006EE1B4 /* CachedWordView.swift in Sources */,
-				14A7F4441EADAD6A006B6A1D /* ViewController.swift in Sources */,
+				14A7F4441EADAD6A006B6A1D /* HomeViewController.swift in Sources */,
 				141658CC1EAEF7F4006EE1B4 /* CachedWordViewCell.swift in Sources */,
 				14A7F4421EADAD6A006B6A1D /* AppDelegate.swift in Sources */,
 				144C5CC71EB06ECD00ACCBF8 /* Macro.swift in Sources */,
@@ -501,7 +501,7 @@
 				14D0DAE51ED3E70B00F971AA /* GTLRDriveService.m in Sources */,
 				14D0DAE61ED3E70B00F971AA /* GTLRDriveObjects.m in Sources */,
 				14D0DAE71ED3E70B00F971AA /* CachedWordView.swift in Sources */,
-				14D0DAE81ED3E70B00F971AA /* ViewController.swift in Sources */,
+				14D0DAE81ED3E70B00F971AA /* HomeViewController.swift in Sources */,
 				14D0DAE91ED3E70B00F971AA /* CachedWordViewCell.swift in Sources */,
 				14D0DAEA1ED3E70B00F971AA /* AppDelegate.swift in Sources */,
 				14D0DAEB1ED3E70B00F971AA /* Macro.swift in Sources */,

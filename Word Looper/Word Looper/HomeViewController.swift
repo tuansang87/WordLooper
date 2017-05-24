@@ -20,7 +20,7 @@ let EMPTY_STR = ""
 
 
 
-class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate , NSTextDelegate {
+class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate , NSTextDelegate {
     
     @IBOutlet weak var txtWord: NSTextField!
     @IBOutlet weak var searchInModeSegmentControl: NSSegmentedControl!
@@ -205,9 +205,11 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
                     self.searchInModeSegmentControl.selectSegment(withTag: selectedIdx)
                     
                     
-                    let url = URL(string:queri)!
-                    let request = URLRequest(url:url)
-                    self.mWebSearch.load(request)
+                    if let url = URL(string:queri) {
+                        let request = URLRequest(url:url)
+                        self.mWebSearch.load(request)
+                    }
+                   
                 }
                 
                 if let own_defi = word["own_definition"] {
@@ -466,7 +468,7 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
     
     
     @IBAction func didClickOnCachedWords(sender : NSButton) {
-        self.stopLoop()
+//        self.stopLoop()
         if let cachedView = self.cachedView {
             cachedView.isHidden = false
         } else {
@@ -540,7 +542,7 @@ class ViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate
     }
     
 }
-private typealias TableViewDataSource = ViewController
+private typealias TableViewDataSource = HomeViewController
 extension TableViewDataSource  {
     
     func textDidBeginEditing(_ obj: Notification) {
@@ -607,7 +609,7 @@ extension TableViewDataSource  {
 }
 
 
-typealias ViewControllerWebDelegate = ViewController
+typealias ViewControllerWebDelegate = HomeViewController
 
 extension ViewControllerWebDelegate : WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void){
@@ -625,7 +627,7 @@ extension ViewControllerWebDelegate : WKNavigationDelegate {
 
 
 
-typealias ViewControllerGoogleDriveAPIs = ViewController
+typealias ViewControllerGoogleDriveAPIs = HomeViewController
 extension ViewControllerGoogleDriveAPIs {
     
     func downLoadDriveData(){
@@ -699,7 +701,7 @@ extension ViewControllerGoogleDriveAPIs {
     
     
 }
-typealias AudioFinding = ViewController
+typealias AudioFinding = HomeViewController
 
 extension AudioFinding {
     
@@ -784,22 +786,24 @@ extension AudioFinding {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         var text  = word
         text = text.replacingOccurrences(of: " ", with: "+")
-        
-        let dataTask = session.dataTask(with: URL(string: "http://www.dictionary.com/browse/\(text)?s=t")!) { (data, resp, err) in
-            guard let data = data  else {
-                return
+        if let url = URL(string: "http://www.dictionary.com/browse/\(text)?s=t") {
+            let dataTask = session.dataTask(with: url) { (data, resp, err) in
+                guard let data = data  else {
+                    return
+                }
+                
+                if let returnData = String(data: data, encoding: .utf8) {
+                    let link = self.getAutioFileFromSource(src: returnData as NSString)
+                    callback(link , text)
+                }
+                
+                
+                
             }
             
-            if let returnData = String(data: data, encoding: .utf8) {
-                let link = self.getAutioFileFromSource(src: returnData as NSString)
-                callback(link , text)
-            }
-            
-            
-            
+            dataTask.resume()
         }
         
-        dataTask.resume()
         
         
     }
