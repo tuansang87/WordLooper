@@ -42,6 +42,7 @@ const TRANSLATE_TYPE = { 'en': 1, 'vn': 2, 'other': 3 };
 const LOOP_DIRECTION_TYPE = { 'back': 0, 'forward': 1 };
 const LOOP_INTERVAL_TIME = 5000;
 
+const STORAGE_CACHED_WORDS = 'cached_words'
 const STORAGE_LOOP_MODE = 'loop_mode'
 const STORAGE_CURRENT_PLAY_INDEX = 'current_play_index'
 const STORAGE_LOOP_DIRECTION = 'direction'
@@ -52,9 +53,30 @@ var lastPlayWord = null;
 var myTimer = null;
 
 export default class MainView extends Component {
+  componentWillUnmount() {
+    // console.warn('componentWillUnmount');
+    if (this.state.cached_words != null
+      && typeof (this.state.cached_words) != 'undefined') {
+      AsyncStorage.setItem(STORAGE_CACHED_WORDS, JSON.stringify(this.state.cached_words), (err) => {
+        if (err) {
+          // console.warn(JSON.stringify(err));
+        }
+      });
+    }
+
+  };
+
   componentDidMount() {
 
     this.setState({ translate_mode: TRANSLATE_TYPE.en });
+    AsyncStorage.getItem(STORAGE_CACHED_WORDS, (err, result) => {
+      if (result != null && typeof (result) != 'undefined') {
+        let words = JSON.parse(result);
+        this.setState({ cached_words: words });
+      } else {
+        this.setState({ cached_words: [] });
+      } 
+    });
 
     AsyncStorage.getItem(STORAGE_LOOP_MODE, (err, result) => {
       this.setState({ loop_mode: (result != null ? result : LOOP_TYPE.all) });
@@ -273,6 +295,7 @@ export default class MainView extends Component {
   };
 
   onLoadCachedWordsCallback = (event) => {
+    /*
     let data = event.nativeEvent;
     let words = data.words;
     // console.log(JSON.stringify(words));
@@ -281,6 +304,7 @@ export default class MainView extends Component {
     if (words.length) {
       this.doLoopForCacedWords();
     }
+    */
   };
 
   doLoopForCacedWords = () => {
@@ -389,6 +413,12 @@ export default class MainView extends Component {
         .then((responseJson) => {
           var words = responseJson.words;
           this.setState({ cached_words: words });
+          AsyncStorage.setItem(STORAGE_CACHED_WORDS, JSON.stringify(words), (err) => {
+            if (err) {
+              // console.warn(JSON.stringify(err));
+            }
+          });
+
           if (words.length) {
             this.doLoopForCacedWords();
           }
