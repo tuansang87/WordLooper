@@ -260,81 +260,67 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         return true
     }
-  
-}
-
-
-var kOpenMenu = "kOpenMenu"
-var kOpenProfile = "kOpenProfile"
-var kOpenSetting = "kOpenSetting"
-var kOpenMyHexseeBrowser = "kOpenMyHexseeBrowser"
-var kOpenHome = "kOpenHome"
-var kOpenUserFriends = "kOpenUserFriends"
-var kOPenPinFeeds = "kOPenPinFeeds"
-var kSignOut = "kSignOut"
-var kZoomIn = "kZoomIn"
-var kZoomOut = "kZoomOut"
-var kZoomReset = "kZoomReset"
-
-var HOTKEYCODE_QUICK_MENU = UInt16(46) ; //cmd+M
-var  HOTKEYCODE_QUICK_SETTING = UInt16(43);//cmd+,
-var  HOTKEYCODE_QUICK_PROFILE =  UInt16(35); //cmd+P
-var  HOTKEYCODE_QUICK_LAST_VISITED_PAGE_CHANNEL =  UInt16(37); //cmd+L
-var  HOTKEYCODE_QUICK_HOME =  UInt16(4); //cmd+H
-var  HOTKEYCODE_QUICK_FRIENDS_LIST = UInt16( 32); //cmd+U
-var  HOTKEYCODE_QUICK_FEEDS =  UInt16(3); //cmd+F
-var  HOTKEYCODE_QUICK_SIGN_OUT =  UInt16(1); //cmd+S
-var  HOTKEYCODE_QUICK_KILL_APP =  UInt16(12); //cmd+Q
-
-var  HOTKEYCODE_QUICK_ZOOM_IN =  UInt16(24); //cmd +
-var  HOTKEYCODE_QUICK_ZOOM_OUT =  UInt16(27); //cmd +
-var  HOTKEYCODE_QUICK_RESET_ZOOM =  UInt16(29); //cmd + 0
-
-class CustomWindow: NSWindow {
-    override func keyDown(with event: NSEvent) {
  
+    class func handleHotkey(with event: NSEvent) {
         let keycode = event.keyCode
         
-        if(keycode == HOTKEYCODE_QUICK_MENU) {
+        if(keycode == HOTKEYCODE_QUICK_RESET) {
             // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kOpenMenu), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_PROFILE) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kHotKeyReset)
+        } else if(keycode == HOTKEYCODE_QUICK_GO_NEXT) {
             // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kOpenProfile), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_SETTING) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kGoNextWord)
+        } else if(keycode == HOTKEYCODE_QUICK_GO_BACK) {
             // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kOpenSetting), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_LAST_VISITED_PAGE_CHANNEL) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kGoPreviousWord)
+        } else if(keycode == HOTKEYCODE_QUICK_AUDIO) {
             // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kOpenMyHexseeBrowser), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kPlayCurrentWord)
+        } else if(keycode == HOTKEYCODE_QUICK_GO_CACHED_WORDS) {
+            // handleh here
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kOpenCachedWords)
+        } else if(keycode == HOTKEYCODE_QUICK_SAVE_WORD) {
+            // handleh here
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kSaveWord)
         } else if(keycode == HOTKEYCODE_QUICK_HOME) {
             // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kOpenHome), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_FRIENDS_LIST) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kOpenHome)
+        } else if(keycode == HOTKEYCODE_QUICK_LOOP) {
             // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kOpenUserFriends), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_FEEDS) {
-            // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kOPenPinFeeds), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_SIGN_OUT) {
-            // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kSignOut), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_KILL_APP) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kLoop)
+        }
+            
+        else if(keycode == HOTKEYCODE_QUICK_KILL_APP) {
             // handleh here
             exit(1);
         }
-  
-        else if(keycode == HOTKEYCODE_QUICK_ZOOM_IN) {
-            // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kZoomIn), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_ZOOM_OUT) {
-            // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kZoomOut), object: nil)
-        } else if(keycode == HOTKEYCODE_QUICK_RESET_ZOOM) {
-            // handleh here
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kZoomReset), object: nil)
-        }
-        
+    }
+}
+
+var HOTKEYCODE_QUICK_COMMAND_NOTI = "HOTKEYCODE_QUICK_COMMAND_NOTI"
+var kHotKeyReset = "kHotKeyReset"
+var kGoNextWord = "kGoNextWord"
+var kGoPreviousWord = "kGoPreviousWord"
+var kPlayCurrentWord = "kPlayCurrentWord"
+var kOpenCachedWords = "kOpenCachedWords"
+var kSaveWord = "kSaveWord"
+var kOpenHome = "kOpenHome"
+var kLoop = "kLoop"
+
+var HOTKEYCODE_QUICK_HOME = UInt16(4) ; //ctrl + H
+var HOTKEYCODE_QUICK_SAVE_WORD =  UInt16(1) ; //ctrl + S
+var HOTKEYCODE_QUICK_RESET = UInt16(15) ; //ctrl + R
+var HOTKEYCODE_QUICK_GO_NEXT =  UInt16(47); //ctrl + >
+var HOTKEYCODE_QUICK_GO_BACK = UInt16( 43); //ctrl + <
+
+var HOTKEYCODE_QUICK_AUDIO =  UInt16(0); //ctrl+A
+var HOTKEYCODE_QUICK_GO_CACHED_WORDS = UInt16( 8); //ctrl + C
+var HOTKEYCODE_QUICK_LOOP = UInt16(37); //ctrl + L
+var HOTKEYCODE_QUICK_KILL_APP =  UInt16(12); //cmd+Q
+
+class CustomWindow: NSWindow {
+    override func keyDown(with event: NSEvent) {
+        AppDelegate.handleHotkey(with: event);
     }
 }
 

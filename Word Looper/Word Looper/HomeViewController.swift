@@ -20,7 +20,7 @@ let EMPTY_STR = ""
 
 
 
-class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate , NSTextDelegate {
+class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDelegate , NSTextDelegate , NSControlTextEditingDelegate {
     
     @IBOutlet weak var txtWord: NSTextField!
     @IBOutlet weak var searchInModeSegmentControl: NSSegmentedControl!
@@ -75,6 +75,10 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     var cachedView : CachedWordView? = nil
     var loopTimmer : Timer? = nil
     
+    deinit {
+        NotificationCenter.default.removeObserver(self);
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var frame = self.view.frame
@@ -92,8 +96,9 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         // Do any additional setup after loading the view.
         self.mWebSearchTopLayoutConstaint.constant = 30.0
         self.txtImagePath.isHidden = true
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(hotkey(noti:)), name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: nil)
     }
+    
     
     override func viewDidAppear() {
         
@@ -421,12 +426,12 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         self.btnLoop.state = lastState
     }
     
-    @IBAction func didClickOnSaveWordBtn(_ sender: NSButton) {
+    @IBAction func didClickOnSaveWordBtn(_ sender: NSButton?) {
         appDelegate.addWord(word: self.txtWord.stringValue, imagePath: self.txtImagePath.stringValue, own_definition: self.txtSelfDefinition.string , audio: nil , ignore: false);
     }
     
     
-    @IBAction func didClickOnResetBtn(_ sender: NSButton) {
+    @IBAction func didClickOnResetBtn(_ sender: NSButton?) {
         self.stopLoop()
         appDelegate.currentLoopIdx = 0
         self.btnLoop.state = 1
@@ -441,7 +446,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         
     }
     
-    @IBAction func goNextCachedWord(_ sender: NSButton) {
+    @IBAction func goNextCachedWord(_ sender: NSButton?) {
         appDelegate.loopDirection = true
         let delayTime = DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
@@ -459,7 +464,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         self.didClickOnLoopBtn(self.btnLoop)
     }
     
-    @IBAction func goPreviousCachedWord(_ sender: NSButton) {
+    @IBAction func goPreviousCachedWord(_ sender: NSButton?) {
         appDelegate.loopDirection = false
         let delayTime = DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
@@ -478,7 +483,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     }
     
     
-    @IBAction func didClickOnCachedWords(sender : NSButton) {
+    @IBAction func didClickOnCachedWords(_ sender : NSButton?) {
 //        self.stopLoop()
         if let cachedView = self.cachedView {
             cachedView.isHidden = false
@@ -550,7 +555,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         self.uploadDataToDrive()
     }
     
-    @IBAction func didClickOnAudioBtn(_ sender : NSButton?) {
+    @IBAction func didClickOnAudioBtn(_ sender : Any?) {
         self.lastPlayWord = nil
         if self.txtWord.stringValue.characters.count > 0{
             self.fecthAudioFileForWord(word: self.txtWord.stringValue, callback: { (link , linkWord) in
@@ -830,4 +835,44 @@ extension AudioFinding {
     
 }
 
+typealias ControlText = HomeViewController
+
+extension ControlText {
+    func hotkey(noti : NSNotification?) {
+        if let noti = noti  {
+            if let obj = noti.object as? String {
+                
+                if obj == kHotKeyReset {
+                    self.didClickOnResetBtn(nil)
+                } else if obj == kGoNextWord {
+                    self.goNextCachedWord(nil)
+                } else if obj == kGoPreviousWord {
+                    self.goPreviousCachedWord(nil)
+                } else if obj == kPlayCurrentWord {
+                    self.didClickOnAudioBtn(nil)
+                } else if obj == kOpenCachedWords {
+                    self.didClickOnCachedWords(nil);
+                } else if obj == kOpenHome {
+                    self.cachedView?.isHidden = true
+                } else if obj == kSaveWord {
+                    self.didClickOnSaveWordBtn(nil);
+                } else if obj == kLoop {
+                    
+                    self.btnLoop.state = self.btnLoop.state == 1 ? 0 : 1
+                    self.didClickOnLoopBtn(self.btnLoop);
+                }
+            }
+        }
+    }
+
+    
+     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        if let event = NSApp.currentEvent {
+            AppDelegate.handleHotkey(with: event)
+        }
+        
+        self.txtWord .sendAction(commandSelector, to: nil);
+        return true;
+    }
+}
 

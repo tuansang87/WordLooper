@@ -691,12 +691,13 @@
                             </customView>
                             <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNe-Hf-tl3">
                                 <rect key="frame" x="65" y="564" width="383" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" drawsBackground="YES" id="Ldb-xL-hmS">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" focusRingType="none" drawsBackground="YES" id="Ldb-xL-hmS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
+                                    <action selector="didClickOnAudioBtn:" target="XfG-lQ-9wD" id="Yce-qN-3dV"/>
                                     <outlet property="delegate" destination="XfG-lQ-9wD" id="fyJ-0v-C7w"/>
                                 </connections>
                             </textField>
@@ -876,7 +877,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="didClickOnCachedWordsWithSender:" target="XfG-lQ-9wD" id="AF5-kA-osB"/>
+                                    <action selector="didClickOnCachedWords:" target="XfG-lQ-9wD" id="qbc-tp-zFu"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wll-S6-yCc">
