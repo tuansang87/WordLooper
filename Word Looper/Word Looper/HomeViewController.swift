@@ -878,7 +878,8 @@ extension ControlText {
     func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         if let event = NSApp.currentEvent {
             AppDelegate.handleHotkey(with: event)
-        } 
+        }
+        textView.perform(commandSelector, with: textView);
         return true;
     }
 }
