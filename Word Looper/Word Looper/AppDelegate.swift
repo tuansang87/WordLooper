@@ -140,19 +140,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         do {
             #if TUYEN
-            let boolPointer = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1);
-            boolPointer.initialize(to: true);
-            
-            let fileManager = FileManager.default;
-            if !fileManager.fileExists(atPath: kLocalGoogleDriveCachedFolder, isDirectory:boolPointer) {
-                let url = URL(fileURLWithPath: kLocalGoogleDriveCachedFolder);
-                 do {
-                    try fileManager.createDirectory(at:url , withIntermediateDirectories: true, attributes: nil)
-                } catch let err as NSError {
-                    print(err);
+                let boolPointer = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1);
+                boolPointer.initialize(to: true);
+                
+                let fileManager = FileManager.default;
+                if !fileManager.fileExists(atPath: kLocalGoogleDriveCachedFolder, isDirectory:boolPointer) {
+                    let url = URL(fileURLWithPath: kLocalGoogleDriveCachedFolder);
+                    do {
+                        try fileManager.createDirectory(at:url , withIntermediateDirectories: true, attributes: nil)
+                    } catch let err as NSError {
+                        print(err);
+                    }
                 }
-            }
-                #endif
+            #elseif SON
+                let boolPointer = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1);
+                boolPointer.initialize(to: true);
+                
+                let fileManager = FileManager.default;
+                if !fileManager.fileExists(atPath: kLocalGoogleDriveCachedFolder, isDirectory:boolPointer) {
+                    let url = URL(fileURLWithPath: kLocalGoogleDriveCachedFolder);
+                    do {
+                        try fileManager.createDirectory(at:url , withIntermediateDirectories: true, attributes: nil)
+                    } catch let err as NSError {
+                        print(err);
+                    }
+                }
+            #endif
             
             // Insert code here to initialize your application
             if let tmp = UserDefaults.standard.object(forKey: AppDelegate.kUserDict) as? NSDictionary {

@@ -11,6 +11,26 @@
 		141658C21EAEF44D006EE1B4 /* CachedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658C11EAEF44D006EE1B4 /* CachedWordView.swift */; };
 		141658CC1EAEF7F4006EE1B4 /* CachedWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */; };
 		141658CE1EAEF822006EE1B4 /* CachedWordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */; };
+		1430D8C91EE00F6C00BDF80F /* GTLRDriveQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6A1EB0774C00ACCBF8 /* GTLRDriveQuery.m */; };
+		1430D8CA1EE00F6C00BDF80F /* GTLRDriveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D6C1EB0774C00ACCBF8 /* GTLRDriveService.m */; };
+		1430D8CB1EE00F6C00BDF80F /* GTLRDriveObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 144C5D681EB0774C00ACCBF8 /* GTLRDriveObjects.m */; };
+		1430D8CC1EE00F6C00BDF80F /* CachedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658C11EAEF44D006EE1B4 /* CachedWordView.swift */; };
+		1430D8CD1EE00F6C00BDF80F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4431EADAD6A006B6A1D /* HomeViewController.swift */; };
+		1430D8CE1EE00F6C00BDF80F /* CachedWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */; };
+		1430D8CF1EE00F6C00BDF80F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F4411EADAD6A006B6A1D /* AppDelegate.swift */; };
+		1430D8D01EE00F6C00BDF80F /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144C5CC61EB06ECD00ACCBF8 /* Macro.swift */; };
+		1430D8D11EE00F6C00BDF80F /* DriveUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E39CA1EB20B510028A508 /* DriveUtils.m */; };
+		1430D8D31EE00F6C00BDF80F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA51EB06D3B00ACCBF8 /* Cocoa.framework */; };
+		1430D8D41EE00F6C00BDF80F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA31EB06D3300ACCBF8 /* SystemConfiguration.framework */; };
+		1430D8D51EE00F6C00BDF80F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5CA11EB06D2A00ACCBF8 /* Security.framework */; };
+		1430D8D61EE00F6C00BDF80F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1430D8D71EE00F6C00BDF80F /* GTLR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E63A031EB83A4100F1EDF8 /* GTLR.framework */; };
+		1430D8D91EE00F6C00BDF80F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4451EADAD6A006B6A1D /* Assets.xcassets */; };
+		1430D8DA1EE00F6C00BDF80F /* copy_mac.sh in Resources */ = {isa = PBXBuildFile; fileRef = 144B88321EB31162007F3340 /* copy_mac.sh */; };
+		1430D8DB1EE00F6C00BDF80F /* CachedWordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658BF1EAEF431006EE1B4 /* CachedWordView.xib */; };
+		1430D8DC1EE00F6C00BDF80F /* CachedWordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */; };
+		1430D8DD1EE00F6C00BDF80F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A7F4471EADAD6A006B6A1D /* Main.storyboard */; };
+		1430D8DF1EE00F6C00BDF80F /* GTLR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14E63A031EB83A4100F1EDF8 /* GTLR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		143E39CB1EB20B510028A508 /* DriveUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E39CA1EB20B510028A508 /* DriveUtils.m */; };
 		144B88331EB31162007F3340 /* copy_mac.sh in Resources */ = {isa = PBXBuildFile; fileRef = 144B88321EB31162007F3340 /* copy_mac.sh */; };
 		144C5CA01EB06D2300ACCBF8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144C5C9F1EB06D2300ACCBF8 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -50,6 +70,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1430D8C71EE00F6C00BDF80F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
+			remoteInfo = GTLROSXCore;
+		};
 		14D0DB091ED3EC0800F971AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 144C5CAA1EB06E7900ACCBF8 /* GTLRCore.xcodeproj */;
@@ -116,6 +143,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1430D8DE1EE00F6C00BDF80F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1430D8DF1EE00F6C00BDF80F /* GTLR.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14D0DB0B1ED3EC0800F971AA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +183,8 @@
 		141658C11EAEF44D006EE1B4 /* CachedWordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedWordView.swift; sourceTree = "<group>"; };
 		141658CB1EAEF7F4006EE1B4 /* CachedWordViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedWordViewCell.swift; sourceTree = "<group>"; };
 		141658CD1EAEF822006EE1B4 /* CachedWordViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CachedWordViewCell.xib; sourceTree = "<group>"; };
+		1430D8E31EE00F6C00BDF80F /* WordLooper Son.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordLooper Son.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1430D8EA1EE00F6C00BDF80F /* WordLooper Tuyen copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WordLooper Tuyen copy-Info.plist"; path = "/Users/sanghuynh/Documents/Workspace/ExternalProject/WordLooper/Word Looper/WordLooper Tuyen copy-Info.plist"; sourceTree = "<absolute>"; };
 		143E39C91EB20B510028A508 /* DriveUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriveUtils.h; path = "Word Looper/DriveUtils.h"; sourceTree = "<group>"; };
 		143E39CA1EB20B510028A508 /* DriveUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriveUtils.m; path = "Word Looper/DriveUtils.m"; sourceTree = "<group>"; };
 		144B88321EB31162007F3340 /* copy_mac.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_mac.sh; sourceTree = "<group>"; };
@@ -174,6 +214,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1430D8D21EE00F6C00BDF80F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1430D8D31EE00F6C00BDF80F /* Cocoa.framework in Frameworks */,
+				1430D8D41EE00F6C00BDF80F /* SystemConfiguration.framework in Frameworks */,
+				1430D8D51EE00F6C00BDF80F /* Security.framework in Frameworks */,
+				1430D8D61EE00F6C00BDF80F /* WebKit.framework in Frameworks */,
+				1430D8D71EE00F6C00BDF80F /* GTLR.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14A7F43B1EADAD6A006B6A1D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +304,7 @@
 				14A7F43F1EADAD6A006B6A1D /* Products */,
 				144C5C9E1EB06D2200ACCBF8 /* Frameworks */,
 				14D0DB011ED3E70C00F971AA /* WordLooper copy-Info.plist */,
+				1430D8EA1EE00F6C00BDF80F /* WordLooper Tuyen copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +313,7 @@
 			children = (
 				14A7F43E1EADAD6A006B6A1D /* WordLooper.app */,
 				14D0DB001ED3E70B00F971AA /* WordLooper Tuyen.app */,
+				1430D8E31EE00F6C00BDF80F /* WordLooper Son.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -295,6 +349,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1430D8C51EE00F6C00BDF80F /* WordLooper Son */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1430D8E01EE00F6C00BDF80F /* Build configuration list for PBXNativeTarget "WordLooper Son" */;
+			buildPhases = (
+				1430D8C81EE00F6C00BDF80F /* Sources */,
+				1430D8D21EE00F6C00BDF80F /* Frameworks */,
+				1430D8D81EE00F6C00BDF80F /* Resources */,
+				1430D8DE1EE00F6C00BDF80F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1430D8C61EE00F6C00BDF80F /* PBXTargetDependency */,
+			);
+			name = "WordLooper Son";
+			productName = "Word Looper";
+			productReference = 1430D8E31EE00F6C00BDF80F /* WordLooper Son.app */;
+			productType = "com.apple.product-type.application";
+		};
 		14A7F43D1EADAD6A006B6A1D /* WordLooper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14A7F44D1EADAD6A006B6A1D /* Build configuration list for PBXNativeTarget "WordLooper" */;
@@ -344,6 +417,9 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = GKXIM;
 				TargetAttributes = {
+					1430D8C51EE00F6C00BDF80F = {
+						DevelopmentTeam = 5CE32BFHCM;
+					};
 					14A7F43D1EADAD6A006B6A1D = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5CE32BFHCM;
@@ -377,6 +453,7 @@
 			targets = (
 				14A7F43D1EADAD6A006B6A1D /* WordLooper */,
 				14D0DAE21ED3E70B00F971AA /* WordLooper Tuyen */,
+				1430D8C51EE00F6C00BDF80F /* WordLooper Son */,
 			);
 		};
 /* End PBXProject section */
@@ -434,6 +511,18 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1430D8D81EE00F6C00BDF80F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1430D8D91EE00F6C00BDF80F /* Assets.xcassets in Resources */,
+				1430D8DA1EE00F6C00BDF80F /* copy_mac.sh in Resources */,
+				1430D8DB1EE00F6C00BDF80F /* CachedWordView.xib in Resources */,
+				1430D8DC1EE00F6C00BDF80F /* CachedWordViewCell.xib in Resources */,
+				1430D8DD1EE00F6C00BDF80F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14A7F43C1EADAD6A006B6A1D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -477,6 +566,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1430D8C81EE00F6C00BDF80F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1430D8C91EE00F6C00BDF80F /* GTLRDriveQuery.m in Sources */,
+				1430D8CA1EE00F6C00BDF80F /* GTLRDriveService.m in Sources */,
+				1430D8CB1EE00F6C00BDF80F /* GTLRDriveObjects.m in Sources */,
+				1430D8CC1EE00F6C00BDF80F /* CachedWordView.swift in Sources */,
+				1430D8CD1EE00F6C00BDF80F /* HomeViewController.swift in Sources */,
+				1430D8CE1EE00F6C00BDF80F /* CachedWordViewCell.swift in Sources */,
+				1430D8CF1EE00F6C00BDF80F /* AppDelegate.swift in Sources */,
+				1430D8D01EE00F6C00BDF80F /* Macro.swift in Sources */,
+				1430D8D11EE00F6C00BDF80F /* DriveUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14A7F43A1EADAD6A006B6A1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,6 +617,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1430D8C61EE00F6C00BDF80F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTLROSXCore;
+			targetProxy = 1430D8C71EE00F6C00BDF80F /* PBXContainerItemProxy */;
+		};
 		14D0DB0A1ED3EC0800F971AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GTLROSXCore;
@@ -536,6 +646,73 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1430D8E11EE00F6C00BDF80F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5CE32BFHCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Word\\ Looper/google_headers/**";
+				INFOPLIST_FILE = "WordLooper Tuyen copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D SON";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Word Looper/Word Looper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1430D8E21EE00F6C00BDF80F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5CE32BFHCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Word\\ Looper/google_headers/**";
+				INFOPLIST_FILE = "WordLooper Tuyen copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+					"$(PROJECT_DIR)/Word\\ Looper/LIbs/GoogleAPIs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D SON";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sanghuynh.loop.words.Word-Looper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Word Looper/Word Looper-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		14A7F44B1EADAD6A006B6A1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -765,6 +942,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1430D8E01EE00F6C00BDF80F /* Build configuration list for PBXNativeTarget "WordLooper Son" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1430D8E11EE00F6C00BDF80F /* Debug */,
+				1430D8E21EE00F6C00BDF80F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		14A7F4391EADAD6A006B6A1D /* Build configuration list for PBXProject "Word Looper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
