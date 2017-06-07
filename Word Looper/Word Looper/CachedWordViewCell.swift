@@ -42,7 +42,7 @@ class CachedWordViewCell: NSView {
             self.lblWord?.textColor = NSColor.black
         }
         if let currentState = self.mWord?["ignore"] as? Bool {
-            self.btnIgnore.state = currentState ? 1 : 0
+            self.btnIgnore.state = NSControl.StateValue(rawValue: currentState ? 1 : 0)
         }
         
     }
@@ -63,9 +63,9 @@ class CachedWordViewCell: NSView {
     @IBAction func didClickOnIgnoreBtn(_ sender: Any) {
         let currentState = self.btnIgnore.state
         
-        self.mWord?["ignore"] = currentState == 1;
+        self.mWord?["ignore"] = currentState == NSControl.StateValue.on;
         if let callback = self.ignoreCallBack {
-            callback(["tag" :self.mTag , "ignore" : currentState == 1])
+            callback(["tag" :self.mTag , "ignore" : currentState == NSControl.StateValue.on])
         }
     }
 }

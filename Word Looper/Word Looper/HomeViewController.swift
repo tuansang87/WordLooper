@@ -10,7 +10,7 @@ import Cocoa
 import WebKit
 import AVFoundation
 
-let appDelegate =  NSApplication.shared().delegate as! AppDelegate
+let appDelegate =  NSApplication.shared.delegate as! AppDelegate
 
 let kiPhoneUserCustomAgent : String = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
 
@@ -82,7 +82,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     override func viewDidLoad() {
         super.viewDidLoad()
         var frame = self.view.frame
-        let screenSize = NSScreen.main()!.frame.size
+        let screenSize = NSScreen.main!.frame.size
         
         frame.size.width = 375
         frame.size.height = screenSize.height - 100
@@ -104,18 +104,18 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         
         self.mWebSearch.frame = self.mWebSearchContainer.bounds
         
-        var constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0.0);
+        var constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1.0, constant: 0.0);
         self.view.addConstraint(constraint);
         
-        constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0.0);
+        constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1.0, constant: 0.0);
         self.view.addConstraint(constraint);
         //          GOOGLE
         //        constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: -100.0);
         // DUCKDUCKGO // Bing
-        constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: -100.0);
+        constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: -100.0);
         self.view.addConstraint(constraint);
         
-        constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0.0);
+        constraint = NSLayoutConstraint(item: self.mWebSearch, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.mWebSearchContainer, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 0.0);
         self.view.addConstraint(constraint)
         self.view.window?.makeFirstResponder(self.txtWord)
         
@@ -123,7 +123,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         self.btnGoPrevious.isHighlighted = !appDelegate.loopDirection
         
         
-        self.btnLoop.state = 1
+        self.btnLoop.state =  NSControl.StateValue.on
         self.didClickOnLoopBtn(self.btnLoop)
         
         DriveUtils.sharedDrive().configClientId(kClientId, clientSecret: kClientSecret, fileId: kWordLooperFileID, successString: kSuccessURLString)
@@ -179,18 +179,18 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                 var text  = "define \(word["word"]!)"
                 text = text.replacingOccurrences(of: " ", with: "+")
                 if let imgPath = word["image"] as? String{
-                    self.btnImgPath.state = 1
-                    mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state == 1 ? 50 : 30
-                    self.txtImagePath.isHidden = self.btnImgPath.state == 0
+                    self.btnImgPath.state =  NSControl.StateValue.on
+                    mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state ==  NSControl.StateValue.on ? 50 : 30
+                    self.txtImagePath.isHidden = self.btnImgPath.state ==  NSControl.StateValue.off
                     
                     self.txtImagePath.stringValue = imgPath
                     let url = URL(string:imgPath)!
                     let request = URLRequest(url:url)
                     self.mWebSearch.load(request)
                 } else {
-                    self.btnImgPath.state = 0
-                    mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state == 1 ? 50 : 30
-                    self.txtImagePath.isHidden = self.btnImgPath.state == 0
+                    self.btnImgPath.state =  NSControl.StateValue.off
+                    mWebSearchTopLayoutConstaint.constant = self.btnImgPath.state ==  NSControl.StateValue.on ? 50 : 30
+                    self.txtImagePath.isHidden = self.btnImgPath.state ==  NSControl.StateValue.off
                     
                     self.txtImagePath.stringValue = EMPTY_STR
                     var queri = "https://www.bing.com/search?q=\(text)"
@@ -233,14 +233,15 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     
     
     func loadNib(named nibName:String, owner:Any?) -> [NSView] {
-        var topLevelObjects = NSArray()
-        if Bundle.main.loadNibNamed(nibName, owner: self, topLevelObjects: &topLevelObjects) {
-            let views = (topLevelObjects as Array).filter { $0 is NSView }
-            return views as! [NSView];
-        } else {
-            return [];
+        var topLevelObjects : NSArray?
+        if Bundle.main.loadNibNamed(NSNib.Name(rawValue: nibName), owner: self, topLevelObjects: &topLevelObjects) {
+            if let arr = topLevelObjects as? Array<Any> {
+                let views = arr.filter { $0 is NSView }
+                return views as! [NSView];
+            }
+            
         }
-        
+        return [];
     }
     
     
@@ -250,7 +251,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         if let timmer = self.loopTimmer {
             timmer.invalidate()
         }
-        self.btnLoop.state = 0
+        self.btnLoop.state =  NSControl.StateValue.off
         shouldCancel = false
     }
     
@@ -415,9 +416,9 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     @IBAction func didClickOnLoopBtn(_ sender: NSButton) {
         let lastState = self.btnLoop.state
         switch lastState {
-        case 0:self.stopLoop()
+        case  NSControl.StateValue.off :self.stopLoop()
             
-        case 1: self.doLoop()
+        case  NSControl.StateValue.on : self.doLoop()
             
         default:
             self.stopLoop()
@@ -434,15 +435,15 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     @IBAction func didClickOnResetBtn(_ sender: NSButton?) {
         self.stopLoop()
         appDelegate.currentLoopIdx = 0
-        self.btnLoop.state = 1
+        self.btnLoop.state =  NSControl.StateValue.on
         self.didClickOnLoopBtn(self.btnLoop)
     }
     
     
     @IBAction func didClickOnImagePathWordBtn(_ sender: NSButton) {
         self.stopLoop()
-        mWebSearchTopLayoutConstaint.constant = sender.state == 1 ? 50 : 30
-        self.txtImagePath.isHidden = sender.state == 0
+        mWebSearchTopLayoutConstaint.constant = sender.state ==  NSControl.StateValue.on ? 50 : 30
+        self.txtImagePath.isHidden = sender.state ==  NSControl.StateValue.off
         
     }
     
@@ -460,7 +461,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
             return
         }
         
-        self.btnLoop.state = 1
+        self.btnLoop.state =  NSControl.StateValue.on
         self.didClickOnLoopBtn(self.btnLoop)
     }
     
@@ -478,7 +479,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
             return
         }
         
-        self.btnLoop.state = 1
+        self.btnLoop.state =  NSControl.StateValue.on
         self.didClickOnLoopBtn(self.btnLoop)
     }
     
@@ -838,7 +839,7 @@ extension AudioFinding {
 typealias ControlText = HomeViewController
 
 extension ControlText {
-    func hotkey(noti : NSNotification?) {
+    @objc func hotkey(noti : NSNotification?) {
         if let noti = noti  {
             if let obj = noti.object as? String {
                 
@@ -858,7 +859,7 @@ extension ControlText {
                     self.didClickOnSaveWordBtn(nil);
                 } else if obj == kLoop {
                     
-                    self.btnLoop.state = self.btnLoop.state == 1 ? 0 : 1
+                    self.btnLoop.state = self.btnLoop.state == NSControl.StateValue.on ? NSControl.StateValue.off :  NSControl.StateValue.on
                     self.didClickOnLoopBtn(self.btnLoop);
                 }
             }

@@ -41,7 +41,7 @@ class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
     
     
     func registerNibCell() {
-        self.tbvContent.register(NSNib.init(nibNamed: "CachedWordViewCell", bundle: nil), forIdentifier: "CachedWordViewCellIdentifier")
+        self.tbvContent.register(NSNib.init(nibNamed: NSNib.Name(rawValue: "CachedWordViewCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CachedWordViewCellIdentifier"))
     }
     
     func prepareOutlineViewItems() {
@@ -85,7 +85,7 @@ class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
-        if let cell = self.tbvContent.make(withIdentifier: "CachedWordViewCellIdentifier" , owner:nil) as?  CachedWordViewCell {
+        if let cell = self.tbvContent.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CachedWordViewCellIdentifier") , owner:nil) as?  CachedWordViewCell {
             if let item = item as? Dictionary<String,Int> {
                 if let row_index = item["row_index"] {
                     if let data = self.arrWords?[row_index] {
@@ -120,11 +120,11 @@ class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
                                             let dataObject = try JSONSerialization.data(withJSONObject: dict, options: [])
                                             try dataObject.write(to: destinationURL as URL , options: Data.WritingOptions.atomic)
                                         } catch let error as NSError {
-                                            strongSelf.print(error.description)
+                                            print(error.description)
                                         }
                                         
                                         
-                                        let appDelegate =  NSApplication.shared().delegate as! AppDelegate
+                                        let appDelegate =  NSApplication.shared.delegate as! AppDelegate
                                         appDelegate.words?.removeAll()
                                         for word in strongSelf.arrWords! {
                                             appDelegate.words?.append(word as NSDictionary)

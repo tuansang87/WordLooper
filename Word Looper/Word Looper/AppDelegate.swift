@@ -237,9 +237,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.loopDirection = true
         }
         if let window = NSApp.mainWindow {
-            window.minSize = CGSize(width: 375, height: (NSScreen.main()!.frame.size.height))
-            window.maxSize = CGSize(width: 1000, height: NSScreen.main()!.frame.size.height)
-            window.setFrame(CGRect(x: 30, y: 0, width: 375, height: (NSScreen.main()!.frame.size.height)), display: true)
+            window.minSize = CGSize(width: 375, height: (NSScreen.main!.frame.size.height))
+            window.maxSize = CGSize(width: 1000, height: NSScreen.main!.frame.size.height)
+            window.setFrame(CGRect(x: 30, y: 0, width: 375, height: (NSScreen.main!.frame.size.height)), display: true)
         }
         
     }
