@@ -301,6 +301,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else if(keycode == HOTKEYCODE_QUICK_LOOP) {
             // handleh here
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kLoop)
+        } else if(keycode == HOTKEYCODE_QUICK_LOOKUP_IN_ENGLISH) {
+            // handleh here
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kLookUpInEnglish)
+        } else if(keycode == HOTKEYCODE_QUICK_LOOKUP_IN_VIETNAMESE) {
+            // handleh here
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kLookUpInVietnamese)
         }
             
         else if(keycode == HOTKEYCODE_QUICK_KILL_APP) {
@@ -316,6 +322,10 @@ var kGoNextWord = "kGoNextWord"
 var kGoPreviousWord = "kGoPreviousWord"
 var kPlayCurrentWord = "kPlayCurrentWord"
 var kOpenCachedWords = "kOpenCachedWords"
+
+var kLookUpInEnglish = "kLookUpInEnglish"
+var kLookUpInVietnamese = "kLookUpInVietnamese"
+
 var kSaveWord = "kSaveWord"
 var kOpenHome = "kOpenHome"
 var kLoop = "kLoop"
@@ -325,6 +335,9 @@ var HOTKEYCODE_QUICK_SAVE_WORD =  UInt16(1) ; //ctrl + S
 var HOTKEYCODE_QUICK_RESET = UInt16(15) ; //ctrl + R
 var HOTKEYCODE_QUICK_GO_NEXT =  UInt16(47); //ctrl + >
 var HOTKEYCODE_QUICK_GO_BACK = UInt16( 43); //ctrl + <
+
+var HOTKEYCODE_QUICK_LOOKUP_IN_ENGLISH = UInt16(14) ; //ctrl + E
+var HOTKEYCODE_QUICK_LOOKUP_IN_VIETNAMESE = UInt16(9) ; //ctrl + V
 
 var HOTKEYCODE_QUICK_AUDIO =  UInt16(0); //ctrl+A
 var HOTKEYCODE_QUICK_GO_CACHED_WORDS = UInt16( 8); //ctrl + C

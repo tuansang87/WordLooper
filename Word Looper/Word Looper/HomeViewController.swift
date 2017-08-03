@@ -861,6 +861,12 @@ extension ControlText {
                     
                     self.btnLoop.state = self.btnLoop.state == NSControl.StateValue.on ? NSControl.StateValue.off :  NSControl.StateValue.on
                     self.didClickOnLoopBtn(self.btnLoop);
+                } else if obj == kLookUpInEnglish {
+                    self.serchInLanguageControl.selectSegment(withTag: 0)
+                    self.didClickOnSearchLanguageSegMentControl(self.serchInLanguageControl)
+                } else if obj == kLookUpInVietnamese {
+                    self.serchInLanguageControl.selectSegment(withTag: 1)
+                    self.didClickOnSearchLanguageSegMentControl(self.serchInLanguageControl)
                 }
             }
         }
