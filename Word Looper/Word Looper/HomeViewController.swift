@@ -171,9 +171,11 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                 text = text.replacingOccurrences(of: " ", with: "+")
                 
                 let queri = "http://translate.google.com/?tl=vi#auto/vi/\(text)"
-                let url = URL(string:queri)!
-                let request = URLRequest(url:url)
-                self.mWebSearch.load(request)
+                if let url = URL(string:queri) {
+                    let request = URLRequest(url:url)
+                    self.mWebSearch.load(request)
+                }
+
                 
             } else {
                 var text  = "define \(word["word"]!)"
@@ -867,6 +869,12 @@ extension ControlText {
                 } else if obj == kLookUpInVietnamese {
                     self.serchInLanguageControl.selectSegment(withTag: 1)
                     self.didClickOnSearchLanguageSegMentControl(self.serchInLanguageControl)
+                } else if obj == kSearchByWeb {
+                    self.searchInModeSegmentControl.selectSegment(withTag: 0)
+                    self.didClickOnSearchModeSegMentControl(self.searchInModeSegmentControl)
+                } else if obj == kSearchByImage {
+                    self.searchInModeSegmentControl.selectSegment(withTag: 1)
+                    self.didClickOnSearchModeSegMentControl(self.searchInModeSegmentControl)
                 }
             }
         }

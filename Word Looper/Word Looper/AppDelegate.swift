@@ -307,6 +307,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else if(keycode == HOTKEYCODE_QUICK_LOOKUP_IN_VIETNAMESE) {
             // handleh here
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kLookUpInVietnamese)
+        } else if(keycode == HOTKEYCODE_QUICK_SEARCH_BY_WEB) {
+            // handleh here
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kSearchByWeb)
+        } else if(keycode == HOTKEYCODE_QUICK_SEARCH_BY_IMAGE) {
+            // handleh here
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: HOTKEYCODE_QUICK_COMMAND_NOTI), object: kSearchByImage)
         }
             
         else if(keycode == HOTKEYCODE_QUICK_KILL_APP) {
@@ -330,6 +336,9 @@ var kSaveWord = "kSaveWord"
 var kOpenHome = "kOpenHome"
 var kLoop = "kLoop"
 
+var kSearchByWeb = "kSearchByWeb"
+var kSearchByImage = "kSearchByImage"
+
 var HOTKEYCODE_QUICK_HOME = UInt16(4) ; //ctrl + H
 var HOTKEYCODE_QUICK_SAVE_WORD =  UInt16(1) ; //ctrl + S
 var HOTKEYCODE_QUICK_RESET = UInt16(15) ; //ctrl + R
@@ -343,6 +352,9 @@ var HOTKEYCODE_QUICK_AUDIO =  UInt16(0); //ctrl+A
 var HOTKEYCODE_QUICK_GO_CACHED_WORDS = UInt16( 8); //ctrl + C
 var HOTKEYCODE_QUICK_LOOP = UInt16(37); //ctrl + L
 var HOTKEYCODE_QUICK_KILL_APP =  UInt16(12); //cmd+Q
+
+var HOTKEYCODE_QUICK_SEARCH_BY_WEB = UInt16(13); //ctrl + W
+var HOTKEYCODE_QUICK_SEARCH_BY_IMAGE =  UInt16(34); //ctrl + I
 
 class CustomWindow: NSWindow {
     override func keyDown(with event: NSEvent) {

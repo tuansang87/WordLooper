@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G8c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13168.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -669,6 +669,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="zNY-IY-RqL"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -702,19 +705,19 @@
                                 </connections>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-lJ-CRs">
-                                <rect key="frame" x="78" y="531" width="435" height="24"/>
+                                <rect key="frame" x="97" y="531" width="109" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="iRh-uq-HeG">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="All" width="88" selected="YES"/>
-                                        <segment label="Image" width="88" tag="1"/>
+                                        <segment label="All" selected="YES"/>
+                                        <segment label="Image" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
                                     <action selector="didClickOnSearchModeSegMentControl:" target="XfG-lQ-9wD" id="ROY-TB-C5c"/>
                                 </connections>
                             </segmentedControl>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dze-c5-pp8">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dze-c5-pp8">
                                 <rect key="frame" x="8" y="506" width="64" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="dtW-23-TQ5"/>
@@ -745,7 +748,7 @@
                                     <rect key="frame" x="1" y="1" width="399" height="35"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="r5d-d4-ygx">
+                                        <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="r5d-d4-ygx">
                                             <rect key="frame" x="0.0" y="0.0" width="399" height="35"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -771,7 +774,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbp-a0-08T">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vbp-a0-08T">
                                 <rect key="frame" x="8" y="569" width="49" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="WKk-2b-xgg"/>
@@ -782,7 +785,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S78-yl-d2h">
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S78-yl-d2h">
                                 <rect key="frame" x="75" y="454" width="421" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" drawsBackground="YES" id="EbO-Pz-swn">
                                     <font key="font" metaFont="system"/>
@@ -922,16 +925,16 @@
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TeD-m9-okg">
-                                <rect key="frame" x="8" y="531" width="59" height="24"/>
+                                <rect key="frame" x="8" y="531" width="84" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="TGH-Th-cqm"/>
+                                    <constraint firstAttribute="width" constant="80" id="TGH-Th-cqm"/>
                                     <constraint firstAttribute="height" constant="21" id="ULN-Cr-EFv"/>
                                 </constraints>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ToQ-by-ooF">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="EN" width="26" selected="YES"/>
-                                        <segment label="VN" width="26" tag="1"/>
+                                        <segment label="EN" selected="YES"/>
+                                        <segment label="VN" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
@@ -959,7 +962,7 @@
                             <constraint firstItem="Wll-S6-yCc" firstAttribute="leading" secondItem="KwK-eo-5Yk" secondAttribute="trailing" constant="8" id="FLj-pF-wwz"/>
                             <constraint firstItem="bNe-Hf-tl3" firstAttribute="leading" secondItem="vbp-a0-08T" secondAttribute="trailing" constant="10" id="I6C-xk-VgG"/>
                             <constraint firstItem="TeD-m9-okg" firstAttribute="leading" secondItem="00q-FL-oPH" secondAttribute="trailing" constant="10" id="IJI-eq-eLI"/>
-                            <constraint firstItem="bNe-Hf-tl3" firstAttribute="leading" secondItem="Qd5-lJ-CRs" secondAttribute="leading" constant="-15" id="Ixi-vy-sNi"/>
+                            <constraint firstItem="bNe-Hf-tl3" firstAttribute="leading" secondItem="Qd5-lJ-CRs" secondAttribute="leading" constant="-34" id="Ixi-vy-sNi"/>
                             <constraint firstAttribute="bottom" secondItem="HiL-ZH-VF7" secondAttribute="bottom" constant="10" id="MUK-vH-7yw"/>
                             <constraint firstAttribute="trailing" secondItem="wcu-w9-4EU" secondAttribute="trailing" constant="10" id="MjV-I6-Alo"/>
                             <constraint firstAttribute="bottom" secondItem="zUV-29-uX5" secondAttribute="bottom" constant="10" id="Ofd-yU-8ze"/>
@@ -969,7 +972,6 @@
                             <constraint firstItem="rX0-Jk-o70" firstAttribute="top" secondItem="S78-yl-d2h" secondAttribute="top" id="VpX-x3-dEC"/>
                             <constraint firstItem="Qd5-lJ-CRs" firstAttribute="top" secondItem="bNe-Hf-tl3" secondAttribute="bottom" constant="10" id="W3x-4k-AVP"/>
                             <constraint firstItem="tnk-jp-JNC" firstAttribute="leading" secondItem="dze-c5-pp8" secondAttribute="trailing" constant="10" id="WMM-UP-9xR"/>
-                            <constraint firstItem="tnk-jp-JNC" firstAttribute="trailing" secondItem="Qd5-lJ-CRs" secondAttribute="trailing" constant="-15" id="ZIH-nF-VcS"/>
                             <constraint firstItem="rX0-Jk-o70" firstAttribute="leading" secondItem="vbp-a0-08T" secondAttribute="leading" id="b9U-44-soi"/>
                             <constraint firstAttribute="bottom" secondItem="67G-Fx-yDL" secondAttribute="bottom" constant="13" id="eWZ-Cw-Bae"/>
                             <constraint firstAttribute="bottom" secondItem="00q-FL-oPH" secondAttribute="bottom" id="efK-Oy-Hud"/>
@@ -987,6 +989,7 @@
                             <constraint firstItem="Wll-S6-yCc" firstAttribute="top" secondItem="bNe-Hf-tl3" secondAttribute="bottom" constant="10" id="oPs-9I-W8f"/>
                             <constraint firstItem="S78-yl-d2h" firstAttribute="leading" secondItem="rX0-Jk-o70" secondAttribute="trailing" constant="10" id="oZt-9W-PjS"/>
                             <constraint firstItem="rX0-Jk-o70" firstAttribute="leading" secondItem="dze-c5-pp8" secondAttribute="leading" id="sTO-w0-B7x"/>
+                            <constraint firstItem="lEc-aQ-h2t" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="scN-hm-wDR"/>
                             <constraint firstItem="67G-Fx-yDL" firstAttribute="leading" secondItem="Gap-iY-OGZ" secondAttribute="trailing" constant="10" id="uYt-tK-gdq"/>
                             <constraint firstItem="tnk-jp-JNC" firstAttribute="leading" secondItem="dze-c5-pp8" secondAttribute="trailing" constant="10" id="xcn-fF-N4h"/>
                             <constraint firstItem="tnk-jp-JNC" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="73" id="ypA-p0-KV6"/>
