@@ -62,6 +62,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return uniqueObjs
     }
     
+    func isWordExisted(word : String) -> Bool {
+        var isExisted = false
+        if let words = self.words {
+            for tmp in words {
+            
+                if (tmp["word"] as! String) ==  word {
+                    isExisted = true
+                    break;
+                }
+                
+            }
+        }
+
+        return isExisted
+    }
+    
     func addWord(word : String , imagePath: String? ,
                  own_definition : String? ,
                  audio : String?,

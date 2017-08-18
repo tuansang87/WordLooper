@@ -42,6 +42,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     @IBOutlet weak var btnGoPrevious: NSButton!
     @IBOutlet weak var btnSync: NSButton!
     @IBOutlet weak var btnUp: NSButton!
+    @IBOutlet weak var btnCached: NSButton!
     
     var player: AVAudioPlayer?
     var lastPlayWord: String?
@@ -489,7 +490,13 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     @IBAction func didClickOnCachedWords(_ sender : NSButton?) {
 //        self.stopLoop()
         if let cachedView = self.cachedView {
-            cachedView.isHidden = false
+            if(cachedView.isHidden == true) {
+                cachedView.isHidden = false
+            } else {
+                cachedView.isHidden = true
+                return
+            }
+            
         } else {
             let arr = self.loadNib(named: "CachedWordView", owner: nil)
             if arr.count > 0 {
@@ -611,6 +618,7 @@ extension TableViewDataSource  {
             if let txt = obj.object as? NSTextField {
                 if  txt == self.txtWord {
                     let text = self.txtWord.stringValue;
+                    self.highlightIfNeeded(text)
                     self.loadDefinition(word: ["word": text])
                 } else if txt == self.txtImagePath {
                     
@@ -629,6 +637,23 @@ extension TableViewDataSource  {
                 
             }
             
+        }
+        
+    }
+    
+    func highlightIfNeeded(_ word : String) {
+        if(word.characters.count > 0) {
+            if(appDelegate.isWordExisted(word: word)) {
+                self.btnCached.highlight(true)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.milliseconds(500), execute: {[weak self] () in
+                    // do something
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    
+                    strongSelf.btnCached.highlight(false)
+                })
+            }
         }
         
     }
