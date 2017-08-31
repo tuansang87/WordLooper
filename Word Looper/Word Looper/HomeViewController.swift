@@ -69,12 +69,8 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
         return service
     }()
     
-    var shouldCancel = false
-    
-    
-    
     var cachedView : CachedWordView? = nil
-    var loopTimmer : Timer? = nil
+    var shouldDoLoop = true
     
     deinit {
         NotificationCenter.default.removeObserver(self);
@@ -176,7 +172,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                     let request = URLRequest(url:url)
                     self.mWebSearch.load(request)
                 }
-
+                
                 
             } else {
                 var text  = "define \(word["word"]!)"
@@ -217,7 +213,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                         let request = URLRequest(url:url)
                         self.mWebSearch.load(request)
                     }
-                   
+                    
                 }
                 
                 if let own_defi = word["own_definition"] as? String {
@@ -225,9 +221,9 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                 } else {
                     self.txtSelfDefinition.string = EMPTY_STR
                 }
-
+                
             }
-
+            
             
         }
         
@@ -251,25 +247,13 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     
     func stopLoop(){
         
-        if let timmer = self.loopTimmer {
-            timmer.invalidate()
-        }
         self.btnLoop.state =  NSControl.StateValue.off
-        shouldCancel = false
+        shouldDoLoop = false
     }
     
     func doLoop(){
-        if let timmer = self.loopTimmer {
-            timmer.invalidate()
-        }
-        
-        self.loopTimmer = Timer.scheduledTimer(withTimeInterval: INTERVAL_LOOP_TIME, repeats: true) {[weak self] (timmer : Timer) in
-            // handle here
-            guard let strongSelf = self else {
-                return
-            }
-            
-            strongSelf.loadCachedWord()
+        if(self.shouldDoLoop) {
+            self.loadCachedWord()
         }
         
     }
@@ -277,7 +261,15 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     
     func loadCachedWord() {
         guard let words = appDelegate.words else {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(3), execute: {[weak self] () in
+                // do something
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.doLoop()
+            })
             return
+            
         }
         if appDelegate.loopDirection == true // go next {
         {
@@ -313,17 +305,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                 }
             }
             
-            
-            if idx == appDelegate.currentLoopIdx {
-                if(shouldCancel == false) {
-                    shouldCancel = true
-                }
-                else {
-                    self.stopLoop()
-                    return
-                }
-                
-            }
+          
             // load here
             
             let word = words[idx]
@@ -337,10 +319,13 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                 self.txtWord.stringValue = key
                 if let ownDefinition = word["own_definition"] as? String {
                     self.txtSelfDefinition.string = ownDefinition
-                } else {
-                    self.loadDefinition(word:word as! Dictionary<String, Any>)
-                    
                 }
+                /*
+                else {
+                    self.loadDefinition(word:word as! Dictionary<String, Any>)
+                }
+                */
+                self.loadDefinition(word:word as! Dictionary<String, Any>)
                 
                 let image = word["image"] as? String;
                 let own_definition = word["own_definition"] as? String;
@@ -351,7 +336,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                 }
                 
                 self.fecthAudioFileForWord(word: word["word"] as! String) { (link , linkWord) in
-                   if (linkWord == key) {
+                    if (linkWord == key) {
                         appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link , ignore: ignore);
                         
                         
@@ -419,15 +404,18 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     @IBAction func didClickOnLoopBtn(_ sender: NSButton) {
         let lastState = self.btnLoop.state
         switch lastState {
-        case  NSControl.StateValue.off :self.stopLoop()
-            
-        case  NSControl.StateValue.on : self.doLoop()
-            
+        case  NSControl.StateValue.off :
+            self.stopLoop()
+            self.shouldDoLoop = false
+        case  NSControl.StateValue.on :
+            self.shouldDoLoop = true
+            self.doLoop()
         default:
             self.stopLoop()
         }
         
         self.btnLoop.state = lastState
+        
     }
     
     @IBAction func didClickOnSaveWordBtn(_ sender: NSButton?) {
@@ -488,7 +476,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     
     
     @IBAction func didClickOnCachedWords(_ sender : NSButton?) {
-//        self.stopLoop()
+        //        self.stopLoop()
         if let cachedView = self.cachedView {
             if(cachedView.isHidden == true) {
                 cachedView.isHidden = false
@@ -527,7 +515,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                         
                         strongSelf.lastPlayWord = nil
                         strongSelf.fecthAudioFileForWord(word: key) { (link , linkWord) in
-                           
+                            
                             if (linkWord == key) {
                                 
                                 
@@ -537,11 +525,11 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                             }
                             strongSelf.playSound(soundUrl: link)
                         }
-
+                        
                     }
-                   
+                    
                 }
-       
+                
             }
             }, dismissCallback: {[weak self] (resp) in
                 if let strongSelf = self {
@@ -597,7 +585,7 @@ extension TableViewDataSource  {
                         let request = URLRequest(url:url)
                         self.mWebSearch.load(request as URLRequest)
                     }
-                   
+                    
                     
                 } else {
                     if self.txtWord.stringValue.characters.count > 0{
@@ -670,10 +658,22 @@ extension ViewControllerWebDelegate : WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
         self.hideIndicator()
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        self.perform(#selector(delayAndGoNextWord), with: nil, afterDelay: INTERVAL_LOOP_TIME)
+        
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.hideIndicator()
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        self.perform(#selector(delayAndGoNextWord), with: nil, afterDelay: INTERVAL_LOOP_TIME)
+        
+    }
+    
+    @objc func delayAndGoNextWord(){
+        if(self.shouldDoLoop) {
+            self.loadCachedWord()
+        }
     }
 }
 
@@ -757,7 +757,7 @@ typealias AudioFinding = HomeViewController
 
 extension AudioFinding {
     
-    func downloadAndPlay(soundUrl :String){
+    @objc func downloadAndPlay(soundUrl :String){
         if let url = URL(string: soundUrl) {
             do {
                 
@@ -786,7 +786,7 @@ extension AudioFinding {
     func playSound(soundUrl :String) {
         
         self.performSelector(inBackground: #selector(downloadAndPlay(soundUrl:)), with: soundUrl)
-     
+        
         
     }
     
@@ -904,9 +904,9 @@ extension ControlText {
             }
         }
     }
-
     
-     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+    
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         if let event = NSApp.currentEvent {
             AppDelegate.handleHotkey(with: event)
         }
