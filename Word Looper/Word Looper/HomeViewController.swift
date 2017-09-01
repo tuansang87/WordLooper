@@ -337,7 +337,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                 
                 self.fecthAudioFileForWord(word: word["word"] as! String) { (link , linkWord) in
                     if (linkWord == key) {
-                        appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link , ignore: ignore);
+                        appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link , ignore: ignore, forgot: false);
                         
                         
                     }
@@ -419,7 +419,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
     }
     
     @IBAction func didClickOnSaveWordBtn(_ sender: NSButton?) {
-        appDelegate.addWord(word: self.txtWord.stringValue, imagePath: self.txtImagePath.stringValue, own_definition: self.txtSelfDefinition.string , audio: nil , ignore: false);
+        appDelegate.addWord(word: self.txtWord.stringValue, imagePath: self.txtImagePath.stringValue, own_definition: self.txtSelfDefinition.string , audio: nil , ignore: false, forgot: false);
     }
     
     
@@ -519,7 +519,7 @@ class HomeViewController: NSViewController, NSTextViewDelegate , NSTextFieldDele
                             if (linkWord == key) {
                                 
                                 
-                                appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link , ignore: ignore);
+                                appDelegate.addWord(word: key, imagePath:  image  , own_definition: own_definition , audio : link , ignore: ignore , forgot: false);
                                 
                                 
                             }

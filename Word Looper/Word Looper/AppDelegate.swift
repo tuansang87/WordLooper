@@ -69,6 +69,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
                 if (tmp["word"] as! String) ==  word {
                     isExisted = true
+                    let data = tmp
+                    appDelegate.addWord(word: data["word"] as! String, imagePath: data["image"] as? String, own_definition: data["own_definition"] as? String, audio: data["audio"] as? String, ignore: false , forgot: true)
                     break;
                 }
                 
@@ -81,7 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func addWord(word : String , imagePath: String? ,
                  own_definition : String? ,
                  audio : String?,
-                 ignore : Bool
+                 ignore : Bool,
+                 forgot: Bool
         ){
         if words != nil {
             let wordDict = NSMutableDictionary();
@@ -122,8 +125,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             if(isExisted) {
                 self.words?.remove(at: cnt);
+                if(forgot) {
+                    cnt = 0
+                }
             } else {
-                cnt = 0;
+                cnt = 0
             }
             if(!ignore) {
                 self.words?.insert(wordDict, at: cnt)

@@ -138,7 +138,7 @@ class CachedWordView: NSView, NSOutlineViewDelegate , NSOutlineViewDataSource {
                                 if let strongSelf = self {
                                     if let row_index = resp["tag"] as? Int , let ignore = resp["ignore"] as? Bool {
                                         if var data = strongSelf.arrWords?[row_index] {
-                                            appDelegate.addWord(word: data["word"] as! String, imagePath: data["image"] as? String, own_definition: data["own_definition"] as? String, audio: data["audio"] as? String, ignore: ignore)
+                                            appDelegate.addWord(word: data["word"] as! String, imagePath: data["image"] as? String, own_definition: data["own_definition"] as? String, audio: data["audio"] as? String, ignore: ignore, forgot: false)
                                         }
                                     }
                                 }
